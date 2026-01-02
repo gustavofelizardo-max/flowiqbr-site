@@ -72,10 +72,47 @@
       padding:14px 0;
       gap:18px;
     }
-    .brand{display:flex;align-items:center;gap:14px;min-width:280px}
-    .brand.hasLockup .logo, .brand.hasLockup .brandText{display:none}
-    .brandLockup{display:none;height:34px;max-width:220px;width:auto;object-fit:contain}
-    .brand.hasLockup .brandLockup{display:block}
+    
+.brandLockupWrap{
+  display:none;
+  padding:8px 10px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(15,26,23,.04); /* light palette-tinted */
+  box-shadow: 0 10px 26px rgba(0,0,0,.05);
+}
+html[data-theme="dark"] .brandLockupWrap{
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 14px 34px rgba(0,0,0,.28);
+}
+.brand.hasLockup .logo, .brand.hasLockup .brandText{display:none}
+.brandLockup{
+  display:block;
+  height:64px;
+  max-width:380px;
+  width:auto;
+  object-fit:contain;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.08));
+}
+
+/* === Brand block (CMO pass: size + visibility) === */
+.brand{
+  display:flex;align-items:center;gap:14px;min-width:auto;
+  padding:16px 20px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(245,243,236,0.85));
+  border:1px solid rgba(15,26,23,.12);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  margin-right:40px;
+}
+html[data-theme="dark"] .brand{
+  background: linear-gradient(180deg, rgba(11,38,32,.72), rgba(11,38,32,.52));
+  border-color: rgba(233,244,240,.14);
+  box-shadow: 0 12px 30px rgba(0,0,0,.28);
+}
+
+.brand.hasLockup .brandLockupWrap{display:inline-flex;align-items:center}
+    
 
     .logo{
       width:46px;height:46px;border-radius:16px;
@@ -396,12 +433,64 @@
       .footNav{justify-content:flex-start}
     }
   
-/* === Brand lockup (approved assets) === */
-.brandLockup{display:none;height:34px;max-width:220px;width:auto;object-fit:contain}
-.brand.hasLockup .logo,.brand.hasLockup .brandText{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.brand.hasLockup .brandLockup{display:none;height:34px;max-width:220px;width:auto;object-fit:contain}
 
-.ic .productIcon{width:22px;height:22px;display:block}
+/* === Product cards (approved icons) === */
+.ic img.productIcon{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  display:block;
+}
+.card[data-wm]{
+  position:relative;
+  overflow:hidden;
+}
+.card[data-wm]::after{
+  content:"";
+  position:absolute;
+  right:-26px;
+  bottom:-26px;
+  width:220px;
+  height:220px;
+  background-image: var(--wm);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:.08;
+  pointer-events:none;
+  filter: saturate(.9);
+}
+
+/* Dark-mode contrast fixes */
+html[data-theme="dark"] .topbar{
+  background: linear-gradient(180deg, rgba(7,26,22,.92), rgba(7,26,22,.62));
+}
+html[data-theme="dark"] .iconBtn{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(233,244,240,.18);
+}
+html[data-theme="dark"] .iconBtn svg{opacity:1}
+
+<
+    /* === Premium brand block (CMO) === */
+    .brand.hasLockup{
+      padding:14px 18px;
+      border-radius:18px;
+      border:1px solid rgba(15,26,23,.08);
+      background: linear-gradient(180deg, rgba(246,244,239,.85), rgba(246,244,239,.55));
+      box-shadow: 0 10px 28px rgba(0,0,0,.06);
+      margin-right:24px;
+    }
+    html[data-theme="dark"] .brand.hasLockup{
+      border:1px solid rgba(233,244,240,.12);
+      background: linear-gradient(180deg, rgba(11,38,32,.70), rgba(11,38,32,.42));
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+    /* keep it light-tinted (not pure white) */
+    html[data-theme="light"] .brand.hasLockup{
+      background: linear-gradient(180deg, rgba(246,244,239,.90), rgba(246,244,239,.62));
+    }
+/style>
 </style>
 </head>
 <body>
@@ -409,7 +498,7 @@
     <div class="container">
       <div class="nav">
         <a class="brand hasLockup" href="#top">
-        <img class="brandLockup" id="brandLockup" src="assets/logo-light.png" data-light="assets/logo-light.png" data-dark="assets/logo-dark.png" alt="FLOWIQ"/>
+        <span class="brandLockupWrap"><img class="brandLockup" id="brandLockup" src="assets/logo-light.png" data-light="assets/logo-light.png" data-dark="assets/logo-dark.png" alt="FLOWIQ"/></span>
 
           <div class="logo" aria-hidden="true">
             <!-- simple leaf mark -->
@@ -420,7 +509,7 @@
           </div>
           <div class="brandText">
             <div class="brandName">FLOWIQ</div>
-            <div class="tagline" id="tagline">Tecnologia + Serviços • Decision Intelligence</div>
+            <div class="tagline" id="tagline">Technical Intelligence Quotient</div>
           </div>
         </a>
 
@@ -632,10 +721,10 @@
         </div>
 
         <div class="grid3">
-          <div class="card">
+          <div class="card" data-wm style="--wm:url('assets/icon-taxiq.png')">
             <div class="cardTop">
               <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="TaxIQ icon" src="assets/icon-taxiq.svg" data-light="assets/icon-taxiq.svg" data-dark="assets/icon-taxiq.svg"/>
+                <img class="productIcon" alt="TaxIQ icon" src="assets/icon-taxiq.png" data-light="assets/icon-taxiq.png" data-dark="assets/icon-taxiq.png"/>
               </div>
               <h4>TaxIQ</h4>
             </div>
@@ -647,10 +736,10 @@
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" data-wm style="--wm:url('assets/icon-contentiq.png')">
             <div class="cardTop">
               <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="ContentIQ icon" src="assets/icon-contentiq.svg" data-light="assets/icon-contentiq.svg" data-dark="assets/icon-contentiq.svg"/>
+                <img class="productIcon" alt="ContentIQ icon" src="assets/icon-contentiq.png" data-light="assets/icon-contentiq.png" data-dark="assets/icon-contentiq.png"/>
               </div>
               <h4>ContentIQ</h4>
             </div>
@@ -662,10 +751,10 @@
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" data-wm style="--wm:url('assets/icon-comexiq.png')">
             <div class="cardTop">
               <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="ComexIQ icon" src="assets/icon-comexiq.svg" data-light="assets/icon-comexiq.svg" data-dark="assets/icon-comexiq.svg"/>
+                <img class="productIcon" alt="ComexIQ icon" src="assets/icon-comexiq.png" data-light="assets/icon-comexiq.png" data-dark="assets/icon-comexiq.png"/>
               </div>
               <h4>ComexIQ</h4>
             </div>
@@ -906,7 +995,7 @@
     // ---------- i18n ----------
     const dict = {
       pt: {
-        tagline: "Tecnologia + Serviços • Decision Intelligence",
+        tagline: "Technical Intelligence Quotient",
         nav_platform: "Plataforma",
         nav_how: "Como funciona",
         nav_products: "Produtos",
@@ -1020,7 +1109,7 @@
         foot_note:"Conteúdo, produtos e integrações podem variar por setor/cliente."
       },
       en: {
-        tagline: "Technology + Services • Decision Intelligence",
+        tagline: "Technical Intelligence Quotient",
         nav_platform: "Platform",
         nav_how: "How it works",
         nav_products: "Products",
@@ -1177,8 +1266,8 @@
       const t = document.getElementById("themeTooltip");
       if(t){ t.textContent = isDark ? "Mudar para modo claro" : "Mudar para modo escuro"; }
     }
-    const savedTheme = localStorage.getItem("flowiq_theme");
-    setTheme(savedTheme || "light");
+    setTheme("light");
+    localStorage.setItem("flowiq_theme","light");
 
     document.getElementById("themeToggle").addEventListener("click", ()=>{
       const cur = document.documentElement.getAttribute("data-theme") || "light";
