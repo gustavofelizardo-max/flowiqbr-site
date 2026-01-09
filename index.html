@@ -261,6 +261,39 @@ html[data-theme="dark"] .brand{
       white-space:nowrap;
     }
 
+
+    .impactStrip{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    .impactItem{
+      border:1px solid var(--line);
+      background:var(--glass2);
+      border-radius:18px;
+      padding:12px 12px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.05);
+      min-height:74px;
+    }
+    .impactItem b{
+      display:block;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .impactItem span{
+      color:var(--muted);
+      font-weight:650;
+      line-height:1.35;
+      font-size:12.5px;
+      display:block;
+    }
+    @media (max-width: 980px){
+      .impactStrip{grid-template-columns:1fr}
+    }
+
     .panel{
       border:1px solid var(--line);
       background:linear-gradient(180deg, var(--glass), rgba(255,255,255,.18));
@@ -318,6 +351,8 @@ html[data-theme="dark"] .brand{
       min-height:170px;
     }
     html[data-theme="dark"] .card{box-shadow: 0 16px 56px rgba(0,0,0,.28)}
+    .cardActions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
     .cardTop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
     .ic{
       width:38px;height:38px;border-radius:14px;
@@ -524,7 +559,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
 
         <div class="actions">
           <div class="ctaStack">
-            <a class="cta" href="#contact" data-i18n="cta_talk">Solicitar conversa</a>
+            <a class="cta" href="#contact" data-i18n="cta_talk">Diagnóstico gratuito de eficiência</a>
 
             <!-- aligned below CTA (no overlap) -->
             <div class="subActions">
@@ -570,7 +605,22 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
               <div class="badge" data-i18n="proof_1">Sem substituir o time interno</div>
               <div class="badge" data-i18n="proof_2">Sem competir com consultorias</div>
               <div class="badge" data-i18n="proof_3">Integrações e parceiros como extensão</div>
+            
+            <div class="impactStrip" aria-label="Impacto">
+              <div class="impactItem">
+                <b data-i18n="impact_1_t">Impacto mensurável</b>
+                <span data-i18n="impact_1_d">No diagnóstico, estimamos o potencial de savings e recuperações a partir dos seus dados.</span>
+              </div>
+              <div class="impactItem">
+                <b data-i18n="impact_2_t">Menos risco</b>
+                <span data-i18n="impact_2_d">Regras consistentes, evidências e governança para reduzir exposição e retrabalho.</span>
+              </div>
+              <div class="impactItem">
+                <b data-i18n="impact_3_t">Mais velocidade</b>
+                <span data-i18n="impact_3_d">Menos tempo em apuração e análise; mais tempo em decisão e execução.</span>
+              </div>
             </div>
+</div>
           </div>
 
           <aside class="panel" aria-label="Clareza entregue pela plataforma">
@@ -734,6 +784,9 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
               <li data-i18n="tax_li2">Scoring por NCM / fornecedor / operação</li>
               <li data-i18n="tax_li3">Trilha de execução e savings</li>
             </ul>
+            <div class="cardActions">
+              <a class="btn btnPrimary" style="padding:10px 14px;font-size:12px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
+            </div>
           </div>
 
           <div class="card" data-wm style="--wm:url('assets/icon-contentiq.png')">
@@ -764,6 +817,35 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
               <li data-i18n="comex_li2">Integrações com prestadores e sistemas</li>
               <li data-i18n="comex_li3">Menos atrito, mais velocidade</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="insights">
+        <div class="sectionHead">
+          <div>
+            <h2 data-i18n="insights_title">Insights (atualiza a cada refresh)</h2>
+            <p data-i18n="insights_sub">Um sinal por vez — dicas e novidades para decisão e execução. Conteúdo pode ser abastecido por parceiros (ex.: Boxnet).</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px;min-height:unset">
+          <div class="cardTop" style="margin-bottom:6px">
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4.3A7 7 0 0 0 12 2Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h4 data-i18n="insights_card">Insight do dia</h4>
+          </div>
+
+          <p id="insightText" style="margin:8px 0 0;color:var(--muted);line-height:1.6"></p>
+
+          <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+            <a class="btn" id="insightLink" href="#products" data-i18n="insights_link">Ver como os IQs ajudam</a>
+            <span class="fineprint" data-i18n="insights_note">Sem ruído: cada refresh traz um tópico diferente (comércio exterior, tributário e governança).</span>
           </div>
         </div>
       </section>
@@ -939,7 +1021,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
       <section id="contact">
         <div class="sectionHead">
           <div>
-            <h2 data-i18n="contact_title">Solicitar conversa</h2>
+            <h2 data-i18n="contact_title">Diagnóstico gratuito de eficiência</h2>
             <p data-i18n="contact_sub">Conte rapidamente seu contexto. Nós respondemos com perguntas certas, uma leitura inicial e os próximos passos.</p>
           </div>
         </div>
@@ -1002,7 +1084,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         nav_benchmark: "Benchmark",
         nav_company: "Empresa",
         nav_contact: "Contato",
-        cta_talk: "Solicitar conversa",
+        cta_talk: "Diagnóstico gratuito de eficiência",
         chip: "Plataforma de decisão — sem atrito entre pessoas, consultorias e tecnologia",
         hero_title: "Decisão executiva com contexto, método e execução.",
         hero_lead: "A FLOWIQ é a plataforma onde os dados chegam e viram decisão. Mês a mês, analisamos SPED + COMEX, provocamos trade-offs e desenhamos estratégias — como um gestor de investimentos faz com um portfólio.",
@@ -1028,7 +1110,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         platform_card1: "Ingestão + normalização",
         platform_card1_p: "Conectamos fontes (SPED, COMEX e demais dados da operação). Organizamos, cruzamos e criamos base comparável mês a mês.",
         platform_card2: "Motor de decisão",
-        platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. Decisão vira trilha.",
+        platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. Aplicamos IA em pontos estratégicos (classificação, risco e recomendações).",
         platform_card3: "Serviços como “gestor”",
         platform_card3_p: "Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.",
 
@@ -1050,10 +1132,18 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
 
         products_title: "Produtos que consomem dados da FLOWIQ",
         products_sub: "A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.",
+
+        insights_title: "Insights (atualiza a cada refresh)",
+        insights_sub: "Um sinal por vez — dicas e novidades para decisão e execução. Conteúdo pode ser abastecido por parceiros (ex.: Boxnet).",
+        insights_card: "Insight do dia",
+        insights_link: "Ver como os IQs ajudam",
+        insights_note: "Sem ruído: cada refresh traz um tópico diferente (comércio exterior, tributário e governança).",
+
         tax_p: "Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT, etc.).",
         tax_li1: "Tax Engine + simulações (Tax Twin)",
         tax_li2: "Scoring por NCM / fornecedor / operação",
         tax_li3: "Trilha de execução e savings",
+        tax_btn: "Acessar TaxIQ",
         content_p: "Conteúdo como produto: curadoria e contexto focados na sua empresa e na rede (clientes/fornecedores), por setor e por casos de uso.",
         content_li1: "Leitura setorial aplicada (impacto na decisão)",
         content_li2: "Sinais e alertas para sua cadeia",
@@ -1094,18 +1184,26 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         company_title:"Empresa",
         company_sub:"Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.",
         company_c1:"Tecnologia",
-        company_c1p:"Plataforma de dados, conectores e camada de decisão para reduzir complexidade e atrito.",
+        company_c1p:"Tecnologia de ponta: plataforma de dados, conectores e IA aplicada em pontos estratégicos (ingestão, classificação e recomendações).",
         company_c2:"Método",
-        company_c2p:"Governança, trilhas e consistência: decisão vira execução com evidências e accountability.",
+        company_c2p:"Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.",
         company_c3:"Conteúdo",
         company_c3p:"Conteúdo nichado por empresa e por rede (clientes/fornecedores), com curadoria via parceiros — reduzindo ruído e aumentando sinal.",
 
-        contact_title:"Solicitar conversa",
+        contact_title:"Diagnóstico gratuito de eficiência",
         contact_sub:"Conte rapidamente seu contexto. Nós respondemos com perguntas certas, uma leitura inicial e os próximos passos.",
         f_name:"Nome",
         f_msg:"O que você quer destravar?",
         f_send:"Enviar",
         f_note:"Integrações, produtos e fontes podem variar por setor/cliente. O objetivo é reduzir ruído e aumentar sinal.",
+
+        impact_1_t: "Impacto mensurável",
+        impact_1_d: "No diagnóstico, estimamos savings, recuperações e impacto em caixa por cenário — com rastreabilidade do que muda e por quê.",
+        impact_2_t: "Menos risco",
+        impact_2_d: "Regras consistentes, evidências e governança para reduzir exposição e retrabalho.",
+        impact_3_t: "IA aplicada",
+        impact_3_d: "Assistentes e scoring nos pontos certos: classificação, risco, oportunidades e próximos passos.",
+
         foot_note:"Conteúdo, produtos e integrações podem variar por setor/cliente."
       },
       en: {
@@ -1116,7 +1214,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         nav_benchmark: "Benchmark",
         nav_company: "Company",
         nav_contact: "Contact",
-        cta_talk: "Request a conversation",
+        cta_talk: "Free efficiency assessment",
         chip: "Decision orchestration — no friction across teams, advisors and technology",
         hero_title: "Executive decisions with context, method and execution.",
         hero_lead: "FLOWIQ is the platform where data lands and becomes decisions. Month by month, we analyze SPED + COMEX, surface trade-offs and design strategies — like an investment manager does with a portfolio.",
@@ -1142,7 +1240,7 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         platform_card1: "Ingestion + normalization",
         platform_card1_p: "We connect sources (SPED, COMEX and operational data). We organize and normalize it into a month-by-month comparable base.",
         platform_card2: "Decision engine",
-        platform_card2_p: "We simulate scenarios, make trade-offs explicit and connect impact to cash, risk and performance. Decisions become tracks.",
+        platform_card2_p: "We simulate scenarios, make trade-offs explicit and connect impact to cash, risk and performance. We apply AI in strategic points (classification, risk and recommendations).",
         platform_card3: "Services as a “portfolio manager”",
         platform_card3_p: "Data-driven advisory: readings, provocations and continuous strategy. Integrations and partners plug in with no friction.",
 
@@ -1164,10 +1262,18 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
 
         products_title: "Products that consume FLOWIQ data",
         products_sub: "The platform is the hub. IQs are focused products: tax decisions, contextual content, and trade execution.",
+
+        insights_title: "Insights (refreshes on load)",
+        insights_sub: "One signal at a time — tips and updates for decision and execution. Content can be supplied by partners (e.g., Boxnet).",
+        insights_card: "Today’s insight",
+        insights_link: "See how the IQs help",
+        insights_note: "No noise: each refresh brings a different topic (trade, tax and governance).",
+
         tax_p: "Tax and special-regime decisions: classification, risk, opportunities and strategy (RECOF, Drawback, RT, etc.).",
         tax_li1: "Tax Engine + simulations (Tax Twin)",
         tax_li2: "Scoring by NCM / supplier / operation",
         tax_li3: "Execution track and savings",
+        tax_btn: "Open TaxIQ",
         content_p: "Content as a product: curation and context tailored to your company and your network (customers/suppliers), by sector and use case.",
         content_li1: "Applied sector reading (decision impact)",
         content_li2: "Signals and alerts for your chain",
@@ -1208,9 +1314,9 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         company_title:"Company",
         company_sub:"Technology for services: we connect data, apply method and deliver strategic decisions — with execution and sector-specific content.",
         company_c1:"Technology",
-        company_c1p:"Data platform, connectors and decision layer to reduce complexity and friction.",
+        company_c1p:"Cutting-edge tech: data platform, connectors and applied AI in key steps (ingestion, classification and recommendations).",
         company_c2:"Method",
-        company_c2p:"Governance, tracks and consistency: decisions become execution with evidence and accountability.",
+        company_c2p:"Governance, tracks and consistency: decisions become execution with evidence, audit trail, and compliance by design.",
         company_c3:"Content",
         company_c3p:"Niche content by company and network (customers/suppliers), curated via partners — less noise, more signal.",
 
@@ -1220,11 +1326,69 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         f_msg:"What are you trying to unlock?",
         f_send:"Send",
         f_note:"Integrations, products and sources can vary by sector/client. The goal is less noise and more signal.",
+
+        impact_1_t: "Measurable impact",
+        impact_1_d: "In the diagnostic, we estimate savings, recoveries and cash impact per scenario — with traceability of what changes and why.",
+        impact_2_t: "Lower risk",
+        impact_2_d: "Consistent rules, evidence and governance to reduce exposure and rework.",
+        impact_3_t: "Applied AI",
+        impact_3_d: "Assistants and scoring where it matters: classification, risk, opportunities and next steps.",
+
         foot_note:"Content, products and integrations can vary by sector/client."
       }
     };
 
     window.__i18nLang = "pt";
+    // ---------- Insights (rotating) ----------
+    const insights = {
+      pt: [
+        { t: "Drawback e RECOF: revise o ‘timing’ do crédito", d: "Muitos ganhos estão no quando você recupera/compensa — não só no quanto.", href: "#products" },
+        { t: "Compliance by design", d: "Governança + trilhas + evidências reduzem risco e retrabalho em fiscalizações.", href: "#company" },
+        { t: "Classificação fiscal: trate como ativo", d: "NCM é decisão: impacta tributo, risco e elegibilidade de regimes.", href: "#products" },
+        { t: "SPED como fonte de verdade", d: "Variações mês a mês revelam sinais por fornecedor/cliente e por operação.", href: "#platform" },
+        { t: "Acordos e regras internas", d: "Políticas claras + rastreabilidade diminuem dependência de heróis e achismos.", href: "#how" },
+        { t: "IA aplicada onde dói", d: "Use IA para triagem de exceções, scoring de risco e recomendações — não para enfeite.", href: "#platform" },
+        { t: "Trade-offs explícitos", d: "Compare cenários lado a lado: caixa x risco x execução. A melhor decisão nem sempre é a maior economia.", href: "#how" },
+        { t: "Rede (clientes e fornecedores) importa", d: "Otimização isolada perde valor. Traga sua cadeia para a mesma leitura.", href: "#platform" },
+        { t: "Auditoria e evidências", d: "Organize documentos e decisões por trilha: melhora resposta e reduz exposição.", href: "#company" },
+        { t: "Conteúdo como produto (parcerias)", d: "Curadoria por CNPJ e setor pode ser abastecida por parceiros (ex.: Boxnet) e virar sinal acionável.", href: "#products" },
+        { t: "Exceções primeiro", d: "O 80/20 está nas exceções: identifique desvios e foque onde há impacto.", href: "#how" },
+        { t: "Integrações sem atrito", d: "Conecte fontes e parceiros com governança: dados entram, decisão sai, execução mede valor.", href: "#platform" },
+        { t: "Risco não é opinião", d: "Com scoring por operação e evidências, risco vira número — e decisão fica defensável.", href: "#products" },
+        { t: "Tempo é caixa", d: "Atraso em apuração, retificação e recuperação de créditos tem custo real.", href: "#how" },
+        { t: "Roadmap de execução", d: "Plano tático com owners e marcos reduz a chance do projeto morrer na reunião.", href: "#how" },
+        { t: "Regimes especiais: governança", d: "RECOF/Drawback exigem consistência e controle de exceções — tecnologia + método.", href: "#products" },
+        { t: "Benchmark útil", d: "Não é buzzword: traduza automação, data lake e twin em decisão e execução.", href: "#benchmark" },
+        { t: "Menos ruído, mais sinal", d: "A operação precisa de 1 insight acionável por ciclo — não de um jornal por dia.", href: "#insights" },
+        { t: "Gestão de mudança", d: "Sem rotina e cadência, até a melhor tecnologia vira slide.", href: "#how" },
+        { t: "Diagnóstico rápido", d: "Comece estimando potencial e riscos com dados reais. Depois, priorize trilhas.", href: "#contact" }
+      ],
+      en: [
+        { t: "Drawback & RECOF: revisit credit timing", d: "Many gains come from when you recover/offset — not only how much.", href: "#products" },
+        { t: "Compliance by design", d: "Governance + tracks + evidence reduce risk and rework during audits.", href: "#company" },
+        { t: "Tariff classification is an asset", d: "Classification drives taxes, risk and special-regime eligibility.", href: "#products" },
+        { t: "SPED as a source of truth", d: "Month-over-month variance reveals signals by supplier/customer and operation.", href: "#platform" },
+        { t: "AI where it matters", d: "Use AI for exception triage, risk scoring and recommendations — not decoration.", href: "#platform" },
+        { t: "Make trade-offs explicit", d: "Compare cash vs risk vs execution side by side. Biggest savings isn't always best.", href: "#how" },
+        { t: "Your network matters", d: "Isolated optimization loses value. Bring suppliers and customers into the same lens.", href: "#platform" },
+        { t: "Evidence and audit trail", d: "Organize decisions as tracks. Faster answers, lower exposure.", href: "#company" },
+        { t: "Content as a product (partners)", d: "Company- and sector-specific curation can be supplied by partners (e.g., Boxnet).", href: "#products" },
+        { t: "Start with exceptions", d: "The 80/20 often lives in exceptions. Find deviations and focus on impact.", href: "#how" },
+        { t: "No-friction integrations", d: "Data in, decisions out, execution measured — with governance.", href: "#platform" },
+        { t: "Risk is not opinion", d: "Scoring by operation + evidence makes risk measurable and defensible.", href: "#products" }
+      ]
+    };
+
+    function setInsight(lang){
+      const list = insights[lang] || insights.pt;
+      const pick = list[Math.floor(Math.random() * list.length)];
+      const el = document.getElementById("insightText");
+      const link = document.getElementById("insightLink");
+      if(!el || !link || !pick) return;
+      el.innerHTML = `<b style="color:var(--ink)">${pick.t}</b><br/>${pick.d}`;
+      link.setAttribute("href", pick.href || "#products");
+    }
+
 
     function applyLang(lang){
       window.__i18nLang = lang;
@@ -1237,7 +1401,10 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         if(dict[lang][key]) el.textContent = dict[lang][key];
       });
 
-      document.getElementById("langPT").classList.toggle("active", lang==="pt");
+            // rotating insight
+      setInsight(lang);
+
+document.getElementById("langPT").classList.toggle("active", lang==="pt");
       document.getElementById("langEN").classList.toggle("active", lang==="en");
     }
 
