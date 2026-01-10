@@ -6,10 +6,9 @@
   <title>FLOWIQ — Plataforma de decisão executiva</title>
   <meta name="description" content="FLOWIQ: a camada de decisão acima da operação. Conectamos SPED, COMEX e dados internos para gerar trade-offs, governança e execução rastreável."/>
   
-  <!-- CMO: CSS reorganizado para hierarquia visual enterprise -->
   <style>
     /* ══════════════════════════════════════════════════════════════
-       DESIGN TOKENS - Paleta preservada, variáveis otimizadas
+       DESIGN TOKENS
     ══════════════════════════════════════════════════════════════ */
     :root {
       --bg: #f6f4ef;
@@ -18,7 +17,7 @@
       --cardSolid: #ffffff;
       --ink: #0f1a17;
       --muted: #4a5b56;
-      --line: rgba(15,26,23,.10);
+      --line: rgba(15,26,23,.12);
       --shadow: 0 20px 60px rgba(0,0,0,.07);
       --radius: 20px;
       --accent: #f3b42f;
@@ -41,7 +40,7 @@
       --cardSolid: #0b2620;
       --ink: #e9f4f0;
       --muted: #a8bab4;
-      --line: rgba(233,244,240,.12);
+      --line: rgba(233,244,240,.15);
       --shadow: 0 24px 70px rgba(0,0,0,.35);
       --glass: rgba(11,38,32,.65);
       --glass2: rgba(11,38,32,.45);
@@ -76,7 +75,7 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       TOPBAR - Limpa, funcional, enterprise
+       TOPBAR
     ══════════════════════════════════════════════════════════════ */
     .topbar {
       position: sticky;
@@ -257,25 +256,23 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       HERO - Impacto em 5 segundos para C-level
+       HERO - Centralizado
     ══════════════════════════════════════════════════════════════ */
     .hero {
-      padding: 56px 0 48px;
+      padding: 64px 0 56px;
+      text-align: center;
     }
     
     .heroInner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
       max-width: 800px;
+      margin: 0 auto;
     }
     
-    /* Headline principal - tese de board */
     .heroHeadline {
       font-size: clamp(36px, 5vw, 56px);
       line-height: 1.08;
       letter-spacing: -.025em;
-      margin: 0 0 20px;
+      margin: 0 0 24px;
       font-weight: 800;
     }
     
@@ -286,20 +283,20 @@
       background-clip: text;
     }
     
-    /* Subheadline - prova lógica */
     .heroSub {
       font-size: 18px;
       color: var(--muted);
-      line-height: 1.6;
-      margin: 0 0 28px;
-      max-width: 600px;
+      line-height: 1.65;
+      margin: 0 auto 32px;
+      max-width: 580px;
     }
     
     .heroBtns {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 32px;
+      justify-content: center;
+      margin-bottom: 48px;
     }
     
     .btn {
@@ -331,65 +328,67 @@
     .btnPrimary:hover { box-shadow: 0 16px 40px rgba(10,92,255,.28); }
 
     /* ══════════════════════════════════════════════════════════════
-       VALUE STRIP - Diferenciais claros e escaneáveis
+       VALUE STRIP - Com caixa/borda
     ══════════════════════════════════════════════════════════════ */
     .valueStrip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--line);
+      gap: 0;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
+      background: var(--cardSolid);
     }
     
     .valueItem {
-      background: var(--cardSolid);
-      padding: 24px 20px;
+      padding: 28px 20px;
       text-align: center;
+      border-right: 1px solid var(--line);
     }
     
-    html[data-theme="dark"] .valueItem { background: var(--cardSolid); }
+    .valueItem:last-child { border-right: none; }
     
     .valueItem strong {
       display: block;
       font-size: 13px;
       letter-spacing: .10em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--ink);
     }
     
     .valueItem span {
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* ══════════════════════════════════════════════════════════════
-       SECTIONS - Ritmo vertical consistente
+       SECTIONS
     ══════════════════════════════════════════════════════════════ */
     section {
       padding: 56px 0;
     }
     
     .sectionHeader {
-      margin-bottom: 32px;
+      margin-bottom: 36px;
+      text-align: center;
     }
     
     .sectionHeader h2 {
       font-size: clamp(24px, 3vw, 32px);
       letter-spacing: -.02em;
-      margin: 0 0 12px;
+      margin: 0 0 16px;
       line-height: 1.2;
     }
     
     .sectionHeader p {
       font-size: 16px;
       color: var(--muted);
-      margin: 0;
-      max-width: 65ch;
-      line-height: 1.55;
+      margin: 0 auto;
+      max-width: 540px;
+      line-height: 1.6;
     }
     
     .sectionDivider {
@@ -399,24 +398,25 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       PLATFORM GRID - Cards informativos
+       CARDS GRID
     ══════════════════════════════════════════════════════════════ */
     .grid3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
     
     .card {
       border: 1px solid var(--line);
       background: var(--glass);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px 24px;
       box-shadow: 0 12px 40px rgba(0,0,0,.05);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     
     html[data-theme="dark"] .card {
@@ -424,25 +424,25 @@
     }
     
     .cardIcon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       background: rgba(243,180,47,.15);
       border: 1px solid rgba(243,180,47,.20);
       display: grid;
       place-items: center;
-      margin-bottom: 16px;
+      margin: 0 auto 20px;
       flex-shrink: 0;
     }
     
     html[data-theme="dark"] .cardIcon { background: rgba(243,180,47,.12); }
     
-    .cardIcon svg { width: 20px; height: 20px; }
-    .cardIcon img { width: 22px; height: 22px; object-fit: contain; }
+    .cardIcon svg { width: 22px; height: 22px; }
+    .cardIcon img { width: 24px; height: 24px; object-fit: contain; }
     
     .card h4 {
-      font-size: 17px;
-      margin: 0 0 10px;
+      font-size: 18px;
+      margin: 0 0 12px;
       letter-spacing: -.01em;
     }
     
@@ -450,25 +450,39 @@
       font-size: 14px;
       color: var(--muted);
       margin: 0;
-      line-height: 1.55;
-    }
-    
-    .card ul {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
       line-height: 1.6;
     }
     
-    .card li { margin-bottom: 4px; }
+    .card ul {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    
+    .card li {
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 16px;
+    }
+    
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
     
     .cardActions {
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 24px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     
     /* Product card watermark */
@@ -493,7 +507,7 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       HOW IT WORKS - Steps claros
+       HOW IT WORKS
     ══════════════════════════════════════════════════════════════ */
     .howGrid {
       display: grid;
@@ -511,11 +525,12 @@
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      padding: 18px;
+      padding: 20px;
       border: 1px solid var(--line);
       background: var(--glass);
       border-radius: 14px;
       position: relative;
+      text-align: left;
     }
     
     .step::before {
@@ -530,15 +545,15 @@
     }
     
     .stepNum {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       background: rgba(10,92,255,.12);
       border: 1px solid rgba(10,92,255,.18);
       display: grid;
       place-items: center;
       font-weight: 900;
-      font-size: 14px;
+      font-size: 15px;
       flex-shrink: 0;
     }
     
@@ -551,13 +566,21 @@
     }
     
     .stepContent span {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.45;
+      line-height: 1.5;
+    }
+    
+    .howCard {
+      text-align: left;
+    }
+    
+    .howCard .cardIcon {
+      margin: 0 0 20px;
     }
 
     /* ══════════════════════════════════════════════════════════════
-       BENCHMARK TABLE - Comparação lado a lado
+       BENCHMARK TABLE
     ══════════════════════════════════════════════════════════════ */
     .compareTable {
       border: 1px solid var(--line);
@@ -576,7 +599,7 @@
     html[data-theme="dark"] .compareHead { background: rgba(0,0,0,.15); }
     
     .compareHead > div {
-      padding: 16px 20px;
+      padding: 18px 24px;
       font-weight: 800;
       font-size: 12px;
       letter-spacing: .10em;
@@ -598,30 +621,30 @@
     .compareRow:last-child { border-bottom: 0; }
     
     .compareCell {
-      padding: 16px 20px;
+      padding: 18px 24px;
       display: flex;
-      gap: 12px;
+      gap: 14px;
       align-items: flex-start;
     }
     
     .compareCell:last-child { border-left: 1px solid var(--line); }
     
     .cellIcon {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       background: var(--glass2);
       border: 1px solid var(--line);
       display: grid;
       place-items: center;
-      font-size: 14px;
+      font-size: 15px;
       flex-shrink: 0;
     }
     
     .cellContent b {
       display: block;
       font-size: 14px;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     
     .cellContent span {
@@ -630,22 +653,24 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       INSIGHT CARD - Destaque sutil
+       INSIGHT CARD
     ══════════════════════════════════════════════════════════════ */
     .insightCard {
       border: 1px solid var(--line);
       background: linear-gradient(135deg, var(--glass), rgba(243,180,47,.05));
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 32px;
       display: flex;
-      gap: 20px;
+      gap: 24px;
       align-items: flex-start;
+      max-width: 700px;
+      margin: 0 auto;
     }
     
     .insightIcon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       background: rgba(243,180,47,.15);
       border: 1px solid rgba(243,180,47,.20);
       display: grid;
@@ -653,7 +678,7 @@
       flex-shrink: 0;
     }
     
-    .insightIcon svg { width: 22px; height: 22px; }
+    .insightIcon svg { width: 24px; height: 24px; }
     
     .insightContent { flex: 1; }
     
@@ -662,14 +687,15 @@
       letter-spacing: .10em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
     
     #insightText {
       font-size: 15px;
       color: var(--muted);
-      line-height: 1.55;
-      margin: 0 0 14px;
+      line-height: 1.6;
+      margin: 0 0 16px;
     }
     
     #insightText b { color: var(--ink); }
@@ -681,8 +707,9 @@
       border: 1px solid var(--line);
       background: var(--glass);
       border-radius: var(--radius);
-      padding: 32px;
-      max-width: 700px;
+      padding: 36px;
+      max-width: 640px;
+      margin: 0 auto;
     }
     
     .formGrid {
@@ -723,7 +750,8 @@
       gap: 16px;
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 24px;
+      justify-content: center;
     }
     
     .formNote {
@@ -775,6 +803,9 @@
     ══════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .valueStrip { grid-template-columns: repeat(2, 1fr); }
+      .valueItem { border-bottom: 1px solid var(--line); }
+      .valueItem:nth-child(2) { border-right: none; }
+      .valueItem:nth-child(3), .valueItem:nth-child(4) { border-bottom: none; }
       .howGrid { grid-template-columns: 1fr; }
     }
     
@@ -784,11 +815,14 @@
       .actions { gap: 8px; }
       .ctaTop { padding: 10px 16px; font-size: 10px; }
       
-      .hero { padding: 40px 0 36px; }
+      .hero { padding: 48px 0 40px; }
       .heroHeadline { font-size: 32px; }
       .heroSub { font-size: 16px; }
       
       .valueStrip { grid-template-columns: 1fr; }
+      .valueItem { border-right: none; border-bottom: 1px solid var(--line); }
+      .valueItem:last-child { border-bottom: none; }
+      
       .grid3 { grid-template-columns: 1fr; }
       
       .compareHead,
@@ -796,6 +830,9 @@
       .compareCell:last-child { border-left: 0; border-top: 1px solid var(--line); }
       
       .formGrid { grid-template-columns: 1fr; }
+      
+      .insightCard { flex-direction: column; text-align: center; }
+      .insightIcon { margin: 0 auto; }
       
       .footerInner { flex-direction: column; text-align: center; }
       .footerNav { justify-content: center; }
@@ -810,9 +847,7 @@
   </style>
 </head>
 <body>
-  <!-- ════════════════════════════════════════════════════════════
-       TOPBAR
-  ════════════════════════════════════════════════════════════ -->
+  <!-- TOPBAR -->
   <header class="topbar">
     <div class="container">
       <nav class="nav">
@@ -849,10 +884,10 @@
           <a class="ctaTop" href="#contact" data-i18n="cta_talk">Diagnóstico gratuito</a>
           <div class="controls">
             <div class="pill">
-              <button id="langPT" class="active" title="Português">PT</button>
-              <button id="langEN" title="English">EN</button>
+              <button type="button" id="langPT" class="active" title="Português">PT</button>
+              <button type="button" id="langEN" title="English">EN</button>
             </div>
-            <button class="iconBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
+            <button type="button" class="iconBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4l1.4-1.4m10-10 1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -864,30 +899,26 @@
     </div>
   </header>
 
-  <!-- ════════════════════════════════════════════════════════════
-       MAIN CONTENT
-  ════════════════════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT -->
   <main id="top">
     <div class="container">
 
-      <!-- HERO: Impacto em 5 segundos -->
+      <!-- HERO -->
       <section class="hero">
         <div class="heroInner">
-          <div>
-            <h1 class="heroHeadline" data-i18n="hero_title">
-              A <span class="accent">camada de decisão</span><br>acima da operação.
-            </h1>
-            <p class="heroSub" data-i18n="hero_lead">
-              Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.
-            </p>
-            <div class="heroBtns">
-              <a class="btn btnPrimary" href="#how" data-i18n="hero_btn_primary">Ver como funciona</a>
-              <a class="btn" href="#products" data-i18n="hero_btn_secondary">Conhecer os IQs</a>
-            </div>
+          <h1 class="heroHeadline" data-i18n="hero_title">
+            A <span class="accent">camada de decisão</span><br>acima da operação.
+          </h1>
+          <p class="heroSub" data-i18n="hero_lead">
+            Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.
+          </p>
+          <div class="heroBtns">
+            <a class="btn btnPrimary" href="#how" data-i18n="hero_btn_primary">Ver como funciona</a>
+            <a class="btn" href="#products" data-i18n="hero_btn_secondary">Conhecer os IQs</a>
           </div>
         </div>
 
-        <!-- Value strip - escaneável -->
+        <!-- Value strip -->
         <div class="valueStrip">
           <div class="valueItem">
             <strong data-i18n="k_cash">Caixa</strong>
@@ -914,7 +945,7 @@
       <section id="platform">
         <header class="sectionHeader">
           <h2 data-i18n="platform_title">Onde os dados chegam e viram decisão</h2>
-          <p data-i18n="platform_sub">Plataforma central de dados + tecnologia + serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.</p>
+          <p data-i18n="platform_sub">Plataforma central de dados, tecnologia e serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.</p>
         </header>
 
         <div class="grid3">
@@ -992,7 +1023,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card howCard">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6"/>
@@ -1032,7 +1063,7 @@
               <li data-i18n="tax_li3">Trilha de execução e savings</li>
             </ul>
             <div class="cardActions">
-              <a class="btn btnPrimary" style="padding:10px 16px;font-size:11px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
+              <a class="btn btnPrimary" style="padding:12px 20px;font-size:11px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
             </div>
           </div>
 
@@ -1048,7 +1079,7 @@
               <li data-i18n="content_li3">Fonte via parceiros</li>
             </ul>
             <div class="cardActions">
-              <a class="btn" style="padding:10px 16px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+              <a class="btn" style="padding:12px 20px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
             </div>
           </div>
 
@@ -1064,7 +1095,7 @@
               <li data-i18n="comex_li3">Menos atrito, mais velocidade</li>
             </ul>
             <div class="cardActions">
-              <a class="btn" style="padding:10px 16px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+              <a class="btn" style="padding:12px 20px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
             </div>
           </div>
         </div>
@@ -1267,7 +1298,7 @@
         </header>
 
         <div class="contactCard">
-          <form onsubmit="event.preventDefault(); alert(window.__i18nLang==='en' ? 'Thanks! We will get back to you.' : 'Obrigado! Vamos retornar em breve.');">
+          <form id="contactForm">
             <div class="formGrid">
               <div class="formField">
                 <label data-i18n="f_name">Nome</label>
@@ -1293,9 +1324,7 @@
     </div>
   </main>
 
-  <!-- ════════════════════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footerInner">
@@ -1313,15 +1342,14 @@
     </div>
   </footer>
 
-  <!-- ════════════════════════════════════════════════════════════
-       SCRIPTS
-  ════════════════════════════════════════════════════════════ -->
+  <!-- SCRIPTS -->
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-    // i18n dictionary
-    const dict = {
+      // i18n dictionary
+      var dict = {
       pt: {
         tagline: "Technical Intelligence Quotient",
         nav_platform: "Plataforma",
@@ -1336,7 +1364,6 @@
         hero_lead: "Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.",
         hero_btn_primary: "Ver como funciona",
         hero_btn_secondary: "Conhecer os IQs",
-        
         k_cash: "Caixa",
         k_cash_desc: "Timing e fluxo de pagamento/recuperação",
         k_risk: "Risco",
@@ -1345,16 +1372,14 @@
         k_decision_desc: "Cenários e trade-offs explícitos",
         k_execution: "Execução",
         k_execution_desc: "Plano com owners e medição",
-
         platform_title: "Onde os dados chegam e viram decisão",
-        platform_sub: "Plataforma central de dados + tecnologia + serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.",
+        platform_sub: "Plataforma central de dados, tecnologia e serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.",
         platform_card1: "Ingestão + normalização",
         platform_card1_p: "Conectamos SPED, COMEX e dados internos. Organizamos, cruzamos e criamos base comparável mês a mês.",
         platform_card2: "Motor de decisão",
         platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. IA aplicada em pontos estratégicos.",
         platform_card3: "Serviços como "gestor"",
         platform_card3_p: "Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.",
-
         how_title: "Como funciona na prática",
         how_sub: "Um loop simples, repetível e mensurável. Clareza mês a mês — transformada em plano e execução com governança.",
         s1_t: "Conecte os dados",
@@ -1370,7 +1395,6 @@
         how_li1: "Marketplace de serviços com parceiros",
         how_li2: "Decisão antes da execução",
         how_li3: "Conteúdo por segmento e rede",
-
         products_title: "Produtos que consomem a FLOWIQ",
         products_sub: "A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.",
         tax_p: "Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT).",
@@ -1386,12 +1410,10 @@
         comex_li1: "Governança e evidências",
         comex_li2: "Integrações com prestadores",
         comex_li3: "Menos atrito, mais velocidade",
-
         insights_title: "Insight do dia",
         insights_sub: "Um sinal por vez — dicas para decisão e execução. Atualiza a cada refresh.",
         insights_card: "Insight",
         insights_link: "Ver como os IQs ajudam",
-
         bench_title: "Benchmark do mercado vs. nossa abordagem",
         bench_sub: "Traduzimos automação, data lake e digital twin em plataforma + produtos para decisão e execução.",
         bench_left: "Referências de mercado",
@@ -1419,7 +1441,6 @@
         r6_l_d: "Savings e compliance by design",
         r6_r_t: "RECOF, Drawback, RT",
         r6_r_d: "Economia rastreável com governança",
-
         company_title: "Empresa",
         company_sub: "Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.",
         company_c1: "Tecnologia",
@@ -1428,14 +1449,12 @@
         company_c2p: "Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.",
         company_c3: "Conteúdo",
         company_c3p: "Conteúdo nichado por empresa e rede, curadoria via parceiros — menos ruído, mais sinal.",
-
         contact_title: "Solicite um diagnóstico",
         contact_sub: "Conte seu contexto. Respondemos com as perguntas certas, uma leitura inicial e próximos passos.",
         f_name: "Nome",
         f_msg: "O que você quer destravar?",
         f_send: "Enviar",
         f_note: "Integrações e produtos podem variar por setor/cliente.",
-
         foot_note: " Conteúdo e integrações podem variar por setor."
       },
       en: {
@@ -1452,7 +1471,6 @@
         hero_lead: "We connect SPED, COMEX and internal data to generate explicit trade-offs, governance and traceable execution. Like a portfolio manager — but for tax and foreign trade.",
         hero_btn_primary: "See how it works",
         hero_btn_secondary: "Meet the IQs",
-
         k_cash: "Cash",
         k_cash_desc: "Payment/recovery timing and flow",
         k_risk: "Risk",
@@ -1461,16 +1479,14 @@
         k_decision_desc: "Scenarios and explicit trade-offs",
         k_execution: "Execution",
         k_execution_desc: "Plan with owners and metrics",
-
         platform_title: "Where data becomes decision",
-        platform_sub: "Central data platform + technology + services. Products (IQs) consume data to generate strategy, execution and content for your network.",
+        platform_sub: "Central data platform, technology and services. Products (IQs) consume data to generate strategy, execution and content for your network.",
         platform_card1: "Ingestion + normalization",
         platform_card1_p: "We connect SPED, COMEX and internal data. Organize, cross-reference and create a comparable base month by month.",
         platform_card2: "Decision engine",
         platform_card2_p: "We simulate scenarios, make trade-offs explicit, and connect impact to cash, risk and performance. AI applied at strategic points.",
-        platform_card3: "Services as "manager"",
+        platform_card3: "Services as \"manager\"",
         platform_card3_p: "Data-driven consulting: reading, provocation and continuous strategy. Integrations and partners come in without friction.",
-
         how_title: "How it works in practice",
         how_sub: "A simple, repeatable and measurable loop. Clarity month by month — transformed into plan and execution with governance.",
         s1_t: "Connect the data",
@@ -1481,12 +1497,11 @@
         s3_d: "Comparable scenarios: cash, risk, margin, execution. No guessing.",
         s4_t: "Transform into track",
         s4_d: "Tactical plan with owners, milestones and value measurement.",
-        how_right_title: "The "frictionless" edge",
+        how_right_title: "The \"frictionless\" edge",
         how_right_p: "FLOWIQ doesn't create turf wars. Internal team, consultants and suppliers join as complementary pieces — with data, tracks and accountability.",
         how_li1: "Service marketplace with partners",
         how_li2: "Decision before execution",
         how_li3: "Content by segment and network",
-
         products_title: "Products that consume FLOWIQ",
         products_sub: "The platform is the hub. IQs are focused products: tax decisions, contextual content and foreign trade execution.",
         tax_p: "Tax and regime decisions: classification, risk, opportunities and strategy (RECOF, Drawback, RT).",
@@ -1502,12 +1517,10 @@
         comex_li1: "Governance and evidence",
         comex_li2: "Integrations with providers",
         comex_li3: "Less friction, more speed",
-
         insights_title: "Insight of the day",
         insights_sub: "One signal at a time — tips for decision and execution. Updates on each refresh.",
         insights_card: "Insight",
         insights_link: "See how IQs help",
-
         bench_title: "Market benchmark vs. our approach",
         bench_sub: "We translate automation, data lake and digital twin into a platform + products for decision and execution.",
         bench_left: "Market references",
@@ -1520,7 +1533,7 @@
         r2_r_t: "Ingestion + normalization",
         r2_r_d: "Comparable SPED/COMEX",
         r3_l_t: "Real-time simulation",
-        r3_l_d: ""Digital Twin"",
+        r3_l_d: "\"Digital Twin\"",
         r3_r_t: "Full Tax Twin",
         r3_r_d: "Scenarios + trade-offs + execution",
         r4_l_t: "Tax AI",
@@ -1535,7 +1548,6 @@
         r6_l_d: "Savings and compliance by design",
         r6_r_t: "RECOF, Drawback, RT",
         r6_r_d: "Traceable savings with governance",
-
         company_title: "Company",
         company_sub: "Technology for services: we connect data, apply method and deliver strategic decisions — with execution and sector-specific content.",
         company_c1: "Technology",
@@ -1544,27 +1556,25 @@
         company_c2p: "Governance, tracks and consistency: decisions become execution with evidence, audit trail and compliance by design.",
         company_c3: "Content",
         company_c3p: "Niche content by company and network, curated via partners — less noise, more signal.",
-
         contact_title: "Request a conversation",
         contact_sub: "Share your context. We respond with the right questions, an initial read and next steps.",
         f_name: "Name",
         f_msg: "What are you trying to unlock?",
         f_send: "Send",
         f_note: "Integrations and products may vary by sector/client.",
-
         foot_note: " Content and integrations may vary by sector."
       }
     };
 
-    // Insights (rotating)
-    const insights = {
+    // Insights
+    var insights = {
       pt: [
         { t: "Drawback e RECOF: revise o timing do crédito", d: "Muitos ganhos estão no quando você recupera/compensa — não só no quanto.", href: "#products" },
         { t: "Compliance by design", d: "Governança + trilhas + evidências reduzem risco e retrabalho em fiscalizações.", href: "#company" },
         { t: "Classificação fiscal: trate como ativo", d: "NCM é decisão: impacta tributo, risco e elegibilidade de regimes.", href: "#products" },
         { t: "SPED como fonte de verdade", d: "Variações mês a mês revelam sinais por fornecedor/cliente e por operação.", href: "#platform" },
         { t: "IA aplicada onde dói", d: "Use IA para triagem de exceções, scoring de risco e recomendações — não para enfeite.", href: "#platform" },
-        { t: "Trade-offs explícitos", d: "Compare cenários lado a lado: caixa x risco x execução. A melhor decisão nem sempre é a maior economia.", href: "#how" },
+        { t: "Trade-offs explícitos", d: "Compare cenários lado a lado: caixa x risco x execução.", href: "#how" },
         { t: "Rede importa", d: "Otimização isolada perde valor. Traga sua cadeia para a mesma leitura.", href: "#platform" },
         { t: "Tempo é caixa", d: "Atraso em apuração, retificação e recuperação de créditos tem custo real.", href: "#how" },
         { t: "Exceções primeiro", d: "O 80/20 está nas exceções: identifique desvios e foque onde há impacto.", href: "#how" },
@@ -1576,7 +1586,7 @@
         { t: "Tariff classification is an asset", d: "Classification drives taxes, risk and special-regime eligibility.", href: "#products" },
         { t: "SPED as a source of truth", d: "Month-over-month variance reveals signals by supplier/customer and operation.", href: "#platform" },
         { t: "AI where it matters", d: "Use AI for exception triage, risk scoring and recommendations — not decoration.", href: "#platform" },
-        { t: "Make trade-offs explicit", d: "Compare cash vs risk vs execution side by side. Biggest savings isn't always best.", href: "#how" },
+        { t: "Make trade-offs explicit", d: "Compare cash vs risk vs execution side by side.", href: "#how" },
         { t: "Your network matters", d: "Isolated optimization loses value. Bring suppliers and customers into the same lens.", href: "#platform" },
         { t: "Time is cash", d: "Delays in assessment, rectification and credit recovery have real cost.", href: "#how" },
         { t: "Start with exceptions", d: "The 80/20 often lives in exceptions. Find deviations and focus on impact.", href: "#how" },
@@ -1584,25 +1594,34 @@
       ]
     };
 
-    window.__i18nLang = "pt";
+    // Current language
+    var currentLang = 'pt';
 
+    // Set insight
     function setInsight(lang) {
-      const list = insights[lang] || insights.pt;
-      const pick = list[Math.floor(Math.random() * list.length)];
-      const el = document.getElementById("insightText");
-      const link = document.getElementById("insightLink");
+      var list = insights[lang] || insights.pt;
+      var pick = list[Math.floor(Math.random() * list.length)];
+      var el = document.getElementById("insightText");
+      var link = document.getElementById("insightLink");
       if (!el || !link || !pick) return;
-      el.innerHTML = `<b>${pick.t}</b><br>${pick.d}`;
+      el.innerHTML = '<b>' + pick.t + '</b><br>' + pick.d;
       link.setAttribute("href", pick.href || "#products");
     }
 
+    // Apply language
     function applyLang(lang) {
-      window.__i18nLang = lang;
+      currentLang = lang;
       document.documentElement.lang = (lang === "en") ? "en" : "pt-BR";
-      document.getElementById('tagline').textContent = dict[lang].tagline;
+      
+      var taglineEl = document.getElementById('tagline');
+      if (taglineEl) {
+        taglineEl.textContent = dict[lang].tagline;
+      }
 
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
+      var elements = document.querySelectorAll("[data-i18n]");
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        var key = el.getAttribute("data-i18n");
         if (dict[lang][key]) {
           if (key === 'hero_title') {
             el.innerHTML = dict[lang][key];
@@ -1610,41 +1629,83 @@
             el.textContent = dict[lang][key];
           }
         }
-      });
+      }
 
       setInsight(lang);
-      document.getElementById("langPT").classList.toggle("active", lang === "pt");
-      document.getElementById("langEN").classList.toggle("active", lang === "en");
+      
+      var langPT = document.getElementById("langPT");
+      var langEN = document.getElementById("langEN");
+      if (langPT) {
+        if (lang === "pt") {
+          langPT.classList.add("active");
+        } else {
+          langPT.classList.remove("active");
+        }
+      }
+      if (langEN) {
+        if (lang === "en") {
+          langEN.classList.add("active");
+        } else {
+          langEN.classList.remove("active");
+        }
+      }
     }
 
-    document.getElementById("langPT").addEventListener("click", () => applyLang("pt"));
-    document.getElementById("langEN").addEventListener("click", () => applyLang("en"));
-
-    // Theme
+    // Set theme
     function setTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("flowiq_theme", theme);
+      
+      try {
+        localStorage.setItem("flowiq_theme", theme);
+      } catch(e) {}
 
-      const isDark = theme === "dark";
-      document.querySelectorAll('[data-light][data-dark]').forEach(el => {
-        const next = isDark ? el.getAttribute('data-dark') : el.getAttribute('data-light');
-        if (!next) return;
+      var isDark = theme === "dark";
+      var swapElements = document.querySelectorAll('[data-light][data-dark]');
+      for (var i = 0; i < swapElements.length; i++) {
+        var el = swapElements[i];
+        var next = isDark ? el.getAttribute('data-dark') : el.getAttribute('data-light');
+        if (!next) continue;
         if (el.tagName === 'IMG') {
-          if (el.getAttribute('src') !== next) el.setAttribute('src', next);
+          if (el.getAttribute('src') !== next) {
+            el.setAttribute('src', next);
+          }
         }
-      });
+      }
     }
 
-    // Initialize
-    const savedTheme = localStorage.getItem("flowiq_theme") || "light";
-    setTheme(savedTheme);
+    // Event listeners for language buttons
+    document.getElementById("langPT").addEventListener("click", function(e) {
+      e.preventDefault();
+      applyLang("pt");
+    });
+    
+    document.getElementById("langEN").addEventListener("click", function(e) {
+      e.preventDefault();
+      applyLang("en");
+    });
 
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const cur = document.documentElement.getAttribute("data-theme") || "light";
+    // Event listener for theme toggle
+    document.getElementById("themeToggle").addEventListener("click", function(e) {
+      e.preventDefault();
+      var cur = document.documentElement.getAttribute("data-theme") || "light";
       setTheme(cur === "light" ? "dark" : "light");
     });
 
+    // Form submit
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert(currentLang === 'en' ? 'Thanks! We will get back to you.' : 'Obrigado! Vamos retornar em breve.');
+    });
+
+    // Initialize
+    var savedTheme = "light";
+    try {
+      savedTheme = localStorage.getItem("flowiq_theme") || "light";
+    } catch(e) {}
+    
+    setTheme(savedTheme);
     applyLang("pt");
+    });
   </script>
 </body>
 </html>
