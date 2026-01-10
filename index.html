@@ -3,1078 +3,1324 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>FLOWIQ — Plataforma de decisão (TaxIQ • ContentIQ • ComexIQ)</title>
-  <meta name="description" content="FLOWIQ é a plataforma onde os dados chegam e viram decisão. TaxIQ, ContentIQ e ComexIQ consomem os dados para gerar estratégia e execução."/>
-  <style>
-    :root{
-      --bg: #f6f4ef;
-      --bg2:#f3efe7;
-      --card:#ffffffcc;
-      --cardSolid:#ffffff;
-      --ink:#0f1a17;
-      --muted:#4a5b56;
-      --line: rgba(15,26,23,.10);
-      --shadow: 0 18px 50px rgba(0,0,0,.08);
-      --radius: 22px;
-
-      --accent:#f3b42f;
-      --accentInk:#141414;
-      --accent2:#0a5cff;
-      --accent2Ink:#ffffff;
-
-      --glass: rgba(255,255,255,.55);
-      --glass2: rgba(255,255,255,.35);
-
-      --heroGrad: radial-gradient(1200px 600px at 20% 10%, rgba(243,180,47,.20), transparent 55%),
-                  radial-gradient(900px 600px at 80% 20%, rgba(41,120,255,.18), transparent 55%),
-                  radial-gradient(900px 600px at 50% 100%, rgba(0,160,120,.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
-    }
-    html[data-theme="dark"]{
-      --bg:#071a16;
-      --bg2:#071f1a;
-      --card:#0b2620cc;
-      --cardSolid:#0b2620;
-      --ink:#e9f4f0;
-      --muted:#b7c7c2;
-      --line: rgba(233,244,240,.12);
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-
-      --glass: rgba(11,38,32,.62);
-      --glass2: rgba(11,38,32,.40);
-
-      --heroGrad: radial-gradient(1200px 600px at 20% 10%, rgba(243,180,47,.18), transparent 55%),
-                  radial-gradient(900px 600px at 80% 20%, rgba(41,120,255,.20), transparent 55%),
-                  radial-gradient(900px 600px at 50% 100%, rgba(0,160,120,.14), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink);
-      background:var(--heroGrad);
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1160px;margin:0 auto;padding:0 22px}
-    .topbar{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(246,244,239,.85), rgba(246,244,239,.55));
-      border-bottom:1px solid var(--line);
-    }
-    html[data-theme="dark"] .topbar{
-      background: linear-gradient(180deg, rgba(31,42,51,.92), rgba(31,42,51,.62));
-    }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 0;
-      gap:18px;
-    }
-    
-.brandLockupWrap{
-  display:none;
-  padding:8px 10px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background: rgba(15,26,23,.04); /* light palette-tinted */
-  box-shadow: 0 10px 26px rgba(0,0,0,.05);
-}
-html[data-theme="dark"] .brandLockupWrap{
-  background: rgba(255,255,255,.04);
-  box-shadow: 0 14px 34px rgba(0,0,0,.28);
-}
-.brand.hasLockup .logo, .brand.hasLockup .brandText{display:none}
-.brandLockup{
-  display:block;
-  height:64px;
-  max-width:380px;
-  width:auto;
-  object-fit:contain;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.08));
-}
-
-/* === Brand block (CMO pass: size + visibility) === */
-.brand{
-  display:flex;align-items:center;gap:14px;min-width:auto;
-  padding:16px 20px;
-  border-radius:14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(245,243,236,0.85));
-  border:1px solid rgba(15,26,23,.12);
-  box-shadow: 0 8px 20px rgba(0,0,0,.06);
-  margin-right:40px;
-}
-html[data-theme="dark"] .brand{
-  background: linear-gradient(180deg, rgba(11,38,32,.72), rgba(11,38,32,.52));
-  border-color: rgba(233,244,240,.14);
-  box-shadow: 0 12px 30px rgba(0,0,0,.28);
-}
-
-.brand.hasLockup .brandLockupWrap{display:inline-flex;align-items:center}
-    
-
-    .logo{
-      width:46px;height:46px;border-radius:16px;
-      background: radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.45), transparent 55%),
-                  linear-gradient(135deg, #f7c64f, #f3b42f);
-      display:grid;place-items:center;
-      box-shadow: 0 12px 26px rgba(243,180,47,.22);
-      flex:0 0 auto;
-    }
-    .logo svg{width:22px;height:22px;opacity:.92}
-    .brandText{display:flex;flex-direction:column;line-height:1.05}
-    .brandName{font-weight:800;letter-spacing:.22em;font-size:20px}
-    .tagline{margin-top:6px;color:var(--muted);font-weight:600;font-size:13px;letter-spacing:.02em}
-
-    .menu{
-      display:flex;align-items:center;gap:26px;
-      flex:1 1 auto;
-      justify-content:center;
-      min-width:0;
-      flex-wrap:wrap;
-    }
-    .menu a{
-      font-weight:700;
-      color:var(--muted);
-      letter-spacing:.12em;
-      font-size:12px;
-      text-transform:uppercase;
-      padding:10px 10px;
-      border-radius:999px;
-      transition:.2s ease;
-      white-space:nowrap;
-    }
-    .menu a:hover{color:var(--ink);background:var(--glass2)}
-    .actions{
-      display:flex;align-items:flex-start;gap:14px;flex:0 0 auto;
-    }
-    .ctaStack{
-      display:flex;flex-direction:column;align-items:center;gap:10px;
-      min-width:220px;
-    }
-    .cta{
-      width:100%;
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:14px 16px;border-radius:999px;
-      background: linear-gradient(180deg, rgba(243,180,47,1), rgba(232,164,21,1));
-      color:var(--accentInk);
-      font-weight:900;letter-spacing:.14em;text-transform:uppercase;
-      border:2px solid rgba(10,92,255,.0);
-      box-shadow: 0 18px 40px rgba(243,180,47,.25);
-      cursor:pointer;
-      transition:.18s ease;
-    }
-    .cta:hover{transform:translateY(-1px)}
-    .subActions{
-      display:flex;align-items:center;justify-content:center;
-      gap:10px;
-      width:100%;
-    }
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      border:1px solid var(--line);
-      background:var(--glass);
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      user-select:none;
-    }
-    .pill button{
-      border:0;background:transparent;color:var(--muted);
-      font-weight:800;cursor:pointer;
-      display:inline-flex;align-items:center;gap:8px;
-      padding:2px 6px;border-radius:999px;
-    }
-    .pill button.active{color:var(--ink)}
-    .iconBtn{
-      width:40px;height:40px;border-radius:999px;
-      display:grid;place-items:center;
-      border:1px solid var(--line);
-      background:var(--glass);
-      cursor:pointer;
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      transition:.18s ease;
-    }
-    .iconBtn:hover{transform:translateY(-1px)}
-    .iconBtn svg{width:18px;height:18px;opacity:.9}
-
-    /* Hero */
-    .hero{padding:44px 0 24px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap:24px;
-      align-items:stretch;
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:10px;
-      border:1px solid var(--line);
-      background:var(--glass);
-      padding:10px 14px;border-radius:999px;
-      color:var(--muted);
-      font-weight:800;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size:12px;
-      width:fit-content;
-    }
-    .dot{width:10px;height:10px;border-radius:999px;background:var(--accent)}
-    h1{
-      font-size: clamp(40px, 5.2vw, 64px);
-      line-height: 1.02;
-      margin:18px 0 12px;
-      letter-spacing:-.02em;
-    }
-    .lead{
-      font-size:18px;
-      color:var(--muted);
-      line-height:1.55;
-      max-width:58ch;
-      margin:0;
-    }
-    .heroBtns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:14px 18px;border-radius:999px;
-      font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-      font-size:12px;cursor:pointer;
-      border:1px solid var(--line);
-      background:var(--glass);
-      color:var(--ink);
-      transition:.18s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btnPrimary{
-      border:0;
-      background: linear-gradient(180deg, rgba(10,92,255,1), rgba(6,74,210,1));
-      color:var(--accent2Ink);
-      box-shadow: 0 18px 44px rgba(10,92,255,.18);
-    }
-    .microProof{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .badge{
-      border:1px solid var(--line);
-      background:var(--glass2);
-      padding:10px 12px;border-radius:999px;
-      color:var(--muted);
-      font-weight:800;
-      font-size:12px;
-      white-space:nowrap;
-    }
-
-
-    .impactStrip{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
-    }
-    .impactItem{
-      border:1px solid var(--line);
-      background:var(--glass2);
-      border-radius:18px;
-      padding:12px 12px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.05);
-      min-height:74px;
-    }
-    .impactItem b{
-      display:block;
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      margin-bottom:6px;
-    }
-    .impactItem span{
-      color:var(--muted);
-      font-weight:650;
-      line-height:1.35;
-      font-size:12.5px;
-      display:block;
-    }
-    @media (max-width: 980px){
-      .impactStrip{grid-template-columns:1fr}
-    }
-
-    .panel{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--glass), rgba(255,255,255,.18));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px;
-      height:100%;
-      overflow:hidden;
-      position:relative;
-    }
-    html[data-theme="dark"] .panel{
-      background:linear-gradient(180deg, var(--glass), rgba(0,0,0,.12));
-    }
-    .panel h3{
-      margin:2px 0 14px;
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .kv{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .k{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.30);
-      border-radius:18px;
-      padding:14px 14px;
-      min-height:86px;
-    }
-    html[data-theme="dark"] .k{background:rgba(0,0,0,.10)}
-    .k b{display:block;font-size:18px;margin-bottom:4px}
-    .k span{color:var(--muted);line-height:1.35}
-    .panel p{color:var(--muted);line-height:1.55;margin:14px 2px 0}
-
-    /* Sections */
-    section{padding:36px 0}
-    .sectionHead{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .sectionHead h2{margin:0;font-size:28px;letter-spacing:-.01em}
-    .sectionHead p{margin:0;color:var(--muted);max-width:70ch;line-height:1.5}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{
-      border:1px solid var(--line);
-      background:var(--glass);
-      border-radius: var(--radius);
-      box-shadow: 0 16px 46px rgba(0,0,0,.06);
-      padding:18px;
-      overflow:hidden;
-      position:relative;
-      min-height:170px;
-    }
-    html[data-theme="dark"] .card{box-shadow: 0 16px 56px rgba(0,0,0,.28)}
-    .cardActions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-
-    .cardTop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .ic{
-      width:38px;height:38px;border-radius:14px;
-      background:rgba(243,180,47,.18);
-      display:grid;place-items:center;
-      border:1px solid rgba(243,180,47,.25);
-      flex:0 0 auto;
-    }
-    html[data-theme="dark"] .ic{background:rgba(243,180,47,.12)}
-    .ic svg{width:18px;height:18px}
-    .card h4{margin:0;font-size:18px}
-    .card p{margin:8px 0 0;color:var(--muted);line-height:1.55}
-    .card ul{margin:12px 0 0;padding-left:18px;color:var(--muted);line-height:1.6}
-    .split{
-      display:grid;grid-template-columns: 1fr 1fr;gap:18px;
-      align-items:start;
-    }
-    .steps{
-      display:grid;gap:10px;
-    }
-    .step{
-      display:flex;gap:12px;align-items:flex-start;
-      border:1px solid var(--line);
-      background:var(--glass);
-      border-radius:18px;
-      padding:14px;
-    }
-    .num{
-      width:30px;height:30px;border-radius:999px;
-      background:rgba(10,92,255,.14);
-      border:1px solid rgba(10,92,255,.18);
-      display:grid;place-items:center;
-      font-weight:900;
-      color:var(--ink);
-      flex:0 0 auto;
-    }
-    html[data-theme="dark"] .num{background:rgba(10,92,255,.16)}
-    .step b{display:block;margin:0 0 4px}
-    .step span{color:var(--muted);line-height:1.45}
-    .compare{
-      border:1px solid var(--line);
-      background:var(--glass);
-      border-radius:var(--radius);
-      overflow:hidden;
-    }
-    .compareHead{
-      display:grid;grid-template-columns: 1fr 1fr;
-      border-bottom:1px solid var(--line);
-    }
-    .compareHead div{
-      padding:14px 16px;
-      font-weight:900;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .compareRows{display:grid}
-    .row{
-      display:grid;grid-template-columns: 1fr 1fr;
-      border-bottom:1px solid var(--line);
-    }
-    .row:last-child{border-bottom:0}
-    .cell{
-      padding:14px 16px;
-      display:flex;gap:12px;align-items:flex-start;
-      min-height:64px;
-    }
-    .mini{
-      width:34px;height:34px;border-radius:14px;
-      display:grid;place-items:center;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.22);
-      flex:0 0 auto;
-    }
-    html[data-theme="dark"] .mini{background:rgba(0,0,0,.12)}
-    .cell b{display:block}
-    .cell span{display:block;color:var(--muted);line-height:1.35}
-    footer{
-      padding:28px 0 44px;
-      border-top:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.0));
-    }
-    .foot{
-      display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:center;
-    }
-    .footNav{
-      display:flex;justify-content:center;gap:18px;flex-wrap:wrap
-    }
-    .footNav a{color:var(--muted);font-weight:800}
-    .footNav a:hover{color:var(--ink)}
-    .fineprint{color:var(--muted);line-height:1.45}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr}
-      .brand{min-width:auto}
-      .ctaStack{min-width:200px}
-      .split{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .menu{justify-content:flex-start}
-    }
-    @media (max-width: 640px){
-      .nav{flex-wrap:wrap}
-      .menu{gap:10px}
-      .ctaStack{width:100%}
-      .actions{width:100%}
-      .menu a{padding:8px 10px}
-      .compareHead,.row{grid-template-columns:1fr}
-      .compareHead div:last-child{border-top:1px solid var(--line)}
-      .row .cell:last-child{border-top:1px solid var(--line)}
-      .foot{grid-template-columns:1fr}
-      .footNav{justify-content:flex-start}
-    }
+  <title>FLOWIQ — Plataforma de decisão executiva</title>
+  <meta name="description" content="FLOWIQ: a camada de decisão acima da operação. Conectamos SPED, COMEX e dados internos para gerar trade-offs, governança e execução rastreável."/>
   
-
-/* === Product cards (approved icons) === */
-.ic img.productIcon{
-  width:22px;
-  height:22px;
-  object-fit:contain;
-  display:block;
-}
-.card[data-wm]{
-  position:relative;
-  overflow:hidden;
-}
-.card[data-wm]::after{
-  content:"";
-  position:absolute;
-  right:-26px;
-  bottom:-26px;
-  width:220px;
-  height:220px;
-  background-image: var(--wm);
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:contain;
-  opacity:.08;
-  pointer-events:none;
-  filter: saturate(.9);
-}
-
-/* Dark-mode contrast fixes */
-html[data-theme="dark"] .topbar{
-  background: linear-gradient(180deg, rgba(7,26,22,.92), rgba(7,26,22,.62));
-}
-html[data-theme="dark"] .iconBtn{
-  background: rgba(255,255,255,.06);
-  border-color: rgba(233,244,240,.18);
-}
-html[data-theme="dark"] .iconBtn svg{opacity:1}
-
-<
-    /* === Premium brand block (CMO) === */
-    .brand.hasLockup{
-      padding:14px 18px;
-      border-radius:18px;
-      border:1px solid rgba(15,26,23,.08);
-      background: linear-gradient(180deg, rgba(246,244,239,.85), rgba(246,244,239,.55));
-      box-shadow: 0 10px 28px rgba(0,0,0,.06);
-      margin-right:24px;
+  <!-- CMO: CSS reorganizado para hierarquia visual enterprise -->
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       DESIGN TOKENS - Paleta preservada, variáveis otimizadas
+    ══════════════════════════════════════════════════════════════ */
+    :root {
+      --bg: #f6f4ef;
+      --bg2: #f3efe7;
+      --card: #ffffffcc;
+      --cardSolid: #ffffff;
+      --ink: #0f1a17;
+      --muted: #4a5b56;
+      --line: rgba(15,26,23,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.07);
+      --radius: 20px;
+      --accent: #f3b42f;
+      --accentInk: #141414;
+      --accent2: #0a5cff;
+      --accent2Ink: #ffffff;
+      --glass: rgba(255,255,255,.60);
+      --glass2: rgba(255,255,255,.40);
+      --heroGrad: 
+        radial-gradient(ellipse 1100px 550px at 15% 0%, rgba(243,180,47,.18), transparent 60%),
+        radial-gradient(ellipse 900px 500px at 85% 15%, rgba(10,92,255,.14), transparent 55%),
+        radial-gradient(ellipse 800px 400px at 50% 100%, rgba(0,140,100,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    html[data-theme="dark"] .brand.hasLockup{
-      border:1px solid rgba(233,244,240,.12);
-      background: linear-gradient(180deg, rgba(11,38,32,.70), rgba(11,38,32,.42));
-      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    
+    html[data-theme="dark"] {
+      --bg: #071a16;
+      --bg2: #071f1a;
+      --card: #0b2620cc;
+      --cardSolid: #0b2620;
+      --ink: #e9f4f0;
+      --muted: #a8bab4;
+      --line: rgba(233,244,240,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.35);
+      --glass: rgba(11,38,32,.65);
+      --glass2: rgba(11,38,32,.45);
+      --heroGrad: 
+        radial-gradient(ellipse 1100px 550px at 15% 0%, rgba(243,180,47,.15), transparent 60%),
+        radial-gradient(ellipse 900px 500px at 85% 15%, rgba(10,92,255,.18), transparent 55%),
+        radial-gradient(ellipse 800px 400px at 50% 100%, rgba(0,140,100,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    /* keep it light-tinted (not pure white) */
-    html[data-theme="light"] .brand.hasLockup{
-      background: linear-gradient(180deg, rgba(246,244,239,.90), rgba(246,244,239,.62));
+
+    /* ══════════════════════════════════════════════════════════════
+       BASE & RESET
+    ══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--heroGrad);
+      background-attachment: fixed;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
-/style>
-</style>
+    
+    a { color: inherit; text-decoration: none; }
+    
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       TOPBAR - Limpa, funcional, enterprise
+    ══════════════════════════════════════════════════════════════ */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(246,244,239,.92), rgba(246,244,239,.75));
+      border-bottom: 1px solid var(--line);
+    }
+    
+    html[data-theme="dark"] .topbar {
+      background: linear-gradient(180deg, rgba(7,26,22,.94), rgba(7,26,22,.80));
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 16px;
+    }
+    
+    /* Brand block */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 16px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(250,248,242,.85));
+      border: 1px solid rgba(15,26,23,.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,.05);
+      flex-shrink: 0;
+    }
+    
+    html[data-theme="dark"] .brand {
+      background: linear-gradient(180deg, rgba(11,38,32,.75), rgba(11,38,32,.55));
+      border-color: rgba(233,244,240,.12);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    
+    .brand.hasLockup .logo,
+    .brand.hasLockup .brandText { display: none; }
+    .brand.hasLockup .brandLockupWrap { display: inline-flex; align-items: center; }
+    
+    .brandLockupWrap { display: none; }
+    
+    .brandLockup {
+      display: block;
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+    }
+    
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.50), transparent 60%),
+                  linear-gradient(135deg, #f7c64f, #f3b42f);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(243,180,47,.25);
+      flex-shrink: 0;
+    }
+    
+    .logo svg { width: 20px; height: 20px; opacity: .9; }
+    
+    .brandText { display: flex; flex-direction: column; line-height: 1.1; }
+    .brandName { font-weight: 800; letter-spacing: .20em; font-size: 17px; }
+    .tagline { margin-top: 4px; color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: .02em; }
+
+    /* Menu */
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .menu a {
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .10em;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+    
+    .menu a:hover {
+      color: var(--ink);
+      background: var(--glass2);
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    
+    .ctaTop {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #f5c033, #e9a820);
+      color: var(--accentInk);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      box-shadow: 0 10px 30px rgba(243,180,47,.28);
+      transition: all .2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .ctaTop:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(243,180,47,.32); }
+    
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+    }
+    
+    .pill button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: all .15s ease;
+    }
+    
+    .pill button.active { color: var(--ink); background: var(--glass2); }
+    .pill button:hover { color: var(--ink); }
+    
+    .iconBtn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    
+    .iconBtn:hover { transform: translateY(-1px); }
+    .iconBtn svg { width: 16px; height: 16px; opacity: .85; }
+    
+    html[data-theme="dark"] .iconBtn {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(233,244,240,.15);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       HERO - Impacto em 5 segundos para C-level
+    ══════════════════════════════════════════════════════════════ */
+    .hero {
+      padding: 56px 0 48px;
+    }
+    
+    .heroInner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      max-width: 800px;
+    }
+    
+    /* Headline principal - tese de board */
+    .heroHeadline {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      margin: 0 0 20px;
+      font-weight: 800;
+    }
+    
+    .heroHeadline .accent {
+      background: linear-gradient(135deg, var(--accent), #e8a415);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Subheadline - prova lógica */
+    .heroSub {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 28px;
+      max-width: 600px;
+    }
+    
+    .heroBtns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      color: var(--ink);
+      transition: all .2s ease;
+    }
+    
+    .btn:hover { transform: translateY(-1px); }
+    
+    .btnPrimary {
+      border: none;
+      background: linear-gradient(180deg, #0a5cff, #0550e0);
+      color: #fff;
+      box-shadow: 0 12px 32px rgba(10,92,255,.22);
+    }
+    
+    .btnPrimary:hover { box-shadow: 0 16px 40px rgba(10,92,255,.28); }
+
+    /* ══════════════════════════════════════════════════════════════
+       VALUE STRIP - Diferenciais claros e escaneáveis
+    ══════════════════════════════════════════════════════════════ */
+    .valueStrip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .valueItem {
+      background: var(--cardSolid);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    
+    html[data-theme="dark"] .valueItem { background: var(--cardSolid); }
+    
+    .valueItem strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    
+    .valueItem span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTIONS - Ritmo vertical consistente
+    ══════════════════════════════════════════════════════════════ */
+    section {
+      padding: 56px 0;
+    }
+    
+    .sectionHeader {
+      margin-bottom: 32px;
+    }
+    
+    .sectionHeader h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      letter-spacing: -.02em;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    
+    .sectionHeader p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0;
+      max-width: 65ch;
+      line-height: 1.55;
+    }
+    
+    .sectionDivider {
+      height: 1px;
+      background: var(--line);
+      margin: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       PLATFORM GRID - Cards informativos
+    ══════════════════════════════════════════════════════════════ */
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    
+    .card {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    html[data-theme="dark"] .card {
+      box-shadow: 0 16px 50px rgba(0,0,0,.25);
+    }
+    
+    .cardIcon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(243,180,47,.15);
+      border: 1px solid rgba(243,180,47,.20);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    
+    html[data-theme="dark"] .cardIcon { background: rgba(243,180,47,.12); }
+    
+    .cardIcon svg { width: 20px; height: 20px; }
+    .cardIcon img { width: 22px; height: 22px; object-fit: contain; }
+    
+    .card h4 {
+      font-size: 17px;
+      margin: 0 0 10px;
+      letter-spacing: -.01em;
+    }
+    
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+    
+    .card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .card li { margin-bottom: 4px; }
+    
+    .cardActions {
+      margin-top: auto;
+      padding-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    /* Product card watermark */
+    .card[data-wm]::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 180px;
+      height: 180px;
+      background-image: var(--wm);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: .06;
+      pointer-events: none;
+    }
+    
+    html[data-theme="dark"] .card[data-wm]::after {
+      opacity: .08;
+      filter: grayscale(.5) brightness(1.3);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       HOW IT WORKS - Steps claros
+    ══════════════════════════════════════════════════════════════ */
+    .howGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: 14px;
+      position: relative;
+    }
+    
+    .step::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      border-radius: 3px 0 0 3px;
+    }
+    
+    .stepNum {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: rgba(10,92,255,.12);
+      border: 1px solid rgba(10,92,255,.18);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    html[data-theme="dark"] .stepNum { background: rgba(10,92,255,.18); }
+    
+    .stepContent b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    
+    .stepContent span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       BENCHMARK TABLE - Comparação lado a lado
+    ══════════════════════════════════════════════════════════════ */
+    .compareTable {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    
+    .compareHead {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--cardSolid);
+      border-bottom: 1px solid var(--line);
+    }
+    
+    html[data-theme="dark"] .compareHead { background: rgba(0,0,0,.15); }
+    
+    .compareHead > div {
+      padding: 16px 20px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    
+    .compareHead > div:last-child {
+      border-left: 1px solid var(--line);
+      color: var(--ink);
+    }
+    
+    .compareRow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .compareRow:last-child { border-bottom: 0; }
+    
+    .compareCell {
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    
+    .compareCell:last-child { border-left: 1px solid var(--line); }
+    
+    .cellIcon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--glass2);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .cellContent b {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    
+    .cellContent span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       INSIGHT CARD - Destaque sutil
+    ══════════════════════════════════════════════════════════════ */
+    .insightCard {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, var(--glass), rgba(243,180,47,.05));
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    
+    .insightIcon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(243,180,47,.15);
+      border: 1px solid rgba(243,180,47,.20);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    
+    .insightIcon svg { width: 22px; height: 22px; }
+    
+    .insightContent { flex: 1; }
+    
+    .insightLabel {
+      font-size: 11px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    
+    #insightText {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 14px;
+    }
+    
+    #insightText b { color: var(--ink); }
+
+    /* ══════════════════════════════════════════════════════════════
+       CONTACT FORM
+    ══════════════════════════════════════════════════════════════ */
+    .contactCard {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 700px;
+    }
+    
+    .formGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .formField label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    
+    .formField input,
+    .formField textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--cardSolid);
+      color: var(--ink);
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color .15s ease;
+    }
+    
+    .formField input:focus,
+    .formField textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .formActions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    
+    .formNote {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    footer {
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--line);
+    }
+    
+    .footerInner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    
+    .footerBrand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .footerBrand b { color: var(--ink); }
+    
+    .footerNav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footerNav a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      transition: color .15s ease;
+    }
+    
+    .footerNav a:hover { color: var(--ink); }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .valueStrip { grid-template-columns: repeat(2, 1fr); }
+      .howGrid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .nav { flex-wrap: wrap; }
+      .menu { order: 3; width: 100%; justify-content: flex-start; margin-top: 8px; }
+      .actions { gap: 8px; }
+      .ctaTop { padding: 10px 16px; font-size: 10px; }
+      
+      .hero { padding: 40px 0 36px; }
+      .heroHeadline { font-size: 32px; }
+      .heroSub { font-size: 16px; }
+      
+      .valueStrip { grid-template-columns: 1fr; }
+      .grid3 { grid-template-columns: 1fr; }
+      
+      .compareHead,
+      .compareRow { grid-template-columns: 1fr; }
+      .compareCell:last-child { border-left: 0; border-top: 1px solid var(--line); }
+      
+      .formGrid { grid-template-columns: 1fr; }
+      
+      .footerInner { flex-direction: column; text-align: center; }
+      .footerNav { justify-content: center; }
+    }
+    
+    @media (max-width: 480px) {
+      .brand { padding: 8px 12px; }
+      .brandLockup { height: 40px; }
+      .controls { gap: 6px; }
+      .menu a { padding: 6px 8px; font-size: 10px; }
+    }
+  </style>
 </head>
 <body>
+  <!-- ════════════════════════════════════════════════════════════
+       TOPBAR
+  ════════════════════════════════════════════════════════════ -->
   <header class="topbar">
     <div class="container">
-      <div class="nav">
-        <a class="brand hasLockup" href="#top">
-        <span class="brandLockupWrap"><img class="brandLockup" id="brandLockup" src="assets/logo-light.png" data-light="assets/logo-light.png" data-dark="assets/logo-dark.png" alt="FLOWIQ"/></span>
-
+      <nav class="nav">
+        <a class="brand hasLockup" href="#top" aria-label="FLOWIQ">
+          <span class="brandLockupWrap">
+            <img class="brandLockup" id="brandLockup" 
+                 src="assets/logo-light.png" 
+                 data-light="assets/logo-light.png" 
+                 data-dark="assets/logo-dark.png" 
+                 alt="FLOWIQ"/>
+          </span>
           <div class="logo" aria-hidden="true">
-            <!-- simple leaf mark -->
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M20 4c-7 0-12 4-14.6 8.4C3.9 15 4.3 18 7 19.6c3.2 1.9 8.1.6 10.7-2.1C20.7 14.3 21 10 20 4Z" stroke="currentColor" stroke-width="1.8" opacity=".9"/>
               <path d="M7.2 17.7c2.6-4.8 6.6-7.8 12-9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
             </svg>
           </div>
           <div class="brandText">
-            <div class="brandName">FLOWIQ</div>
-            <div class="tagline" id="tagline">Technical Intelligence Quotient</div>
+            <span class="brandName">FLOWIQ</span>
+            <span class="tagline" id="tagline">Technical Intelligence Quotient</span>
           </div>
         </a>
 
-        <nav class="menu" aria-label="Menu principal">
+        <div class="menu">
           <a href="#platform" data-i18n="nav_platform">Plataforma</a>
           <a href="#how" data-i18n="nav_how">Como funciona</a>
           <a href="#products" data-i18n="nav_products">Produtos</a>
           <a href="#benchmark" data-i18n="nav_benchmark">Benchmark</a>
           <a href="#company" data-i18n="nav_company">Empresa</a>
           <a href="#contact" data-i18n="nav_contact">Contato</a>
-        </nav>
-
-        <div class="actions">
-          <div class="ctaStack">
-            <a class="cta" href="#contact" data-i18n="cta_talk">Diagnóstico gratuito de eficiência</a>
-
-            <!-- aligned below CTA (no overlap) -->
-            <div class="subActions">
-              <div class="pill" aria-label="Idioma">
-                <button id="langPT" class="active" title="Português (Brasil)">🇧🇷 <span>PT</span></button>
-                <button id="langEN" title="English (US)">🇺🇸 <span>EN</span></button>
-              </div>
-
-              <button class="iconBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.8"/>
-                </svg>
-              </button>
-            </div>
-          </div>
         </div>
 
-      </div>
+        <div class="actions">
+          <a class="ctaTop" href="#contact" data-i18n="cta_talk">Diagnóstico gratuito</a>
+          <div class="controls">
+            <div class="pill">
+              <button id="langPT" class="active" title="Português">PT</button>
+              <button id="langEN" title="English">EN</button>
+            </div>
+            <button class="iconBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4l1.4-1.4m10-10 1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
     </div>
   </header>
 
+  <!-- ════════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════════════ -->
   <main id="top">
     <div class="container">
+
+      <!-- HERO: Impacto em 5 segundos -->
       <section class="hero">
-        <div class="heroGrid">
+        <div class="heroInner">
           <div>
-            <div class="chip" id="chip"><span class="dot"></span><span data-i18n="chip">Plataforma de decisão — sem atrito entre pessoas, consultorias e tecnologia</span></div>
-
-            <h1 data-i18n="hero_title">Decisão executiva com contexto, método e execução.</h1>
-
-            <p class="lead" data-i18n="hero_lead">
-              A FLOWIQ é a plataforma onde os dados chegam e viram decisão. Mês a mês, analisamos SPED + COMEX,
-              provocamos trade-offs e desenhamos estratégias — como um gestor de investimentos faz com um portfólio.
+            <h1 class="heroHeadline" data-i18n="hero_title">
+              A <span class="accent">camada de decisão</span><br>acima da operação.
+            </h1>
+            <p class="heroSub" data-i18n="hero_lead">
+              Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.
             </p>
-
             <div class="heroBtns">
               <a class="btn btnPrimary" href="#how" data-i18n="hero_btn_primary">Ver como funciona</a>
               <a class="btn" href="#products" data-i18n="hero_btn_secondary">Conhecer os IQs</a>
             </div>
-
-            <div class="microProof">
-              <div class="badge" data-i18n="proof_1">Sem substituir o time interno</div>
-              <div class="badge" data-i18n="proof_2">Sem competir com consultorias</div>
-              <div class="badge" data-i18n="proof_3">Integrações e parceiros como extensão</div>
-            
-            <div class="impactStrip" aria-label="Impacto">
-              <div class="impactItem">
-                <b data-i18n="impact_1_t">Impacto mensurável</b>
-                <span data-i18n="impact_1_d">No diagnóstico, estimamos o potencial de savings e recuperações a partir dos seus dados.</span>
-              </div>
-              <div class="impactItem">
-                <b data-i18n="impact_2_t">Menos risco</b>
-                <span data-i18n="impact_2_d">Regras consistentes, evidências e governança para reduzir exposição e retrabalho.</span>
-              </div>
-              <div class="impactItem">
-                <b data-i18n="impact_3_t">Mais velocidade</b>
-                <span data-i18n="impact_3_d">Menos tempo em apuração e análise; mais tempo em decisão e execução.</span>
-              </div>
-            </div>
-</div>
           </div>
+        </div>
 
-          <aside class="panel" aria-label="Clareza entregue pela plataforma">
-            <h3 data-i18n="panel_title">O que a plataforma clareia</h3>
-            <div class="kv">
-              <div class="k">
-                <b data-i18n="k_cash">Caixa</b>
-                <span data-i18n="k_cash_desc">efeito no fluxo e no timing de pagamento/recuperação</span>
-              </div>
-              <div class="k">
-                <b data-i18n="k_risk">Risco</b>
-                <span data-i18n="k_risk_desc">governança, trilhas e consistência de regras</span>
-              </div>
-              <div class="k">
-                <b data-i18n="k_decision">Decisão</b>
-                <span data-i18n="k_decision_desc">cenários comparáveis e trade-offs explícitos</span>
-              </div>
-              <div class="k">
-                <b data-i18n="k_execution">Execução</b>
-                <span data-i18n="k_execution_desc">plano tático, owners e medição de valor</span>
-              </div>
-            </div>
-            <p data-i18n="panel_note">
-              A FLOWIQ olha a sua operação e também a rede de compras e vendas (fornecedores, clientes e parceiros) — para melhorar a performance do ecossistema, não só de um departamento.
-            </p>
-          </aside>
+        <!-- Value strip - escaneável -->
+        <div class="valueStrip">
+          <div class="valueItem">
+            <strong data-i18n="k_cash">Caixa</strong>
+            <span data-i18n="k_cash_desc">Timing e fluxo de pagamento/recuperação</span>
+          </div>
+          <div class="valueItem">
+            <strong data-i18n="k_risk">Risco</strong>
+            <span data-i18n="k_risk_desc">Governança, trilhas e consistência</span>
+          </div>
+          <div class="valueItem">
+            <strong data-i18n="k_decision">Decisão</strong>
+            <span data-i18n="k_decision_desc">Cenários e trade-offs explícitos</span>
+          </div>
+          <div class="valueItem">
+            <strong data-i18n="k_execution">Execução</strong>
+            <span data-i18n="k_execution_desc">Plano com owners e medição</span>
+          </div>
         </div>
       </section>
 
+      <div class="sectionDivider"></div>
+
+      <!-- PLATFORM -->
       <section id="platform">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="platform_title">FLOWIQ: onde os dados chegam e viram decisão</h2>
-            <p data-i18n="platform_sub">
-              Plataforma central de dados + tecnologia + serviços. A partir dela, os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo nichado para a sua rede.
-            </p>
-          </div>
-        </div>
+        <header class="sectionHeader">
+          <h2 data-i18n="platform_title">Onde os dados chegam e viram decisão</h2>
+          <p data-i18n="platform_sub">Plataforma central de dados + tecnologia + serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.</p>
+        </header>
 
         <div class="grid3">
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h4 data-i18n="platform_card1">Ingestão + normalização</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
             </div>
-            <p data-i18n="platform_card1_p">Conectamos fontes (SPED, COMEX e demais dados da operação). Organizamos, cruzamos e criamos base comparável mês a mês.</p>
+            <h4 data-i18n="platform_card1">Ingestão + normalização</h4>
+            <p data-i18n="platform_card1_p">Conectamos SPED, COMEX e dados internos. Organizamos, cruzamos e criamos base comparável mês a mês.</p>
           </div>
 
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2l2.5 6 6.5.6-5 4.2 1.6 6.3-5.6-3.3-5.6 3.3 1.6-6.3-5-4.2 6.5-.6L12 2Z" stroke="currentColor" stroke-width="1.5" opacity=".95"/>
-                </svg>
-              </div>
-              <h4 data-i18n="platform_card2">Motor de decisão</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l2.5 6 6.5.6-5 4.2 1.6 6.3-5.6-3.3-5.6 3.3 1.6-6.3-5-4.2 6.5-.6L12 2Z" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
             </div>
-            <p data-i18n="platform_card2_p">Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. Decisão vira trilha.</p>
+            <h4 data-i18n="platform_card2">Motor de decisão</h4>
+            <p data-i18n="platform_card2_p">Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. IA aplicada em pontos estratégicos.</p>
           </div>
 
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4 6.5C4 4.6 5.6 3 7.5 3h9C18.4 3 20 4.6 20 6.5v11C20 19.4 18.4 21 16.5 21h-9C5.6 21 4 19.4 4 17.5v-11Z" stroke="currentColor" stroke-width="1.5" opacity=".9"/>
-                </svg>
-              </div>
-              <h4 data-i18n="platform_card3">Serviços como “gestor”</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
             </div>
+            <h4 data-i18n="platform_card3">Serviços como "gestor"</h4>
             <p data-i18n="platform_card3_p">Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.</p>
           </div>
         </div>
       </section>
 
-      <section id="how">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="how_title">Como funciona (na prática)</h2>
-            <p data-i18n="how_sub">Um loop simples, repetível e mensurável. Você ganha clareza mês a mês — e transforma isso em plano e execução com governança.</p>
-          </div>
-        </div>
+      <div class="sectionDivider"></div>
 
-        <div class="split">
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <header class="sectionHeader">
+          <h2 data-i18n="how_title">Como funciona na prática</h2>
+          <p data-i18n="how_sub">Um loop simples, repetível e mensurável. Clareza mês a mês — transformada em plano e execução com governança.</p>
+        </header>
+
+        <div class="howGrid">
           <div class="steps">
             <div class="step">
-              <div class="num">1</div>
-              <div>
-                <b data-i18n="s1_t">Conecte e traga os dados</b>
+              <div class="stepNum">1</div>
+              <div class="stepContent">
+                <b data-i18n="s1_t">Conecte os dados</b>
                 <span data-i18n="s1_d">SPED + COMEX + base interna. Entram como estão — nós normalizamos.</span>
               </div>
             </div>
             <div class="step">
-              <div class="num">2</div>
-              <div>
+              <div class="stepNum">2</div>
+              <div class="stepContent">
                 <b data-i18n="s2_t">Leia o que aconteceu</b>
-                <span data-i18n="s2_d">Variações, exceções, tendências e sinal por cliente/fornecedor/operação.</span>
+                <span data-i18n="s2_d">Variações, exceções, tendências por cliente/fornecedor/operação.</span>
               </div>
             </div>
             <div class="step">
-              <div class="num">3</div>
-              <div>
+              <div class="stepNum">3</div>
+              <div class="stepContent">
                 <b data-i18n="s3_t">Provoque trade-offs</b>
-                <span data-i18n="s3_d">Cenários comparáveis (caixa, risco, margem, execução). Sem achismo.</span>
+                <span data-i18n="s3_d">Cenários comparáveis: caixa, risco, margem, execução. Sem achismo.</span>
               </div>
             </div>
             <div class="step">
-              <div class="num">4</div>
-              <div>
+              <div class="stepNum">4</div>
+              <div class="stepContent">
                 <b data-i18n="s4_t">Transforme em trilha</b>
-                <span data-i18n="s4_d">Plano tático com owners, marcos e medição de valor. Governança real.</span>
+                <span data-i18n="s4_d">Plano tático com owners, marcos e medição de valor.</span>
               </div>
             </div>
           </div>
 
-          <div class="card" style="min-height:unset">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-                  <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-              </div>
-              <h4 data-i18n="how_right_title">O diferencial “sem atrito”</h4>
+          <div class="card">
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="7" y="7" width="10" height="10" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
             </div>
-            <p data-i18n="how_right_p">
-              A FLOWIQ não cria guerra de território. Ela organiza o jogo: time interno, consultorias e fornecedores especializados entram como peças complementares — com dados, trilhas e accountability.
-            </p>
+            <h4 data-i18n="how_right_title">O diferencial "sem atrito"</h4>
+            <p data-i18n="how_right_p">A FLOWIQ não cria guerra de território. Time interno, consultorias e fornecedores entram como peças complementares — com dados, trilhas e accountability.</p>
             <ul>
-              <li data-i18n="how_li1">Marketplace de serviços (ex.: classificação, validações, auditorias) com parceiros.</li>
-              <li data-i18n="how_li2">Decisão antes da execução: “qual é o melhor próximo passo?”</li>
-              <li data-i18n="how_li3">Conteúdo e inteligência por segmento e por rede (clientes/fornecedores).</li>
+              <li data-i18n="how_li1">Marketplace de serviços com parceiros</li>
+              <li data-i18n="how_li2">Decisão antes da execução</li>
+              <li data-i18n="how_li3">Conteúdo por segmento e rede</li>
             </ul>
           </div>
         </div>
       </section>
 
+      <div class="sectionDivider"></div>
+
+      <!-- PRODUCTS -->
       <section id="products">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="products_title">Produtos que consomem dados da FLOWIQ</h2>
-            <p data-i18n="products_sub">A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.</p>
-          </div>
-        </div>
+        <header class="sectionHeader">
+          <h2 data-i18n="products_title">Produtos que consomem a FLOWIQ</h2>
+          <p data-i18n="products_sub">A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.</p>
+        </header>
 
         <div class="grid3">
           <div class="card" data-wm style="--wm:url('assets/icon-taxiq.png')">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="TaxIQ icon" src="assets/icon-taxiq.png" data-light="assets/icon-taxiq.png" data-dark="assets/icon-taxiq.png"/>
-              </div>
-              <h4>TaxIQ</h4>
+            <div class="cardIcon">
+              <img src="assets/icon-taxiq.png" alt="" data-light="assets/icon-taxiq.png" data-dark="assets/icon-taxiq.png"/>
             </div>
-            <p data-i18n="tax_p">Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT, etc.).</p>
+            <h4>TaxIQ</h4>
+            <p data-i18n="tax_p">Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT).</p>
             <ul>
               <li data-i18n="tax_li1">Tax Engine + simulações (Tax Twin)</li>
-              <li data-i18n="tax_li2">Scoring por NCM / fornecedor / operação</li>
+              <li data-i18n="tax_li2">Scoring por NCM/fornecedor/operação</li>
               <li data-i18n="tax_li3">Trilha de execução e savings</li>
             </ul>
             <div class="cardActions">
-              <a class="btn btnPrimary" style="padding:10px 14px;font-size:12px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
+              <a class="btn btnPrimary" style="padding:10px 16px;font-size:11px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
             </div>
           </div>
 
           <div class="card" data-wm style="--wm:url('assets/icon-contentiq.png')">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="ContentIQ icon" src="assets/icon-contentiq.png" data-light="assets/icon-contentiq.png" data-dark="assets/icon-contentiq.png"/>
-              </div>
-              <h4>ContentIQ</h4>
+            <div class="cardIcon">
+              <img src="assets/icon-contentiq.png" alt="" data-light="assets/icon-contentiq.png" data-dark="assets/icon-contentiq.png"/>
             </div>
-            <p data-i18n="content_p">Conteúdo como produto: curadoria e contexto focados na sua empresa e na rede (clientes/fornecedores), por setor e por casos de uso.</p>
+            <h4>ContentIQ</h4>
+            <p data-i18n="content_p">Conteúdo como produto: curadoria focada na sua empresa e rede (clientes/fornecedores), por setor e casos de uso.</p>
             <ul>
-              <li data-i18n="content_li1">Leitura setorial aplicada (impacto na decisão)</li>
+              <li data-i18n="content_li1">Leitura setorial aplicada</li>
               <li data-i18n="content_li2">Sinais e alertas para sua cadeia</li>
-              <li data-i18n="content_li3">Fonte via parceiros (sem expor origens)</li>
+              <li data-i18n="content_li3">Fonte via parceiros</li>
             </ul>
+            <div class="cardActions">
+              <a class="btn" style="padding:10px 16px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+            </div>
           </div>
 
           <div class="card" data-wm style="--wm:url('assets/icon-comexiq.png')">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <img class="productIcon" alt="ComexIQ icon" src="assets/icon-comexiq.png" data-light="assets/icon-comexiq.png" data-dark="assets/icon-comexiq.png"/>
-              </div>
-              <h4>ComexIQ</h4>
+            <div class="cardIcon">
+              <img src="assets/icon-comexiq.png" alt="" data-light="assets/icon-comexiq.png" data-dark="assets/icon-comexiq.png"/>
             </div>
-            <p data-i18n="comex_p">Execução de decisões no comércio exterior: processos mais leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.</p>
+            <h4>ComexIQ</h4>
+            <p data-i18n="comex_p">Execução no comércio exterior: processos leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.</p>
             <ul>
-              <li data-i18n="comex_li1">Governança de execução e evidências</li>
-              <li data-i18n="comex_li2">Integrações com prestadores e sistemas</li>
+              <li data-i18n="comex_li1">Governança e evidências</li>
+              <li data-i18n="comex_li2">Integrações com prestadores</li>
               <li data-i18n="comex_li3">Menos atrito, mais velocidade</li>
             </ul>
+            <div class="cardActions">
+              <a class="btn" style="padding:10px 16px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+            </div>
           </div>
         </div>
       </section>
 
+      <div class="sectionDivider"></div>
 
+      <!-- INSIGHTS -->
       <section id="insights">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="insights_title">Insights (atualiza a cada refresh)</h2>
-            <p data-i18n="insights_sub">Um sinal por vez — dicas e novidades para decisão e execução. Conteúdo pode ser abastecido por parceiros (ex.: Boxnet).</p>
+        <header class="sectionHeader">
+          <h2 data-i18n="insights_title">Insight do dia</h2>
+          <p data-i18n="insights_sub">Um sinal por vez — dicas para decisão e execução. Atualiza a cada refresh.</p>
+        </header>
+
+        <div class="insightCard">
+          <div class="insightIcon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4.3A7 7 0 0 0 12 2Z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-        </div>
-
-        <div class="card" style="padding:20px;min-height:unset">
-          <div class="cardTop" style="margin-bottom:6px">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 2a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4.3A7 7 0 0 0 12 2Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4 data-i18n="insights_card">Insight do dia</h4>
-          </div>
-
-          <p id="insightText" style="margin:8px 0 0;color:var(--muted);line-height:1.6"></p>
-
-          <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-            <a class="btn" id="insightLink" href="#products" data-i18n="insights_link">Ver como os IQs ajudam</a>
-            <span class="fineprint" data-i18n="insights_note">Sem ruído: cada refresh traz um tópico diferente (comércio exterior, tributário e governança).</span>
+          <div class="insightContent">
+            <div class="insightLabel" data-i18n="insights_card">Insight</div>
+            <p id="insightText"></p>
+            <a class="btn" id="insightLink" href="#products" style="padding:10px 16px;font-size:11px" data-i18n="insights_link">Ver como os IQs ajudam</a>
           </div>
         </div>
       </section>
 
+      <div class="sectionDivider"></div>
+
+      <!-- BENCHMARK -->
       <section id="benchmark">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="bench_title">Benchmark do mercado vs. nossa abordagem</h2>
-            <p data-i18n="bench_sub">Sem “jargões”. Nós traduzimos o que o mercado chama de automação, data lake e digital twin em uma plataforma + produtos orientados à decisão e execução.</p>
-          </div>
-        </div>
+        <header class="sectionHeader">
+          <h2 data-i18n="bench_title">Benchmark do mercado vs. nossa abordagem</h2>
+          <p data-i18n="bench_sub">Traduzimos automação, data lake e digital twin em plataforma + produtos para decisão e execução.</p>
+        </header>
 
-        <div class="compare" role="table" aria-label="Benchmark do mercado">
+        <div class="compareTable">
           <div class="compareHead">
-            <div role="columnheader" data-i18n="bench_left">Referências de mercado</div>
-            <div role="columnheader">FLOWIQ (plataforma + IQs)</div>
+            <div data-i18n="bench_left">Referências de mercado</div>
+            <div>FLOWIQ (plataforma + IQs)</div>
           </div>
-          <div class="compareRows" role="rowgroup">
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">⚙️</div>
-                <div>
-                  <b data-i18n="r1_l_t">Hyperautomation fiscal</b>
-                  <span data-i18n="r1_l_d">Automatizar rotinas e regras</span>
-                </div>
-              </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">⚙️</div>
-                <div>
-                  <b data-i18n="r1_r_t">Ingestão automática + Tax Engine</b>
-                  <span data-i18n="r1_r_d">Plataforma + TaxIQ executando estratégia</span>
-                </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">⚙️</div>
+              <div class="cellContent">
+                <b data-i18n="r1_l_t">Hyperautomation fiscal</b>
+                <span data-i18n="r1_l_d">Automatizar rotinas e regras</span>
               </div>
             </div>
-
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">🗄️</div>
-                <div>
-                  <b data-i18n="r2_l_t">Unificação de dados</b>
-                  <span data-i18n="r2_l_d">Data lake tributário</span>
-                </div>
-              </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">🗄️</div>
-                <div>
-                  <b data-i18n="r2_r_t">Ingestão + normalização</b>
-                  <span data-i18n="r2_r_d">SPED/COMEX e bases internas comparáveis</span>
-                </div>
+            <div class="compareCell">
+              <div class="cellIcon">⚙️</div>
+              <div class="cellContent">
+                <b data-i18n="r1_r_t">Ingestão + Tax Engine</b>
+                <span data-i18n="r1_r_d">Plataforma + TaxIQ executando estratégia</span>
               </div>
             </div>
+          </div>
 
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">👁️</div>
-                <div>
-                  <b data-i18n="r3_l_t">Simulação em tempo real</b>
-                  <span data-i18n="r3_l_d">“Digital Twin”</span>
-                </div>
-              </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">🧠</div>
-                <div>
-                  <b data-i18n="r3_r_t">Tax Twin completo</b>
-                  <span data-i18n="r3_r_d">Cenários + trade-offs + trilha de execução</span>
-                </div>
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">🗄️</div>
+              <div class="cellContent">
+                <b data-i18n="r2_l_t">Unificação de dados</b>
+                <span data-i18n="r2_l_d">Data lake tributário</span>
               </div>
             </div>
-
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">🤖</div>
-                <div>
-                  <b data-i18n="r4_l_t">IA tributária</b>
-                  <span data-i18n="r4_l_d">Assistência e recomendações</span>
-                </div>
-              </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">🛡️</div>
-                <div>
-                  <b data-i18n="r4_r_t">Classificação, risco, oportunidade</b>
-                  <span data-i18n="r4_r_d">Scoring por NCM/fornecedor/operação</span>
-                </div>
+            <div class="compareCell">
+              <div class="cellIcon">🗄️</div>
+              <div class="cellContent">
+                <b data-i18n="r2_r_t">Ingestão + normalização</b>
+                <span data-i18n="r2_r_d">SPED/COMEX comparáveis</span>
               </div>
             </div>
+          </div>
 
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">📊</div>
-                <div>
-                  <b data-i18n="r5_l_t">Analytics executivo</b>
-                  <span data-i18n="r5_l_d">Dashboards e KPIs</span>
-                </div>
-              </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">📈</div>
-                <div>
-                  <b data-i18n="r5_r_t">Dashboard de decisão</b>
-                  <span data-i18n="r5_r_d">CEO/CFO com caixa, risco e plano</span>
-                </div>
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">👁️</div>
+              <div class="cellContent">
+                <b data-i18n="r3_l_t">Simulação real-time</b>
+                <span data-i18n="r3_l_d">"Digital Twin"</span>
               </div>
             </div>
-
-            <div class="row" role="row">
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">💰</div>
-                <div>
-                  <b data-i18n="r6_l_t">Redução de custo</b>
-                  <span data-i18n="r6_l_d">Savings e compliance by design</span>
-                </div>
+            <div class="compareCell">
+              <div class="cellIcon">🧠</div>
+              <div class="cellContent">
+                <b data-i18n="r3_r_t">Tax Twin completo</b>
+                <span data-i18n="r3_r_d">Cenários + trade-offs + execução</span>
               </div>
-              <div class="cell" role="cell">
-                <div class="mini" aria-hidden="true">💰</div>
-                <div>
-                  <b data-i18n="r6_r_t">RECOF, Drawback, RT e execução</b>
-                  <span data-i18n="r6_r_d">Economia rastreável com governança</span>
-                </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">🤖</div>
+              <div class="cellContent">
+                <b data-i18n="r4_l_t">IA tributária</b>
+                <span data-i18n="r4_l_d">Assistência e recomendações</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon">🛡️</div>
+              <div class="cellContent">
+                <b data-i18n="r4_r_t">Classificação, risco, oportunidade</b>
+                <span data-i18n="r4_r_d">Scoring por NCM/fornecedor</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">📊</div>
+              <div class="cellContent">
+                <b data-i18n="r5_l_t">Analytics executivo</b>
+                <span data-i18n="r5_l_d">Dashboards e KPIs</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon">📈</div>
+              <div class="cellContent">
+                <b data-i18n="r5_r_t">Dashboard de decisão</b>
+                <span data-i18n="r5_r_d">CEO/CFO: caixa, risco, plano</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon">💰</div>
+              <div class="cellContent">
+                <b data-i18n="r6_l_t">Redução de custo</b>
+                <span data-i18n="r6_l_d">Savings e compliance by design</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon">💰</div>
+              <div class="cellContent">
+                <b data-i18n="r6_r_t">RECOF, Drawback, RT</b>
+                <span data-i18n="r6_r_d">Economia rastreável com governança</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <div class="sectionDivider"></div>
+
+      <!-- COMPANY -->
       <section id="company">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="company_title">Empresa</h2>
-            <p data-i18n="company_sub">Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.</p>
-          </div>
-        </div>
+        <header class="sectionHeader">
+          <h2 data-i18n="company_title">Empresa</h2>
+          <p data-i18n="company_sub">Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.</p>
+        </header>
 
         <div class="grid3">
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 20V6a2 2 0 0 1 2-2h6v16H4Z" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M12 20V9h6a2 2 0 0 1 2 2v9h-8Z" stroke="currentColor" stroke-width="1.7"/>
-                </svg>
-              </div>
-              <h4 data-i18n="company_c1">Tecnologia</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 20V6a2 2 0 0 1 2-2h6v16H4Z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M12 20V9h6a2 2 0 0 1 2 2v9h-8Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
             </div>
-            <p data-i18n="company_c1p">Plataforma de dados, conectores e camada de decisão para reduzir complexidade e atrito.</p>
+            <h4 data-i18n="company_c1">Tecnologia</h4>
+            <p data-i18n="company_c1p">Plataforma de dados, conectores e IA aplicada em pontos estratégicos: ingestão, classificação e recomendações.</p>
           </div>
 
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 21s7-4.4 7-10V6l-7-3-7 3v5c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="1.7"/>
-                  <path d="M9.5 12l1.8 1.8 3.9-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <h4 data-i18n="company_c2">Método</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-4.4 7-10V6l-7-3-7 3v5c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M9.5 12l1.8 1.8 3.9-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-            <p data-i18n="company_c2p">Governança, trilhas e consistência: decisão vira execução com evidências e accountability.</p>
+            <h4 data-i18n="company_c2">Método</h4>
+            <p data-i18n="company_c2p">Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.</p>
           </div>
 
           <div class="card">
-            <div class="cardTop">
-              <div class="ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M5 7h14M5 12h14M5 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h4 data-i18n="company_c3">Conteúdo</h4>
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 7h14M5 12h14M5 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
             </div>
-            <p data-i18n="company_c3p">Conteúdo nichado por empresa e por rede (clientes/fornecedores), com curadoria via parceiros — reduzindo ruído e aumentando sinal.</p>
+            <h4 data-i18n="company_c3">Conteúdo</h4>
+            <p data-i18n="company_c3p">Conteúdo nichado por empresa e rede, curadoria via parceiros — menos ruído, mais sinal.</p>
           </div>
         </div>
       </section>
 
-      <section id="contact">
-        <div class="sectionHead">
-          <div>
-            <h2 data-i18n="contact_title">Diagnóstico gratuito de eficiência</h2>
-            <p data-i18n="contact_sub">Conte rapidamente seu contexto. Nós respondemos com perguntas certas, uma leitura inicial e os próximos passos.</p>
-          </div>
-        </div>
+      <div class="sectionDivider"></div>
 
-        <div class="card" style="padding:20px">
-          <form onsubmit="event.preventDefault(); alert(window.__i18nLang==='en' ? 'Thanks! We will get back to you.' : 'Obrigado! Vamos retornar em breve.');" aria-label="Formulário de contato">
-            <div class="split">
-              <div>
-                <label style="display:block;font-weight:900;margin:0 0 8px" data-i18n="f_name">Nome</label>
-                <input required style="width:100%;padding:14px 14px;border-radius:14px;border:1px solid var(--line);background:var(--cardSolid);color:var(--ink)" />
+      <!-- CONTACT -->
+      <section id="contact">
+        <header class="sectionHeader">
+          <h2 data-i18n="contact_title">Solicite um diagnóstico</h2>
+          <p data-i18n="contact_sub">Conte seu contexto. Respondemos com as perguntas certas, uma leitura inicial e próximos passos.</p>
+        </header>
+
+        <div class="contactCard">
+          <form onsubmit="event.preventDefault(); alert(window.__i18nLang==='en' ? 'Thanks! We will get back to you.' : 'Obrigado! Vamos retornar em breve.');">
+            <div class="formGrid">
+              <div class="formField">
+                <label data-i18n="f_name">Nome</label>
+                <input type="text" required/>
               </div>
-              <div>
-                <label style="display:block;font-weight:900;margin:0 0 8px">Email</label>
-                <input type="email" required style="width:100%;padding:14px 14px;border-radius:14px;border:1px solid var(--line);background:var(--cardSolid);color:var(--ink)" />
+              <div class="formField">
+                <label>Email</label>
+                <input type="email" required/>
               </div>
             </div>
-            <div style="margin-top:14px">
-              <label style="display:block;font-weight:900;margin:0 0 8px" data-i18n="f_msg">O que você quer destravar?</label>
-              <textarea rows="4" required style="width:100%;padding:14px 14px;border-radius:14px;border:1px solid var(--line);background:var(--cardSolid);color:var(--ink)"></textarea>
+            <div class="formField">
+              <label data-i18n="f_msg">O que você quer destravar?</label>
+              <textarea rows="4" required></textarea>
             </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;align-items:center">
+            <div class="formActions">
               <button class="btn btnPrimary" type="submit" data-i18n="f_send">Enviar</button>
-              <span class="fineprint" data-i18n="f_note">Integrações, produtos e fontes podem variar por setor/cliente. O objetivo é reduzir ruído e aumentar sinal.</span>
+              <span class="formNote" data-i18n="f_note">Integrações e produtos podem variar por setor/cliente.</span>
             </div>
           </form>
         </div>
       </section>
 
-      <footer>
-        <div class="container">
-          <div class="foot">
-            <div class="fineprint">
-              <b>© <span id="year"></span> FLOWIQ.</b>
-              <div style="margin-top:6px" data-i18n="foot_note">Conteúdo, produtos e integrações podem variar por setor/cliente.</div>
-            </div>
-            <div class="footNav" aria-label="Links de rodapé">
-              <a href="#platform" data-i18n="nav_platform">Plataforma</a>
-              <a href="#how" data-i18n="nav_how">Como funciona</a>
-              <a href="#products" data-i18n="nav_products">Produtos</a>
-              <a href="#contact" data-i18n="nav_contact">Contato</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
     </div>
   </main>
 
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footerInner">
+        <div class="footerBrand">
+          <b>© <span id="year"></span> FLOWIQ.</b>
+          <span data-i18n="foot_note"> Conteúdo e integrações podem variar por setor.</span>
+        </div>
+        <nav class="footerNav">
+          <a href="#platform" data-i18n="nav_platform">Plataforma</a>
+          <a href="#how" data-i18n="nav_how">Como funciona</a>
+          <a href="#products" data-i18n="nav_products">Produtos</a>
+          <a href="#contact" data-i18n="nav_contact">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════════════════════ -->
   <script>
-    // ---------- Year ----------
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---------- i18n ----------
+    // i18n dictionary
     const dict = {
       pt: {
         tagline: "Technical Intelligence Quotient",
@@ -1084,127 +1330,113 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         nav_benchmark: "Benchmark",
         nav_company: "Empresa",
         nav_contact: "Contato",
-        cta_talk: "Diagnóstico gratuito de eficiência",
-        chip: "Plataforma de decisão — sem atrito entre pessoas, consultorias e tecnologia",
-        hero_title: "Decisão executiva com contexto, método e execução.",
-        hero_lead: "A FLOWIQ é a plataforma onde os dados chegam e viram decisão. Mês a mês, analisamos SPED + COMEX, provocamos trade-offs e desenhamos estratégias — como um gestor de investimentos faz com um portfólio.",
+        cta_talk: "Diagnóstico gratuito",
+        cta_soon: "Em breve",
+        hero_title: "A <span class=\"accent\">camada de decisão</span><br>acima da operação.",
+        hero_lead: "Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.",
         hero_btn_primary: "Ver como funciona",
         hero_btn_secondary: "Conhecer os IQs",
-        proof_1: "Sem substituir o time interno",
-        proof_2: "Sem competir com consultorias",
-        proof_3: "Integrações e parceiros como extensão",
-
-        panel_title: "O que a plataforma clareia",
+        
         k_cash: "Caixa",
-        k_cash_desc: "efeito no fluxo e no timing de pagamento/recuperação",
+        k_cash_desc: "Timing e fluxo de pagamento/recuperação",
         k_risk: "Risco",
-        k_risk_desc: "governança, trilhas e consistência de regras",
+        k_risk_desc: "Governança, trilhas e consistência",
         k_decision: "Decisão",
-        k_decision_desc: "cenários comparáveis e trade-offs explícitos",
+        k_decision_desc: "Cenários e trade-offs explícitos",
         k_execution: "Execução",
-        k_execution_desc: "plano tático, owners e medição de valor",
-        panel_note: "A FLOWIQ olha a sua operação e também a rede de compras e vendas (fornecedores, clientes e parceiros) — para melhorar a performance do ecossistema, não só de um departamento.",
+        k_execution_desc: "Plano com owners e medição",
 
-        platform_title: "FLOWIQ: onde os dados chegam e viram decisão",
-        platform_sub: "Plataforma central de dados + tecnologia + serviços. A partir dela, os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo nichado para a sua rede.",
+        platform_title: "Onde os dados chegam e viram decisão",
+        platform_sub: "Plataforma central de dados + tecnologia + serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.",
         platform_card1: "Ingestão + normalização",
-        platform_card1_p: "Conectamos fontes (SPED, COMEX e demais dados da operação). Organizamos, cruzamos e criamos base comparável mês a mês.",
+        platform_card1_p: "Conectamos SPED, COMEX e dados internos. Organizamos, cruzamos e criamos base comparável mês a mês.",
         platform_card2: "Motor de decisão",
-        platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. Aplicamos IA em pontos estratégicos (classificação, risco e recomendações).",
-        platform_card3: "Serviços como “gestor”",
+        platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. IA aplicada em pontos estratégicos.",
+        platform_card3: "Serviços como "gestor"",
         platform_card3_p: "Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.",
 
-        how_title: "Como funciona (na prática)",
-        how_sub: "Um loop simples, repetível e mensurável. Você ganha clareza mês a mês — e transforma isso em plano e execução com governança.",
-        s1_t: "Conecte e traga os dados",
+        how_title: "Como funciona na prática",
+        how_sub: "Um loop simples, repetível e mensurável. Clareza mês a mês — transformada em plano e execução com governança.",
+        s1_t: "Conecte os dados",
         s1_d: "SPED + COMEX + base interna. Entram como estão — nós normalizamos.",
         s2_t: "Leia o que aconteceu",
-        s2_d: "Variações, exceções, tendências e sinal por cliente/fornecedor/operação.",
+        s2_d: "Variações, exceções, tendências por cliente/fornecedor/operação.",
         s3_t: "Provoque trade-offs",
-        s3_d: "Cenários comparáveis (caixa, risco, margem, execução). Sem achismo.",
+        s3_d: "Cenários comparáveis: caixa, risco, margem, execução. Sem achismo.",
         s4_t: "Transforme em trilha",
-        s4_d: "Plano tático com owners, marcos e medição de valor. Governança real.",
-        how_right_title: "O diferencial “sem atrito”",
-        how_right_p: "A FLOWIQ não cria guerra de território. Ela organiza o jogo: time interno, consultorias e fornecedores especializados entram como peças complementares — com dados, trilhas e accountability.",
-        how_li1: "Marketplace de serviços (ex.: classificação, validações, auditorias) com parceiros.",
-        how_li2: "Decisão antes da execução: “qual é o melhor próximo passo?”",
-        how_li3: "Conteúdo e inteligência por segmento e por rede (clientes/fornecedores).",
+        s4_d: "Plano tático com owners, marcos e medição de valor.",
+        how_right_title: "O diferencial "sem atrito"",
+        how_right_p: "A FLOWIQ não cria guerra de território. Time interno, consultorias e fornecedores entram como peças complementares — com dados, trilhas e accountability.",
+        how_li1: "Marketplace de serviços com parceiros",
+        how_li2: "Decisão antes da execução",
+        how_li3: "Conteúdo por segmento e rede",
 
-        products_title: "Produtos que consomem dados da FLOWIQ",
+        products_title: "Produtos que consomem a FLOWIQ",
         products_sub: "A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.",
-
-        insights_title: "Insights (atualiza a cada refresh)",
-        insights_sub: "Um sinal por vez — dicas e novidades para decisão e execução. Conteúdo pode ser abastecido por parceiros (ex.: Boxnet).",
-        insights_card: "Insight do dia",
-        insights_link: "Ver como os IQs ajudam",
-        insights_note: "Sem ruído: cada refresh traz um tópico diferente (comércio exterior, tributário e governança).",
-
-        tax_p: "Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT, etc.).",
+        tax_p: "Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT).",
         tax_li1: "Tax Engine + simulações (Tax Twin)",
-        tax_li2: "Scoring por NCM / fornecedor / operação",
+        tax_li2: "Scoring por NCM/fornecedor/operação",
         tax_li3: "Trilha de execução e savings",
         tax_btn: "Acessar TaxIQ",
-        content_p: "Conteúdo como produto: curadoria e contexto focados na sua empresa e na rede (clientes/fornecedores), por setor e por casos de uso.",
-        content_li1: "Leitura setorial aplicada (impacto na decisão)",
+        content_p: "Conteúdo como produto: curadoria focada na sua empresa e rede (clientes/fornecedores), por setor e casos de uso.",
+        content_li1: "Leitura setorial aplicada",
         content_li2: "Sinais e alertas para sua cadeia",
-        content_li3: "Fonte via parceiros (sem expor origens)",
-        comex_p: "Execução de decisões no comércio exterior: processos mais leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.",
-        comex_li1: "Governança de execução e evidências",
-        comex_li2: "Integrações com prestadores e sistemas",
+        content_li3: "Fonte via parceiros",
+        comex_p: "Execução no comércio exterior: processos leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.",
+        comex_li1: "Governança e evidências",
+        comex_li2: "Integrações com prestadores",
         comex_li3: "Menos atrito, mais velocidade",
 
+        insights_title: "Insight do dia",
+        insights_sub: "Um sinal por vez — dicas para decisão e execução. Atualiza a cada refresh.",
+        insights_card: "Insight",
+        insights_link: "Ver como os IQs ajudam",
+
         bench_title: "Benchmark do mercado vs. nossa abordagem",
-        bench_sub: "Sem “jargões”. Nós traduzimos o que o mercado chama de automação, data lake e digital twin em uma plataforma + produtos orientados à decisão e execução.",
+        bench_sub: "Traduzimos automação, data lake e digital twin em plataforma + produtos para decisão e execução.",
         bench_left: "Referências de mercado",
         r1_l_t: "Hyperautomation fiscal",
         r1_l_d: "Automatizar rotinas e regras",
-        r1_r_t: "Ingestão automática + Tax Engine",
+        r1_r_t: "Ingestão + Tax Engine",
         r1_r_d: "Plataforma + TaxIQ executando estratégia",
         r2_l_t: "Unificação de dados",
         r2_l_d: "Data lake tributário",
         r2_r_t: "Ingestão + normalização",
-        r2_r_d: "SPED/COMEX e bases internas comparáveis",
-        r3_l_t: "Simulação em tempo real",
-        r3_l_d: "“Digital Twin”",
+        r2_r_d: "SPED/COMEX comparáveis",
+        r3_l_t: "Simulação real-time",
+        r3_l_d: ""Digital Twin"",
         r3_r_t: "Tax Twin completo",
-        r3_r_d: "Cenários + trade-offs + trilha de execução",
+        r3_r_d: "Cenários + trade-offs + execução",
         r4_l_t: "IA tributária",
         r4_l_d: "Assistência e recomendações",
         r4_r_t: "Classificação, risco, oportunidade",
-        r4_r_d: "Scoring por NCM/fornecedor/operação",
+        r4_r_d: "Scoring por NCM/fornecedor",
         r5_l_t: "Analytics executivo",
         r5_l_d: "Dashboards e KPIs",
         r5_r_t: "Dashboard de decisão",
-        r5_r_d: "CEO/CFO com caixa, risco e plano",
+        r5_r_d: "CEO/CFO: caixa, risco, plano",
         r6_l_t: "Redução de custo",
         r6_l_d: "Savings e compliance by design",
-        r6_r_t: "RECOF, Drawback, RT e execução",
+        r6_r_t: "RECOF, Drawback, RT",
         r6_r_d: "Economia rastreável com governança",
 
-        company_title:"Empresa",
-        company_sub:"Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.",
-        company_c1:"Tecnologia",
-        company_c1p:"Tecnologia de ponta: plataforma de dados, conectores e IA aplicada em pontos estratégicos (ingestão, classificação e recomendações).",
-        company_c2:"Método",
-        company_c2p:"Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.",
-        company_c3:"Conteúdo",
-        company_c3p:"Conteúdo nichado por empresa e por rede (clientes/fornecedores), com curadoria via parceiros — reduzindo ruído e aumentando sinal.",
+        company_title: "Empresa",
+        company_sub: "Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.",
+        company_c1: "Tecnologia",
+        company_c1p: "Plataforma de dados, conectores e IA aplicada em pontos estratégicos: ingestão, classificação e recomendações.",
+        company_c2: "Método",
+        company_c2p: "Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.",
+        company_c3: "Conteúdo",
+        company_c3p: "Conteúdo nichado por empresa e rede, curadoria via parceiros — menos ruído, mais sinal.",
 
-        contact_title:"Diagnóstico gratuito de eficiência",
-        contact_sub:"Conte rapidamente seu contexto. Nós respondemos com perguntas certas, uma leitura inicial e os próximos passos.",
-        f_name:"Nome",
-        f_msg:"O que você quer destravar?",
-        f_send:"Enviar",
-        f_note:"Integrações, produtos e fontes podem variar por setor/cliente. O objetivo é reduzir ruído e aumentar sinal.",
+        contact_title: "Solicite um diagnóstico",
+        contact_sub: "Conte seu contexto. Respondemos com as perguntas certas, uma leitura inicial e próximos passos.",
+        f_name: "Nome",
+        f_msg: "O que você quer destravar?",
+        f_send: "Enviar",
+        f_note: "Integrações e produtos podem variar por setor/cliente.",
 
-        impact_1_t: "Impacto mensurável",
-        impact_1_d: "No diagnóstico, estimamos savings, recuperações e impacto em caixa por cenário — com rastreabilidade do que muda e por quê.",
-        impact_2_t: "Menos risco",
-        impact_2_d: "Regras consistentes, evidências e governança para reduzir exposição e retrabalho.",
-        impact_3_t: "IA aplicada",
-        impact_3_d: "Assistentes e scoring nos pontos certos: classificação, risco, oportunidades e próximos passos.",
-
-        foot_note:"Conteúdo, produtos e integrações podem variar por setor/cliente."
+        foot_note: " Conteúdo e integrações podem variar por setor."
       },
       en: {
         tagline: "Technical Intelligence Quotient",
@@ -1214,154 +1446,129 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         nav_benchmark: "Benchmark",
         nav_company: "Company",
         nav_contact: "Contact",
-        cta_talk: "Free efficiency assessment",
-        chip: "Decision orchestration — no friction across teams, advisors and technology",
-        hero_title: "Executive decisions with context, method and execution.",
-        hero_lead: "FLOWIQ is the platform where data lands and becomes decisions. Month by month, we analyze SPED + COMEX, surface trade-offs and design strategies — like an investment manager does with a portfolio.",
+        cta_talk: "Free diagnosis",
+        cta_soon: "Coming soon",
+        hero_title: "The <span class=\"accent\">decision layer</span><br>above operations.",
+        hero_lead: "We connect SPED, COMEX and internal data to generate explicit trade-offs, governance and traceable execution. Like a portfolio manager — but for tax and foreign trade.",
         hero_btn_primary: "See how it works",
-        hero_btn_secondary: "Explore the IQs",
-        proof_1: "Without replacing internal teams",
-        proof_2: "Without competing with advisors",
-        proof_3: "Integrations & partners as extensions",
+        hero_btn_secondary: "Meet the IQs",
 
-        panel_title: "What the platform clarifies",
         k_cash: "Cash",
-        k_cash_desc: "impact on cashflow and timing of payments/recovery",
+        k_cash_desc: "Payment/recovery timing and flow",
         k_risk: "Risk",
-        k_risk_desc: "governance, rule tracks and consistency",
+        k_risk_desc: "Governance, tracks and consistency",
         k_decision: "Decision",
-        k_decision_desc: "comparable scenarios and explicit trade-offs",
+        k_decision_desc: "Scenarios and explicit trade-offs",
         k_execution: "Execution",
-        k_execution_desc: "tactical plan, owners and value measurement",
-        panel_note: "FLOWIQ looks at your operation and also the buy/sell network (suppliers, customers and partners) — improving the ecosystem, not just one department.",
+        k_execution_desc: "Plan with owners and metrics",
 
-        platform_title: "FLOWIQ: where data lands and turns into decisions",
-        platform_sub: "Central platform of data + technology + services. Products (IQs) consume it to drive strategy, execution and niche content for your network.",
+        platform_title: "Where data becomes decision",
+        platform_sub: "Central data platform + technology + services. Products (IQs) consume data to generate strategy, execution and content for your network.",
         platform_card1: "Ingestion + normalization",
-        platform_card1_p: "We connect sources (SPED, COMEX and operational data). We organize and normalize it into a month-by-month comparable base.",
+        platform_card1_p: "We connect SPED, COMEX and internal data. Organize, cross-reference and create a comparable base month by month.",
         platform_card2: "Decision engine",
-        platform_card2_p: "We simulate scenarios, make trade-offs explicit and connect impact to cash, risk and performance. We apply AI in strategic points (classification, risk and recommendations).",
-        platform_card3: "Services as a “portfolio manager”",
-        platform_card3_p: "Data-driven advisory: readings, provocations and continuous strategy. Integrations and partners plug in with no friction.",
+        platform_card2_p: "We simulate scenarios, make trade-offs explicit, and connect impact to cash, risk and performance. AI applied at strategic points.",
+        platform_card3: "Services as "manager"",
+        platform_card3_p: "Data-driven consulting: reading, provocation and continuous strategy. Integrations and partners come in without friction.",
 
-        how_title: "How it works (in practice)",
-        how_sub: "A simple, repeatable and measurable loop. You gain clarity month by month — then convert it into a plan and execution with governance.",
-        s1_t: "Connect and bring the data",
-        s1_d: "SPED + COMEX + internal data. It comes as-is — we normalize.",
+        how_title: "How it works in practice",
+        how_sub: "A simple, repeatable and measurable loop. Clarity month by month — transformed into plan and execution with governance.",
+        s1_t: "Connect the data",
+        s1_d: "SPED + COMEX + internal base. They come in as-is — we normalize.",
         s2_t: "Read what happened",
-        s2_d: "Variations, exceptions, trends and signal by customer/supplier/operation.",
-        s3_t: "Surface trade-offs",
-        s3_d: "Comparable scenarios (cash, risk, margin, execution). No guesswork.",
-        s4_t: "Turn it into a track",
-        s4_d: "Tactical plan with owners, milestones and value measurement. Real governance.",
-        how_right_title: "The “no-friction” edge",
-        how_right_p: "FLOWIQ doesn’t create turf wars. It organizes the game: internal teams, advisors and specialized vendors act as complementary pieces — with data, tracks and accountability.",
-        how_li1: "Service marketplace (e.g., classification, validations, audits) via partners.",
-        how_li2: "Decision before execution: “what’s the best next step?”",
-        how_li3: "Content & intelligence by sector and by network (customers/suppliers).",
+        s2_d: "Variations, exceptions, trends by customer/supplier/operation.",
+        s3_t: "Provoke trade-offs",
+        s3_d: "Comparable scenarios: cash, risk, margin, execution. No guessing.",
+        s4_t: "Transform into track",
+        s4_d: "Tactical plan with owners, milestones and value measurement.",
+        how_right_title: "The "frictionless" edge",
+        how_right_p: "FLOWIQ doesn't create turf wars. Internal team, consultants and suppliers join as complementary pieces — with data, tracks and accountability.",
+        how_li1: "Service marketplace with partners",
+        how_li2: "Decision before execution",
+        how_li3: "Content by segment and network",
 
-        products_title: "Products that consume FLOWIQ data",
-        products_sub: "The platform is the hub. IQs are focused products: tax decisions, contextual content, and trade execution.",
-
-        insights_title: "Insights (refreshes on load)",
-        insights_sub: "One signal at a time — tips and updates for decision and execution. Content can be supplied by partners (e.g., Boxnet).",
-        insights_card: "Today’s insight",
-        insights_link: "See how the IQs help",
-        insights_note: "No noise: each refresh brings a different topic (trade, tax and governance).",
-
-        tax_p: "Tax and special-regime decisions: classification, risk, opportunities and strategy (RECOF, Drawback, RT, etc.).",
+        products_title: "Products that consume FLOWIQ",
+        products_sub: "The platform is the hub. IQs are focused products: tax decisions, contextual content and foreign trade execution.",
+        tax_p: "Tax and regime decisions: classification, risk, opportunities and strategy (RECOF, Drawback, RT).",
         tax_li1: "Tax Engine + simulations (Tax Twin)",
-        tax_li2: "Scoring by NCM / supplier / operation",
+        tax_li2: "Scoring by NCM/supplier/operation",
         tax_li3: "Execution track and savings",
-        tax_btn: "Open TaxIQ",
-        content_p: "Content as a product: curation and context tailored to your company and your network (customers/suppliers), by sector and use case.",
-        content_li1: "Applied sector reading (decision impact)",
+        tax_btn: "Access TaxIQ",
+        content_p: "Content as product: curation focused on your company and network (customers/suppliers), by sector and use case.",
+        content_li1: "Applied sector reading",
         content_li2: "Signals and alerts for your chain",
-        content_li3: "Partner-sourced (without exposing origins)",
-        comex_p: "Execution of trade decisions: lighter, traceable and faster processes — connecting operations, partners and compliance.",
-        comex_li1: "Execution governance and evidence",
-        comex_li2: "Integrations with providers and systems",
+        content_li3: "Source via partners",
+        comex_p: "Foreign trade execution: light, traceable and agile processes — connecting operations, partners and compliance.",
+        comex_li1: "Governance and evidence",
+        comex_li2: "Integrations with providers",
         comex_li3: "Less friction, more speed",
 
+        insights_title: "Insight of the day",
+        insights_sub: "One signal at a time — tips for decision and execution. Updates on each refresh.",
+        insights_card: "Insight",
+        insights_link: "See how IQs help",
+
         bench_title: "Market benchmark vs. our approach",
-        bench_sub: "No buzzwords. We translate what the market calls automation, tax data lakes and digital twins into a platform + products built for decisions and execution.",
+        bench_sub: "We translate automation, data lake and digital twin into a platform + products for decision and execution.",
         bench_left: "Market references",
         r1_l_t: "Fiscal hyperautomation",
         r1_l_d: "Automate routines and rules",
-        r1_r_t: "Automated ingestion + Tax Engine",
+        r1_r_t: "Ingestion + Tax Engine",
         r1_r_d: "Platform + TaxIQ executing strategy",
         r2_l_t: "Data unification",
         r2_l_d: "Tax data lake",
         r2_r_t: "Ingestion + normalization",
-        r2_r_d: "Comparable SPED/COMEX + internal bases",
+        r2_r_d: "Comparable SPED/COMEX",
         r3_l_t: "Real-time simulation",
-        r3_l_d: "“Digital Twin”",
+        r3_l_d: ""Digital Twin"",
         r3_r_t: "Full Tax Twin",
-        r3_r_d: "Scenarios + trade-offs + execution track",
+        r3_r_d: "Scenarios + trade-offs + execution",
         r4_l_t: "Tax AI",
         r4_l_d: "Assistance and recommendations",
         r4_r_t: "Classification, risk, opportunity",
-        r4_r_d: "Scoring by NCM/supplier/operation",
+        r4_r_d: "Scoring by NCM/supplier",
         r5_l_t: "Executive analytics",
         r5_l_d: "Dashboards and KPIs",
         r5_r_t: "Decision dashboard",
-        r5_r_d: "CEO/CFO view with cash, risk and plan",
+        r5_r_d: "CEO/CFO: cash, risk, plan",
         r6_l_t: "Cost reduction",
         r6_l_d: "Savings and compliance by design",
-        r6_r_t: "RECOF, Drawback, RT and execution",
+        r6_r_t: "RECOF, Drawback, RT",
         r6_r_d: "Traceable savings with governance",
 
-        company_title:"Company",
-        company_sub:"Technology for services: we connect data, apply method and deliver strategic decisions — with execution and sector-specific content.",
-        company_c1:"Technology",
-        company_c1p:"Cutting-edge tech: data platform, connectors and applied AI in key steps (ingestion, classification and recommendations).",
-        company_c2:"Method",
-        company_c2p:"Governance, tracks and consistency: decisions become execution with evidence, audit trail, and compliance by design.",
-        company_c3:"Content",
-        company_c3p:"Niche content by company and network (customers/suppliers), curated via partners — less noise, more signal.",
+        company_title: "Company",
+        company_sub: "Technology for services: we connect data, apply method and deliver strategic decisions — with execution and sector-specific content.",
+        company_c1: "Technology",
+        company_c1p: "Data platform, connectors and AI applied at strategic points: ingestion, classification and recommendations.",
+        company_c2: "Method",
+        company_c2p: "Governance, tracks and consistency: decisions become execution with evidence, audit trail and compliance by design.",
+        company_c3: "Content",
+        company_c3p: "Niche content by company and network, curated via partners — less noise, more signal.",
 
-        contact_title:"Request a conversation",
-        contact_sub:"Share your context briefly. We reply with the right questions, an initial read and next steps.",
-        f_name:"Name",
-        f_msg:"What are you trying to unlock?",
-        f_send:"Send",
-        f_note:"Integrations, products and sources can vary by sector/client. The goal is less noise and more signal.",
+        contact_title: "Request a conversation",
+        contact_sub: "Share your context. We respond with the right questions, an initial read and next steps.",
+        f_name: "Name",
+        f_msg: "What are you trying to unlock?",
+        f_send: "Send",
+        f_note: "Integrations and products may vary by sector/client.",
 
-        impact_1_t: "Measurable impact",
-        impact_1_d: "In the diagnostic, we estimate savings, recoveries and cash impact per scenario — with traceability of what changes and why.",
-        impact_2_t: "Lower risk",
-        impact_2_d: "Consistent rules, evidence and governance to reduce exposure and rework.",
-        impact_3_t: "Applied AI",
-        impact_3_d: "Assistants and scoring where it matters: classification, risk, opportunities and next steps.",
-
-        foot_note:"Content, products and integrations can vary by sector/client."
+        foot_note: " Content and integrations may vary by sector."
       }
     };
 
-    window.__i18nLang = "pt";
-    // ---------- Insights (rotating) ----------
+    // Insights (rotating)
     const insights = {
       pt: [
-        { t: "Drawback e RECOF: revise o ‘timing’ do crédito", d: "Muitos ganhos estão no quando você recupera/compensa — não só no quanto.", href: "#products" },
+        { t: "Drawback e RECOF: revise o timing do crédito", d: "Muitos ganhos estão no quando você recupera/compensa — não só no quanto.", href: "#products" },
         { t: "Compliance by design", d: "Governança + trilhas + evidências reduzem risco e retrabalho em fiscalizações.", href: "#company" },
         { t: "Classificação fiscal: trate como ativo", d: "NCM é decisão: impacta tributo, risco e elegibilidade de regimes.", href: "#products" },
         { t: "SPED como fonte de verdade", d: "Variações mês a mês revelam sinais por fornecedor/cliente e por operação.", href: "#platform" },
-        { t: "Acordos e regras internas", d: "Políticas claras + rastreabilidade diminuem dependência de heróis e achismos.", href: "#how" },
         { t: "IA aplicada onde dói", d: "Use IA para triagem de exceções, scoring de risco e recomendações — não para enfeite.", href: "#platform" },
         { t: "Trade-offs explícitos", d: "Compare cenários lado a lado: caixa x risco x execução. A melhor decisão nem sempre é a maior economia.", href: "#how" },
-        { t: "Rede (clientes e fornecedores) importa", d: "Otimização isolada perde valor. Traga sua cadeia para a mesma leitura.", href: "#platform" },
-        { t: "Auditoria e evidências", d: "Organize documentos e decisões por trilha: melhora resposta e reduz exposição.", href: "#company" },
-        { t: "Conteúdo como produto (parcerias)", d: "Curadoria por CNPJ e setor pode ser abastecida por parceiros (ex.: Boxnet) e virar sinal acionável.", href: "#products" },
-        { t: "Exceções primeiro", d: "O 80/20 está nas exceções: identifique desvios e foque onde há impacto.", href: "#how" },
-        { t: "Integrações sem atrito", d: "Conecte fontes e parceiros com governança: dados entram, decisão sai, execução mede valor.", href: "#platform" },
-        { t: "Risco não é opinião", d: "Com scoring por operação e evidências, risco vira número — e decisão fica defensável.", href: "#products" },
+        { t: "Rede importa", d: "Otimização isolada perde valor. Traga sua cadeia para a mesma leitura.", href: "#platform" },
         { t: "Tempo é caixa", d: "Atraso em apuração, retificação e recuperação de créditos tem custo real.", href: "#how" },
-        { t: "Roadmap de execução", d: "Plano tático com owners e marcos reduz a chance do projeto morrer na reunião.", href: "#how" },
-        { t: "Regimes especiais: governança", d: "RECOF/Drawback exigem consistência e controle de exceções — tecnologia + método.", href: "#products" },
-        { t: "Benchmark útil", d: "Não é buzzword: traduza automação, data lake e twin em decisão e execução.", href: "#benchmark" },
-        { t: "Menos ruído, mais sinal", d: "A operação precisa de 1 insight acionável por ciclo — não de um jornal por dia.", href: "#insights" },
-        { t: "Gestão de mudança", d: "Sem rotina e cadência, até a melhor tecnologia vira slide.", href: "#how" },
-        { t: "Diagnóstico rápido", d: "Comece estimando potencial e riscos com dados reais. Depois, priorize trilhas.", href: "#contact" }
+        { t: "Exceções primeiro", d: "O 80/20 está nas exceções: identifique desvios e foque onde há impacto.", href: "#how" },
+        { t: "Risco não é opinião", d: "Com scoring por operação e evidências, risco vira número — e decisão fica defensável.", href: "#products" }
       ],
       en: [
         { t: "Drawback & RECOF: revisit credit timing", d: "Many gains come from when you recover/offset — not only how much.", href: "#products" },
@@ -1371,77 +1578,72 @@ html[data-theme="dark"] .iconBtn svg{opacity:1}
         { t: "AI where it matters", d: "Use AI for exception triage, risk scoring and recommendations — not decoration.", href: "#platform" },
         { t: "Make trade-offs explicit", d: "Compare cash vs risk vs execution side by side. Biggest savings isn't always best.", href: "#how" },
         { t: "Your network matters", d: "Isolated optimization loses value. Bring suppliers and customers into the same lens.", href: "#platform" },
-        { t: "Evidence and audit trail", d: "Organize decisions as tracks. Faster answers, lower exposure.", href: "#company" },
-        { t: "Content as a product (partners)", d: "Company- and sector-specific curation can be supplied by partners (e.g., Boxnet).", href: "#products" },
+        { t: "Time is cash", d: "Delays in assessment, rectification and credit recovery have real cost.", href: "#how" },
         { t: "Start with exceptions", d: "The 80/20 often lives in exceptions. Find deviations and focus on impact.", href: "#how" },
-        { t: "No-friction integrations", d: "Data in, decisions out, execution measured — with governance.", href: "#platform" },
         { t: "Risk is not opinion", d: "Scoring by operation + evidence makes risk measurable and defensible.", href: "#products" }
       ]
     };
 
-    function setInsight(lang){
+    window.__i18nLang = "pt";
+
+    function setInsight(lang) {
       const list = insights[lang] || insights.pt;
       const pick = list[Math.floor(Math.random() * list.length)];
       const el = document.getElementById("insightText");
       const link = document.getElementById("insightLink");
-      if(!el || !link || !pick) return;
-      el.innerHTML = `<b style="color:var(--ink)">${pick.t}</b><br/>${pick.d}`;
+      if (!el || !link || !pick) return;
+      el.innerHTML = `<b>${pick.t}</b><br>${pick.d}`;
       link.setAttribute("href", pick.href || "#products");
     }
 
-
-    function applyLang(lang){
+    function applyLang(lang) {
       window.__i18nLang = lang;
       document.documentElement.lang = (lang === "en") ? "en" : "pt-BR";
-      // tagline
       document.getElementById('tagline').textContent = dict[lang].tagline;
 
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
+      document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if(dict[lang][key]) el.textContent = dict[lang][key];
-      });
-
-            // rotating insight
-      setInsight(lang);
-
-document.getElementById("langPT").classList.toggle("active", lang==="pt");
-      document.getElementById("langEN").classList.toggle("active", lang==="en");
-    }
-
-    document.getElementById("langPT").addEventListener("click", ()=>applyLang("pt"));
-    document.getElementById("langEN").addEventListener("click", ()=>applyLang("en"));
-
-    // ---------- Theme ----------
-    function setTheme(theme){
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("flowiq_theme", theme);
-
-      // Swap approved brand assets (logo + product icons) without reload
-      const isDark = theme === "dark";
-      const swapEls = document.querySelectorAll('[data-light][data-dark]');
-      swapEls.forEach(el=>{
-        const next = isDark ? el.getAttribute('data-dark') : el.getAttribute('data-light');
-        if(!next) return;
-        if(el.tagName === 'IMG'){
-          if(el.getAttribute('src') !== next) el.setAttribute('src', next);
-        } else {
-          el.style.backgroundImage = `url("${next}")`;
+        if (dict[lang][key]) {
+          if (key === 'hero_title') {
+            el.innerHTML = dict[lang][key];
+          } else {
+            el.textContent = dict[lang][key];
+          }
         }
       });
 
-      // Update toggle tooltip text (optional)
-      const t = document.getElementById("themeTooltip");
-      if(t){ t.textContent = isDark ? "Mudar para modo claro" : "Mudar para modo escuro"; }
+      setInsight(lang);
+      document.getElementById("langPT").classList.toggle("active", lang === "pt");
+      document.getElementById("langEN").classList.toggle("active", lang === "en");
     }
-    setTheme("light");
-    localStorage.setItem("flowiq_theme","light");
 
-    document.getElementById("themeToggle").addEventListener("click", ()=>{
+    document.getElementById("langPT").addEventListener("click", () => applyLang("pt"));
+    document.getElementById("langEN").addEventListener("click", () => applyLang("en"));
+
+    // Theme
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("flowiq_theme", theme);
+
+      const isDark = theme === "dark";
+      document.querySelectorAll('[data-light][data-dark]').forEach(el => {
+        const next = isDark ? el.getAttribute('data-dark') : el.getAttribute('data-light');
+        if (!next) return;
+        if (el.tagName === 'IMG') {
+          if (el.getAttribute('src') !== next) el.setAttribute('src', next);
+        }
+      });
+    }
+
+    // Initialize
+    const savedTheme = localStorage.getItem("flowiq_theme") || "light";
+    setTheme(savedTheme);
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
       const cur = document.documentElement.getAttribute("data-theme") || "light";
       setTheme(cur === "light" ? "dark" : "light");
     });
 
-    // default
     applyLang("pt");
   </script>
 </body>
