@@ -1725,31 +1725,32 @@
             <div class="formGrid">
               <div class="formField">
                 <label data-i18n="f_name">Nome</label>
-                <input type="text" required placeholder="Seu nome"/>
+                <input type="text" id="formName" name="name" required placeholder="Seu nome"/>
               </div>
               <div class="formField">
                 <label data-i18n="f_email">Email corporativo</label>
-                <input type="email" required placeholder="nome@empresa.com"/>
+                <input type="email" id="formEmail" name="email" required placeholder="nome@empresa.com"/>
               </div>
             </div>
             <div class="formGrid">
               <div class="formField">
                 <label data-i18n="f_company">Empresa</label>
-                <input type="text" placeholder="Nome da empresa"/>
+                <input type="text" id="formCompany" name="company" placeholder="Nome da empresa"/>
               </div>
               <div class="formField">
                 <label data-i18n="f_role">Cargo</label>
-                <input type="text" placeholder="Ex: CFO, Head de Tax..."/>
+                <input type="text" id="formRole" name="role" placeholder="Ex: CFO, Head de Tax..."/>
               </div>
             </div>
             <div class="formField">
               <label data-i18n="f_msg">Qual sua principal dor hoje?</label>
-              <textarea rows="3" placeholder="Ex: Não consigo simular impacto da Reforma, processo de Drawback é manual, não sei se estou deixando dinheiro na mesa..."></textarea>
+              <textarea id="formMessage" name="message" rows="3" placeholder="Ex: Não consigo simular impacto da Reforma, processo de Drawback é manual, não sei se estou deixando dinheiro na mesa..."></textarea>
             </div>
             <div class="formActions">
-              <button class="btn btnPrimary" type="submit" style="padding:16px 32px;" data-i18n="f_send">Solicitar diagnóstico gratuito</button>
+              <button class="btn btnPrimary" type="submit" id="formSubmit" style="padding:16px 32px;" data-i18n="f_send">Solicitar diagnóstico gratuito</button>
             </div>
-            <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:16px;" data-i18n="f_note">Resposta em até 24h úteis. Sem spam, sem vendedor insistente.</p>
+            <p id="formStatus" style="text-align:center;font-size:13px;margin-top:16px;display:none;"></p>
+            <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px;" data-i18n="f_note">Resposta em até 24h úteis. Sem spam, sem vendedor insistente.</p>
           </form>
         </div>
       </section>
@@ -2097,9 +2098,76 @@
         var cur = document.documentElement.getAttribute("data-theme") || "light";
         setTheme(cur === "light" ? "dark" : "light");
       };
+      
+      // Formulário de contato - envio por email
       document.getElementById("contactForm").onsubmit = function(e) {
         e.preventDefault();
-        alert(currentLang === 'en' ? 'Thanks! We will respond within 24 business hours.' : 'Obrigado! Responderemos em até 24h úteis.');
+        
+        var form = this;
+        var submitBtn = document.getElementById("formSubmit");
+        var statusEl = document.getElementById("formStatus");
+        
+        // Coletar dados
+        var name = document.getElementById("formName").value.trim();
+        var email = document.getElementById("formEmail").value.trim();
+        var company = document.getElementById("formCompany").value.trim();
+        var role = document.getElementById("formRole").value.trim();
+        var message = document.getElementById("formMessage").value.trim();
+        
+        // Validação básica
+        if (!name || !email) {
+          statusEl.style.display = "block";
+          statusEl.style.color = "#dc2626";
+          statusEl.textContent = currentLang === 'en' ? 'Please fill in all required fields.' : 'Por favor, preencha todos os campos obrigatórios.';
+          return;
+        }
+        
+        // Desabilitar botão durante envio
+        submitBtn.disabled = true;
+        submitBtn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
+        
+        // Montar corpo do email
+        var subject = encodeURIComponent('[FLOWIQ] Solicitação de Diagnóstico - ' + company);
+        var body = encodeURIComponent(
+          'SOLICITAÇÃO DE DIAGNÓSTICO FLOWIQ\n' +
+          '================================\n\n' +
+          'Nome: ' + name + '\n' +
+          'Email: ' + email + '\n' +
+          'Empresa: ' + (company || 'Não informado') + '\n' +
+          'Cargo: ' + (role || 'Não informado') + '\n\n' +
+          'Principal dor:\n' + (message || 'Não informado') + '\n\n' +
+          '--------------------------------\n' +
+          'Enviado via site FLOWIQ'
+        );
+        
+        // Abrir cliente de email
+        var mailtoLink = 'mailto:contato@flowiqbr.com.br?subject=' + subject + '&body=' + body;
+        
+        // Criar link temporário e clicar
+        var tempLink = document.createElement('a');
+        tempLink.href = mailtoLink;
+        tempLink.click();
+        
+        // Mostrar sucesso e limpar formulário
+        setTimeout(function() {
+          statusEl.style.display = "block";
+          statusEl.style.color = "#16a34a";
+          statusEl.textContent = currentLang === 'en' 
+            ? '✓ Email client opened! Please send the message. We will respond within 24h.' 
+            : '✓ Cliente de email aberto! Por favor, envie a mensagem. Responderemos em até 24h.';
+          
+          // Limpar formulário
+          form.reset();
+          
+          // Restaurar botão
+          submitBtn.disabled = false;
+          submitBtn.textContent = currentLang === 'en' ? 'Request free diagnosis' : 'Solicitar diagnóstico gratuito';
+          
+          // Esconder mensagem após 8 segundos
+          setTimeout(function() {
+            statusEl.style.display = "none";
+          }, 8000);
+        }, 500);
       };
 
       var savedTheme = "light";
