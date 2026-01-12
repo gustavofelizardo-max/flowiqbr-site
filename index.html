@@ -2099,7 +2099,7 @@
         setTheme(cur === "light" ? "dark" : "light");
       };
       
-      // Formulário de contato - envio por email
+      // Formulário de contato - envio via Formspree
       document.getElementById("contactForm").onsubmit = function(e) {
         e.preventDefault();
         
@@ -2124,50 +2124,63 @@
         
         // Desabilitar botão durante envio
         submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
         submitBtn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
         
-        // Montar corpo do email
-        var subject = encodeURIComponent('[FLOWIQ] Solicitação de Diagnóstico - ' + company);
-        var body = encodeURIComponent(
-          'SOLICITAÇÃO DE DIAGNÓSTICO FLOWIQ\n' +
-          '================================\n\n' +
-          'Nome: ' + name + '\n' +
-          'Email: ' + email + '\n' +
-          'Empresa: ' + (company || 'Não informado') + '\n' +
-          'Cargo: ' + (role || 'Não informado') + '\n\n' +
-          'Principal dor:\n' + (message || 'Não informado') + '\n\n' +
-          '--------------------------------\n' +
-          'Enviado via site FLOWIQ'
-        );
+        // Preparar dados para envio
+        var formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("company", company || "Não informado");
+        formData.append("role", role || "Não informado");
+        formData.append("message", message || "Não informado");
+        formData.append("_subject", "[FLOWIQ] Solicitação de Diagnóstico - " + (company || name));
+        formData.append("_replyto", email);
         
-        // Abrir cliente de email
-        var mailtoLink = 'mailto:contato@flowiqbr.com.br?subject=' + subject + '&body=' + body;
-        
-        // Criar link temporário e clicar
-        var tempLink = document.createElement('a');
-        tempLink.href = mailtoLink;
-        tempLink.click();
-        
-        // Mostrar sucesso e limpar formulário
-        setTimeout(function() {
+        // Enviar via Formspree
+        // IMPORTANTE: Substitua YOUR_FORM_ID pelo ID do seu formulário Formspree
+        fetch("https://formspree.io/f/xykkyjqd", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json"
+          }
+        })
+        .then(function(response) {
+          if (response.ok) {
+            // Sucesso
+            statusEl.style.display = "block";
+            statusEl.style.color = "#16a34a";
+            statusEl.style.fontWeight = "600";
+            statusEl.textContent = currentLang === 'en' 
+              ? '✓ Message sent successfully! We will respond within 24 business hours.' 
+              : '✓ Mensagem enviada com sucesso! Responderemos em até 24h úteis.';
+            
+            // Limpar formulário
+            form.reset();
+          } else {
+            throw new Error("Erro no envio");
+          }
+        })
+        .catch(function(error) {
+          // Erro - fallback para mailto
           statusEl.style.display = "block";
-          statusEl.style.color = "#16a34a";
-          statusEl.textContent = currentLang === 'en' 
-            ? '✓ Email client opened! Please send the message. We will respond within 24h.' 
-            : '✓ Cliente de email aberto! Por favor, envie a mensagem. Responderemos em até 24h.';
-          
-          // Limpar formulário
-          form.reset();
-          
+          statusEl.style.color = "#f59e0b";
+          statusEl.innerHTML = currentLang === 'en' 
+            ? 'Connection issue. <a href="mailto:contato@flowiqbr.com.br?subject=[FLOWIQ] Diagnóstico&body=Nome: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AEmpresa: ' + encodeURIComponent(company) + '%0ACargo: ' + encodeURIComponent(role) + '%0AMensagem: ' + encodeURIComponent(message) + '" style="color:#2563eb;text-decoration:underline;">Click here to send by email</a>' 
+            : 'Problema de conexão. <a href="mailto:contato@flowiqbr.com.br?subject=[FLOWIQ] Diagnóstico&body=Nome: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AEmpresa: ' + encodeURIComponent(company) + '%0ACargo: ' + encodeURIComponent(role) + '%0AMensagem: ' + encodeURIComponent(message) + '" style="color:#2563eb;text-decoration:underline;">Clique aqui para enviar por email</a>';
+        })
+        .finally(function() {
           // Restaurar botão
           submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
           submitBtn.textContent = currentLang === 'en' ? 'Request free diagnosis' : 'Solicitar diagnóstico gratuito';
           
-          // Esconder mensagem após 8 segundos
+          // Esconder mensagem após 10 segundos
           setTimeout(function() {
             statusEl.style.display = "none";
-          }, 8000);
-        }, 500);
+          }, 10000);
+        });
       };
 
       var savedTheme = "light";
