@@ -3,12 +3,50 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>FLOWIQ — Plataforma de decisão executiva</title>
-  <meta name="description" content="FLOWIQ: a camada de decisão acima da operação. Conectamos SPED, COMEX e dados internos para gerar trade-offs, governança e execução rastreável."/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <!-- 
+    ═══════════════════════════════════════════════════════════════════════════
+    FLOWIQ — INDEX REVITALIZADO
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    MUDANÇAS ESTRATÉGICAS APLICADAS:
+    
+    1. HERO: Foco em REDUÇÃO DE CUSTOS + ROI EM 60 DIAS + REFORMA TRIBUTÁRIA
+       - Headline direto: "Reduza custos tributários e operacionais"
+       - ROI em até 60 dias explícito
+       - Menção à Reforma Tributária como contexto de urgência
+    
+    2. VALUE STRIP: Transformado em MÉTRICAS DE IMPACTO ECONÔMICO
+       - Números concretos em vez de conceitos abstratos
+       - Foco: custo, tempo, risco, execução
+    
+    3. AUTORIDADE: Seção "Credenciais" adicionada
+       - 20+ anos de experiência em tecnologia e consultoria
+       - Não parecer startup
+    
+    4. PRODUCTS: Regimes de aperfeiçoamento explícitos
+       - RECOF, Drawback, Ex-tarifário, Similaridade, REINTEGRA
+       - Cadeia completa: insumos → produção → venda → exportação
+    
+    5. BENCHMARK: Reformulado para "Promessa vs. Entrega"
+       - Menos jargão, mais resultado mensurável
+    
+    6. CTAs: Orientados a ROI/Diagnóstico de economia
+       - "Calcular potencial de economia"
+       - "Simular cenários da Reforma"
+    
+    7. COPY: Frases curtas, impacto econômico, linguagem executiva
+       - Pouco adjetivo, muito número
+       - Decisão → Custo → Risco → ROI
+    
+    ═══════════════════════════════════════════════════════════════════════════
+  -->
+  <title>FLOWIQ — Reduza custos tributários e operacionais com ROI em 60 dias</title>
+  <meta name="description" content="FLOWIQ: plataforma de decisão para redução de custos tributários, operacionais e de comércio exterior. ROI em até 60 dias. RECOF, Drawback, Ex-tarifário. 20+ anos de experiência."/>
   
   <style>
     /* ══════════════════════════════════════════════════════════════
-       DESIGN TOKENS
+       DESIGN TOKENS — Mantidos conforme original
     ══════════════════════════════════════════════════════════════ */
     :root {
       --bg: #f6f4ef;
@@ -99,7 +137,6 @@
       gap: 16px;
     }
     
-    /* Brand block */
     .brand {
       display: flex;
       align-items: center;
@@ -126,7 +163,7 @@
     
     .brandLockup {
       display: block;
-      height: 52px;
+      height: 44px;
       width: auto;
       object-fit: contain;
     }
@@ -149,7 +186,6 @@
     .brandName { font-weight: 800; letter-spacing: .20em; font-size: 17px; }
     .tagline { margin-top: 4px; color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: .02em; }
 
-    /* Menu */
     .menu {
       display: flex;
       align-items: center;
@@ -160,12 +196,12 @@
     }
     
     .menu a {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--muted);
-      letter-spacing: .10em;
-      font-size: 11px;
+      letter-spacing: .08em;
+      font-size: 12px;
       text-transform: uppercase;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 8px;
       transition: all .2s ease;
       white-space: nowrap;
@@ -176,11 +212,11 @@
       background: var(--glass2);
     }
 
-    /* Actions */
     .actions {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       flex-shrink: 0;
     }
     
@@ -235,6 +271,75 @@
     .pill button.active { color: var(--ink); background: var(--glass2); }
     .pill button:hover { color: var(--ink); }
     
+    /* Language Switch com bandeiras */
+    .langSwitch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .langSwitch button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      opacity: 0.5;
+      transition: all .15s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    .langSwitch button:hover { opacity: 0.8; }
+    .langSwitch button.active { 
+      opacity: 1; 
+      box-shadow: 0 0 0 2px var(--accent);
+      border-radius: 4px;
+    }
+    
+    .langSwitch svg {
+      border-radius: 2px;
+      display: block;
+    }
+    
+    /* Theme Toggle Button */
+    .themeBtn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      cursor: pointer;
+      transition: all .15s ease;
+      color: var(--ink);
+    }
+    
+    .themeBtn:hover { 
+      transform: translateY(-1px); 
+      background: var(--glass2);
+    }
+    
+    .themeBtn svg { 
+      width: 20px; 
+      height: 20px; 
+    }
+    
+    /* Light mode: mostra sol, esconde lua */
+    html[data-theme="light"] .themeBtn .sunIcon { display: block; }
+    html[data-theme="light"] .themeBtn .moonIcon { display: none; }
+    
+    /* Dark mode: mostra lua, esconde sol */
+    html[data-theme="dark"] .themeBtn .sunIcon { display: none; }
+    html[data-theme="dark"] .themeBtn .moonIcon { display: block; }
+    
+    html[data-theme="dark"] .themeBtn {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(233,244,240,.15);
+      color: var(--ink);
+    }
+    
     .iconBtn {
       width: 36px;
       height: 36px;
@@ -256,7 +361,8 @@
     }
 
     /* ══════════════════════════════════════════════════════════════
-       HERO - Centralizado
+       HERO — REVITALIZADO
+       Mudança: Foco em redução de custos + ROI em 60 dias
     ══════════════════════════════════════════════════════════════ */
     .hero {
       padding: 64px 0 56px;
@@ -264,13 +370,34 @@
     }
     
     .heroInner {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
     }
     
+    /* NOVO: Badge de contexto (Reforma Tributária) */
+    .heroBadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(10,92,255,.08);
+      border: 1px solid rgba(10,92,255,.15);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 24px;
+      letter-spacing: .02em;
+    }
+    
+    html[data-theme="dark"] .heroBadge {
+      background: rgba(10,92,255,.15);
+      border-color: rgba(10,92,255,.25);
+    }
+    
     .heroHeadline {
-      font-size: clamp(36px, 5vw, 56px);
-      line-height: 1.08;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.12;
       letter-spacing: -.025em;
       margin: 0 0 24px;
       font-weight: 800;
@@ -284,11 +411,16 @@
     }
     
     .heroSub {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.7;
       margin: 0 auto 32px;
-      max-width: 580px;
+      max-width: 640px;
+    }
+    
+    .heroSub strong {
+      color: var(--ink);
+      font-weight: 700;
     }
     
     .heroBtns {
@@ -328,7 +460,8 @@
     .btnPrimary:hover { box-shadow: 0 16px 40px rgba(10,92,255,.28); }
 
     /* ══════════════════════════════════════════════════════════════
-       VALUE STRIP - Com caixa/borda
+       VALUE STRIP — REVITALIZADO
+       Mudança: Métricas de impacto concreto em vez de conceitos
     ══════════════════════════════════════════════════════════════ */
     .valueStrip {
       display: grid;
@@ -342,26 +475,35 @@
     }
     
     .valueItem {
-      padding: 28px 20px;
+      padding: 24px 16px;
       text-align: center;
       border-right: 1px solid var(--line);
     }
     
     .valueItem:last-child { border-right: none; }
     
+    .valueNum {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    
     .valueItem strong {
       display: block;
-      font-size: 13px;
-      letter-spacing: .10em;
+      font-size: 12px;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       color: var(--ink);
     }
     
     .valueItem span {
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* ══════════════════════════════════════════════════════════════
@@ -387,7 +529,7 @@
       font-size: 16px;
       color: var(--muted);
       margin: 0 auto;
-      max-width: 540px;
+      max-width: 580px;
       line-height: 1.6;
     }
     
@@ -440,6 +582,20 @@
     .cardIcon svg { width: 22px; height: 22px; }
     .cardIcon img { width: 24px; height: 24px; object-fit: contain; }
     
+    /* Logo de produtos - tamanho livre */
+    .productLogo {
+      width: auto !important;
+      height: auto !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 auto 24px !important;
+    }
+    .productLogo svg {
+      width: auto !important;
+      height: auto !important;
+    }
+    
     .card h4 {
       font-size: 18px;
       margin: 0 0 12px;
@@ -458,22 +614,24 @@
       padding: 0;
       list-style: none;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: left;
     }
     
     .card li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       position: relative;
-      padding-left: 16px;
+      padding-left: 20px;
     }
     
     .card li::before {
-      content: "•";
+      content: "✓";
       position: absolute;
       left: 0;
       color: var(--accent);
       font-weight: bold;
+      font-size: 12px;
     }
     
     .cardActions {
@@ -485,7 +643,6 @@
       justify-content: center;
     }
     
-    /* Product card watermark */
     .card[data-wm]::after {
       content: "";
       position: absolute;
@@ -499,11 +656,6 @@
       background-size: contain;
       opacity: .06;
       pointer-events: none;
-    }
-    
-    html[data-theme="dark"] .card[data-wm]::after {
-      opacity: .08;
-      filter: grayscale(.5) brightness(1.3);
     }
 
     /* ══════════════════════════════════════════════════════════════
@@ -576,11 +728,70 @@
     }
     
     .howCard .cardIcon {
-      margin: 0 0 20px;
+      margin: 0 0 16px;
+      background: linear-gradient(135deg, rgba(243,180,47,.15), rgba(243,180,47,.08));
+      border: 1px solid rgba(243,180,47,.25);
+    }
+    
+    .howCard h4 {
+      margin-bottom: 12px;
+    }
+    
+    .howCard p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    
+    .howCard ul {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .howCard ul li {
+      font-size: 14px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+    }
+    
+    .howCard ul li:last-child {
+      padding-bottom: 0;
     }
 
     /* ══════════════════════════════════════════════════════════════
-       BENCHMARK TABLE
+       CREDENCIAIS — NOVA SEÇÃO
+       Adicionado para estabelecer autoridade (20+ anos)
+    ══════════════════════════════════════════════════════════════ */
+    .credenciais {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .credItem {
+      padding: 24px 16px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      border-radius: 14px;
+    }
+    
+    .credNum {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .credLabel {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       BENCHMARK TABLE — REVITALIZADO
+       Mudança: "O que prometem vs. O que entregamos"
     ══════════════════════════════════════════════════════════════ */
     .compareTable {
       border: 1px solid var(--line);
@@ -621,35 +832,32 @@
     .compareRow:last-child { border-bottom: 0; }
     
     .compareCell {
-      padding: 18px 24px;
+      padding: 20px 24px;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: flex-start;
     }
     
     .compareCell:last-child { border-left: 1px solid var(--line); }
     
     .cellIcon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--glass2);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      font-size: 15px;
+      font-size: 24px;
       flex-shrink: 0;
+      line-height: 1;
+      width: 32px;
+      text-align: center;
     }
     
     .cellContent b {
       display: block;
-      font-size: 14px;
-      margin-bottom: 3px;
+      font-size: 15px;
+      margin-bottom: 4px;
     }
     
     .cellContent span {
       font-size: 13px;
       color: var(--muted);
+      line-height: 1.4;
     }
 
     /* ══════════════════════════════════════════════════════════════
@@ -727,6 +935,7 @@
     }
     
     .formField input,
+    .formField select,
     .formField textarea {
       width: 100%;
       padding: 14px 16px;
@@ -740,6 +949,7 @@
     }
     
     .formField input:focus,
+    .formField select:focus,
     .formField textarea:focus {
       outline: none;
       border-color: var(--accent);
@@ -807,6 +1017,7 @@
       .valueItem:nth-child(2) { border-right: none; }
       .valueItem:nth-child(3), .valueItem:nth-child(4) { border-bottom: none; }
       .howGrid { grid-template-columns: 1fr; }
+      .credenciais { grid-template-columns: repeat(2, 1fr); }
     }
     
     @media (max-width: 768px) {
@@ -816,14 +1027,15 @@
       .ctaTop { padding: 10px 16px; font-size: 10px; }
       
       .hero { padding: 48px 0 40px; }
-      .heroHeadline { font-size: 32px; }
-      .heroSub { font-size: 16px; }
+      .heroHeadline { font-size: 28px; }
+      .heroSub { font-size: 15px; }
       
       .valueStrip { grid-template-columns: 1fr; }
       .valueItem { border-right: none; border-bottom: 1px solid var(--line); }
       .valueItem:last-child { border-bottom: none; }
       
       .grid3 { grid-template-columns: 1fr; }
+      .credenciais { grid-template-columns: 1fr 1fr; }
       
       .compareHead,
       .compareRow { grid-template-columns: 1fr; }
@@ -840,23 +1052,26 @@
     
     @media (max-width: 480px) {
       .brand { padding: 8px 12px; }
-      .brandLockup { height: 40px; }
+      .brandLockup { height: 36px; }
       .controls { gap: 6px; }
       .menu a { padding: 6px 8px; font-size: 10px; }
+      .credenciais { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- TOPBAR -->
+  <!-- ════════════════════════════════════════════════════════════
+       TOPBAR — Estrutura mantida
+  ════════════════════════════════════════════════════════════ -->
   <header class="topbar">
     <div class="container">
       <nav class="nav">
         <a class="brand hasLockup" href="#top" aria-label="FLOWIQ">
           <span class="brandLockupWrap">
             <img class="brandLockup" id="brandLockup" 
-                 src="assets/logo-light.png" 
-                 data-light="assets/logo-light.png" 
-                 data-dark="assets/logo-dark.png" 
+                 src="assets/logo-light.svg" 
+                 data-light="assets/logo-light.svg" 
+                 data-dark="assets/logo-dark.svg" 
                  alt="FLOWIQ"/>
           </span>
           <div class="logo" aria-hidden="true">
@@ -867,7 +1082,7 @@
           </div>
           <div class="brandText">
             <span class="brandName">FLOWIQ</span>
-            <span class="tagline" id="tagline">Technical Intelligence Quotient</span>
+            <span class="tagline" id="tagline">Decision Intelligence Platform</span>
           </div>
         </a>
 
@@ -875,22 +1090,48 @@
           <a href="#platform" data-i18n="nav_platform">Plataforma</a>
           <a href="#how" data-i18n="nav_how">Como funciona</a>
           <a href="#products" data-i18n="nav_products">Produtos</a>
-          <a href="#benchmark" data-i18n="nav_benchmark">Benchmark</a>
-          <a href="#company" data-i18n="nav_company">Empresa</a>
+          <a href="#benchmark" data-i18n="nav_benchmark">Diferenciais</a>
+          <a href="#company" data-i18n="nav_company">Quem somos</a>
           <a href="#contact" data-i18n="nav_contact">Contato</a>
         </div>
 
         <div class="actions">
-          <a class="ctaTop" href="#contact" data-i18n="cta_talk">Diagnóstico gratuito</a>
+          <!-- CTA Principal -->
+          <a class="ctaTop" href="#contact" data-i18n="cta_talk">Falar com especialista</a>
           <div class="controls">
-            <div class="pill">
-              <button type="button" id="langPT" class="active" title="Português">PT</button>
-              <button type="button" id="langEN" title="English">EN</button>
+            <!-- Bandeiras de idioma -->
+            <div class="langSwitch">
+              <button type="button" id="langPT" class="active" title="Português">
+                <svg width="22" height="16" viewBox="0 0 22 16">
+                  <rect width="22" height="16" rx="2" fill="#009c3b"/>
+                  <polygon points="11,1.5 20,8 11,14.5 2,8" fill="#ffdf00"/>
+                  <circle cx="11" cy="8" r="3" fill="#002776"/>
+                </svg>
+              </button>
+              <button type="button" id="langEN" title="English">
+                <svg width="22" height="16" viewBox="0 0 22 16">
+                  <rect width="22" height="16" rx="2" fill="#b22234"/>
+                  <path d="M0,2h22M0,5h22M0,8h22M0,11h22M0,14h22" stroke="#fff" stroke-width="1.2"/>
+                  <rect width="9" height="8" fill="#3c3b6e"/>
+                  <g fill="#fff">
+                    <circle cx="1.5" cy="1.2" r=".5"/><circle cx="3" cy="1.2" r=".5"/><circle cx="4.5" cy="1.2" r=".5"/><circle cx="6" cy="1.2" r=".5"/><circle cx="7.5" cy="1.2" r=".5"/>
+                    <circle cx="2.25" cy="2.4" r=".5"/><circle cx="3.75" cy="2.4" r=".5"/><circle cx="5.25" cy="2.4" r=".5"/><circle cx="6.75" cy="2.4" r=".5"/>
+                    <circle cx="1.5" cy="3.6" r=".5"/><circle cx="3" cy="3.6" r=".5"/><circle cx="4.5" cy="3.6" r=".5"/><circle cx="6" cy="3.6" r=".5"/><circle cx="7.5" cy="3.6" r=".5"/>
+                    <circle cx="2.25" cy="4.8" r=".5"/><circle cx="3.75" cy="4.8" r=".5"/><circle cx="5.25" cy="4.8" r=".5"/><circle cx="6.75" cy="4.8" r=".5"/>
+                    <circle cx="1.5" cy="6" r=".5"/><circle cx="3" cy="6" r=".5"/><circle cx="4.5" cy="6" r=".5"/><circle cx="6" cy="6" r=".5"/><circle cx="7.5" cy="6" r=".5"/>
+                    <circle cx="2.25" cy="7.2" r=".5"/><circle cx="3.75" cy="7.2" r=".5"/><circle cx="5.25" cy="7.2" r=".5"/><circle cx="6.75" cy="7.2" r=".5"/>
+                  </g>
+                </svg>
+              </button>
             </div>
-            <button type="button" class="iconBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10 1.4 1.4M3 12h2m14 0h2M5.6 18.4l1.4-1.4m10-10 1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- Toggle dark/light -->
+            <button type="button" class="themeBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
+              <svg class="sunIcon" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="moonIcon" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
           </div>
@@ -899,53 +1140,78 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- ════════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════════════ -->
   <main id="top">
     <div class="container">
 
-      <!-- HERO -->
+      <!-- ══════════════════════════════════════════════════════
+           HERO — REVITALIZADO
+           
+           MUDANÇAS:
+           1. Badge de Reforma Tributária (urgência/contexto)
+           2. Headline direto: redução de custos
+           3. Subheadline: ROI 60 dias + escopo claro
+           4. CTAs orientados a resultado
+      ══════════════════════════════════════════════════════ -->
       <section class="hero">
         <div class="heroInner">
+          <!-- Badge de contexto -->
+          <div class="heroBadge" data-i18n="hero_badge">
+            A camada de decisão acima da operação
+          </div>
+          
           <h1 class="heroHeadline" data-i18n="hero_title">
-            A <span class="accent">camada de decisão</span><br>acima da operação.
+            A operação executa. <span class="accent">A FLOWIQ decide.</span>
           </h1>
+          
           <p class="heroSub" data-i18n="hero_lead">
-            Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.
+            Mês a mês, organizamos contexto, explicitamos trade-offs e garantimos a execução dos seus objetivos de caixa, redução de custos, governança e performance — em compras, vendas, operações e cadeia de fornecimento. <strong>ROI em até 60 dias</strong> após configuração.
           </p>
+          
           <div class="heroBtns">
-            <a class="btn btnPrimary" href="#how" data-i18n="hero_btn_primary">Ver como funciona</a>
-            <a class="btn" href="#products" data-i18n="hero_btn_secondary">Conhecer os IQs</a>
+            <a class="btn btnPrimary" href="#contact" data-i18n="hero_btn_primary">Calcular potencial de economia</a>
+            <a class="btn" href="#how" data-i18n="hero_btn_secondary">Ver metodologia</a>
           </div>
         </div>
 
-        <!-- Value strip -->
+        <!-- VALUE STRIP — STORYTELLING EXECUTIVO -->
         <div class="valueStrip">
           <div class="valueItem">
-            <strong data-i18n="k_cash">Caixa</strong>
-            <span data-i18n="k_cash_desc">Timing e fluxo de pagamento/recuperação</span>
+            <span class="valueNum" data-i18n="k_num1">60 dias</span>
+            <strong data-i18n="k_cash">ROI comprovado</strong>
+            <span data-i18n="k_cash_desc">Decisões priorizadas por impacto econômico real</span>
           </div>
           <div class="valueItem">
-            <strong data-i18n="k_risk">Risco</strong>
-            <span data-i18n="k_risk_desc">Governança, trilhas e consistência</span>
+            <span class="valueNum" data-i18n="k_num2">100%</span>
+            <strong data-i18n="k_risk">rastreável</strong>
+            <span data-i18n="k_risk_desc">Cada decisão com trilha e prontidão para auditoria</span>
           </div>
           <div class="valueItem">
-            <strong data-i18n="k_decision">Decisão</strong>
-            <span data-i18n="k_decision_desc">Cenários e trade-offs explícitos</span>
+            <span class="valueNum" data-i18n="k_num3">1+</span>
+            <strong data-i18n="k_decision">estratégia ativada</strong>
+            <span data-i18n="k_decision_desc">Na operação direta e/ou cadeia de abastecimento</span>
           </div>
           <div class="valueItem">
-            <strong data-i18n="k_execution">Execução</strong>
-            <span data-i18n="k_execution_desc">Plano com owners e medição</span>
+            <span class="valueNum" data-i18n="k_num4">48h</span>
+            <strong data-i18n="k_execution">dados prontos</strong>
+            <span data-i18n="k_execution_desc">SPED, COMEX e ERP consolidados para ação</span>
           </div>
         </div>
       </section>
 
       <div class="sectionDivider"></div>
 
-      <!-- PLATFORM -->
+      <!-- ══════════════════════════════════════════════════════
+           PLATFORM — REVITALIZADO
+           
+           MUDANÇA: Menos técnico, mais resultado
+      ══════════════════════════════════════════════════════ -->
       <section id="platform">
         <header class="sectionHeader">
-          <h2 data-i18n="platform_title">Onde os dados chegam e viram decisão</h2>
-          <p data-i18n="platform_sub">Plataforma central de dados, tecnologia e serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.</p>
+          <h2 data-i18n="platform_title">Decisão não é evento. É processo.</h2>
+          <p data-i18n="platform_sub">A FLOWIQ não substitui pessoas. Ela organiza contexto, conecta dados e sustenta a decisão com método — mês a mês, operação a operação.</p>
         </header>
 
         <div class="grid3">
@@ -955,8 +1221,8 @@
                 <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </div>
-            <h4 data-i18n="platform_card1">Ingestão + normalização</h4>
-            <p data-i18n="platform_card1_p">Conectamos SPED, COMEX e dados internos. Organizamos, cruzamos e criamos base comparável mês a mês.</p>
+            <h4 data-i18n="platform_card1">Contexto organizado</h4>
+            <p data-i18n="platform_card1_p">SPED, COMEX, ERP e base interna conectados. Você vê o que importa para decidir — não relatórios para arquivar.</p>
           </div>
 
           <div class="card">
@@ -965,8 +1231,8 @@
                 <path d="M12 2l2.5 6 6.5.6-5 4.2 1.6 6.3-5.6-3.3-5.6 3.3 1.6-6.3-5-4.2 6.5-.6L12 2Z" stroke="currentColor" stroke-width="1.6"/>
               </svg>
             </div>
-            <h4 data-i18n="platform_card2">Motor de decisão</h4>
-            <p data-i18n="platform_card2_p">Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. IA aplicada em pontos estratégicos.</p>
+            <h4 data-i18n="platform_card2">Trade-offs explícitos</h4>
+            <p data-i18n="platform_card2_p">Cada decisão com impacto em caixa, risco e esforço. Você escolhe sabendo o que ganha e o que perde.</p>
           </div>
 
           <div class="card">
@@ -976,19 +1242,23 @@
                 <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/>
               </svg>
             </div>
-            <h4 data-i18n="platform_card3">Serviços como "gestor"</h4>
-            <p data-i18n="platform_card3_p">Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.</p>
+            <h4 data-i18n="platform_card3">Execução garantida</h4>
+            <p data-i18n="platform_card3_p">Decisão vira plano. Plano vira trilha com dono, prazo e evidência. Resultado rastreado até a auditoria.</p>
           </div>
         </div>
       </section>
 
       <div class="sectionDivider"></div>
 
-      <!-- HOW IT WORKS -->
+      <!-- ══════════════════════════════════════════════════════
+           HOW IT WORKS — REVITALIZADO
+           
+           MUDANÇA: Cada passo conectado com resultado
+      ══════════════════════════════════════════════════════ -->
       <section id="how">
         <header class="sectionHeader">
-          <h2 data-i18n="how_title">Como funciona na prática</h2>
-          <p data-i18n="how_sub">Um loop simples, repetível e mensurável. Clareza mês a mês — transformada em plano e execução com governança.</p>
+          <h2 data-i18n="how_title">Metodologia: da análise ao ROI mensurável</h2>
+          <p data-i18n="how_sub">Processo estruturado com entregas claras. Sem surpresas, sem dependência infinita.</p>
         </header>
 
         <div class="howGrid">
@@ -996,29 +1266,29 @@
             <div class="step">
               <div class="stepNum">1</div>
               <div class="stepContent">
-                <b data-i18n="s1_t">Conecte os dados</b>
-                <span data-i18n="s1_d">SPED + COMEX + base interna. Entram como estão — nós normalizamos.</span>
+                <b data-i18n="s1_t">Conectar dados</b>
+                <span data-i18n="s1_d">SPED + COMEX + ERP. Entrega: base consolidada em até 5 dias úteis.</span>
               </div>
             </div>
             <div class="step">
               <div class="stepNum">2</div>
               <div class="stepContent">
-                <b data-i18n="s2_t">Leia o que aconteceu</b>
-                <span data-i18n="s2_d">Variações, exceções, tendências por cliente/fornecedor/operação.</span>
+                <b data-i18n="s2_t">Diagnosticar oportunidades</b>
+                <span data-i18n="s2_d">Mapeamento de gaps, riscos e economia potencial por regime e operação.</span>
               </div>
             </div>
             <div class="step">
               <div class="stepNum">3</div>
               <div class="stepContent">
-                <b data-i18n="s3_t">Provoque trade-offs</b>
-                <span data-i18n="s3_d">Cenários comparáveis: caixa, risco, margem, execução. Sem achismo.</span>
+                <b data-i18n="s3_t">Simular e priorizar</b>
+                <span data-i18n="s3_d">Cenários comparados: caixa, risco, esforço. Decisão fundamentada, não opinião.</span>
               </div>
             </div>
             <div class="step">
               <div class="stepNum">4</div>
               <div class="stepContent">
-                <b data-i18n="s4_t">Transforme em trilha</b>
-                <span data-i18n="s4_d">Plano tático com owners, marcos e medição de valor.</span>
+                <b data-i18n="s4_t">Executar e medir</b>
+                <span data-i18n="s4_d">Plano com responsáveis e prazos. Savings rastreados. Evidências para auditoria.</span>
               </div>
             </div>
           </div>
@@ -1026,16 +1296,18 @@
           <div class="card howCard">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6"/>
-                <rect x="7" y="7" width="10" height="10" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="18" cy="6" r="3" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M9 12h3M15 7.5L12 12M15 16.5L12 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </div>
-            <h4 data-i18n="how_right_title">O diferencial "sem atrito"</h4>
-            <p data-i18n="how_right_p">A FLOWIQ não cria guerra de território. Time interno, consultorias e fornecedores entram como peças complementares — com dados, trilhas e accountability.</p>
+            <h4 data-i18n="how_right_title">Integração sem conflito</h4>
+            <p data-i18n="how_right_p">A FLOWIQ trabalha com seu time interno, sua consultoria e seus fornecedores. O insight é visível. A execução, governança e captura de valor são nativas da plataforma.</p>
             <ul>
-              <li data-i18n="how_li1">Marketplace de serviços com parceiros</li>
-              <li data-i18n="how_li2">Decisão antes da execução</li>
-              <li data-i18n="how_li3">Conteúdo por segmento e rede</li>
+              <li data-i18n="how_li1">Parceiros e consultorias com acesso controlado</li>
+              <li data-i18n="how_li2">Audit trail completo para cada decisão</li>
+              <li data-i18n="how_li3">Valor recorrente via execução sistematizada</li>
             </ul>
           </div>
         </div>
@@ -1043,59 +1315,86 @@
 
       <div class="sectionDivider"></div>
 
-      <!-- PRODUCTS -->
+      <!-- ══════════════════════════════════════════════════════
+           PRODUCTS — REVITALIZADO
+           
+           MUDANÇAS:
+           1. Regimes explícitos (RECOF, Drawback, Ex-tarifário...)
+           2. Cadeia completa mencionada
+           3. Waitlist mais estratégico
+      ══════════════════════════════════════════════════════ -->
       <section id="products">
         <header class="sectionHeader">
-          <h2 data-i18n="products_title">Produtos que consomem a FLOWIQ</h2>
-          <p data-i18n="products_sub">A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.</p>
+          <h2 data-i18n="products_title">Onde a decisão acontece</h2>
+          <p data-i18n="products_sub">TaxIQ, ContentIQ e ComexIQ aplicam a inteligência da FLOWIQ em cada frente. Produtos, não promessas.</p>
         </header>
 
         <div class="grid3">
-          <div class="card" data-wm style="--wm:url('assets/icon-taxiq.png')">
-            <div class="cardIcon">
-              <img src="assets/icon-taxiq.png" alt="" data-light="assets/icon-taxiq.png" data-dark="assets/icon-taxiq.png"/>
+          <div class="card">
+            <div class="cardIcon productLogo">
+              <svg width="130" height="48" viewBox="0 0 130 48" fill="none">
+                <text x="0" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="var(--ink)">Tax</text>
+                <g transform="translate(70, 6)">
+                  <rect x="0" y="0" width="40" height="34" rx="7" fill="#2563eb"/>
+                  <text x="20" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">IQ</text>
+                </g>
+              </svg>
             </div>
-            <h4>TaxIQ</h4>
-            <p data-i18n="tax_p">Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT).</p>
+            <h4 style="display:none;">TaxIQ</h4>
+            <p data-i18n="tax_p">Acompanhamento mês a mês: objetivos de redução de custos, estratégias de caixa, compras, vendas, governança, riscos e classificações fiscais.</p>
             <ul>
-              <li data-i18n="tax_li1">Tax Engine + simulações (Tax Twin)</li>
-              <li data-i18n="tax_li2">Scoring por NCM/fornecedor/operação</li>
-              <li data-i18n="tax_li3">Trilha de execução e savings</li>
+              <li data-i18n="tax_li1">RECOF, Drawback, Ex-tarifário, Similaridade, REINTEGRA</li>
+              <li data-i18n="tax_li2">Comparativo de regimes como portfólio de decisão</li>
+              <li data-i18n="tax_li3">Scoring de risco por NCM, fornecedor e operação</li>
             </ul>
             <div class="cardActions">
               <a class="btn btnPrimary" style="padding:12px 20px;font-size:11px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
             </div>
           </div>
 
-          <div class="card" data-wm style="--wm:url('assets/icon-contentiq.png')">
-            <div class="cardIcon">
-              <img src="assets/icon-contentiq.png" alt="" data-light="assets/icon-contentiq.png" data-dark="assets/icon-contentiq.png"/>
+          <div class="card">
+            <div class="cardIcon productLogo">
+              <svg width="170" height="48" viewBox="0 0 170 48" fill="none">
+                <text x="0" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="var(--ink)">Content</text>
+                <g transform="translate(120, 6)">
+                  <rect x="0" y="0" width="40" height="34" rx="7" fill="#dc2626"/>
+                  <text x="20" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">IQ</text>
+                </g>
+              </svg>
             </div>
-            <h4>ContentIQ</h4>
-            <p data-i18n="content_p">Conteúdo como produto: curadoria focada na sua empresa e rede (clientes/fornecedores), por setor e casos de uso.</p>
+            <h4 style="display:none;">ContentIQ</h4>
+            <p data-i18n="content_p">Organiza e conecta legislações, classificações fiscais, operações diretas, insumos e cadeia de fornecimento. Conhecimento estruturado, não arquivo morto.</p>
             <ul>
-              <li data-i18n="content_li1">Leitura setorial aplicada</li>
-              <li data-i18n="content_li2">Sinais e alertas para sua cadeia</li>
-              <li data-i18n="content_li3">Fonte via parceiros</li>
+              <li data-i18n="content_li1">Legislação conectada à sua operação real</li>
+              <li data-i18n="content_li2">Classificações fiscais com contexto de uso</li>
+              <li data-i18n="content_li3">Alertas que importam, não ruído</li>
             </ul>
-            <div class="cardActions">
-              <a class="btn" style="padding:12px 20px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+            <div class="cardActions" style="flex-direction:column;gap:8px;">
+              <span style="font-size:11px;color:var(--muted);font-weight:600;">Lançamento em breve</span>
+              <a class="btn" style="padding:12px 20px;font-size:11px;width:100%;" href="#contact" data-i18n="cta_waitlist">Solicitar acesso antecipado</a>
             </div>
           </div>
 
-          <div class="card" data-wm style="--wm:url('assets/icon-comexiq.png')">
-            <div class="cardIcon">
-              <img src="assets/icon-comexiq.png" alt="" data-light="assets/icon-comexiq.png" data-dark="assets/icon-comexiq.png"/>
+          <div class="card">
+            <div class="cardIcon productLogo">
+              <svg width="150" height="48" viewBox="0 0 150 48" fill="none">
+                <text x="0" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="var(--ink)">Comex</text>
+                <g transform="translate(100, 6)">
+                  <rect x="0" y="0" width="40" height="34" rx="7" fill="#16a34a"/>
+                  <text x="20" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">IQ</text>
+                </g>
+              </svg>
             </div>
-            <h4>ComexIQ</h4>
-            <p data-i18n="comex_p">Execução no comércio exterior: processos leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.</p>
+            <h4 style="display:none;">ComexIQ</h4>
+            <p data-i18n="comex_p">Em desenvolvimento. Rastreabilidade da cadeia de comércio exterior — do insumo à exportação.</p>
             <ul>
-              <li data-i18n="comex_li1">Governança e evidências</li>
-              <li data-i18n="comex_li2">Integrações com prestadores</li>
-              <li data-i18n="comex_li3">Menos atrito, mais velocidade</li>
+              <li data-i18n="comex_li1">Cadeia completa: insumo → produção → venda → exportação</li>
+              <li data-i18n="comex_li2">Governança integrada ao fluxo operacional</li>
+              <li data-i18n="comex_li3">Escopo em definição</li>
             </ul>
-            <div class="cardActions">
-              <a class="btn" style="padding:12px 20px;font-size:11px" href="#contact" data-i18n="cta_soon">Em breve</a>
+            <div class="cardActions" style="flex-direction:column;gap:8px;">
+              <span style="font-size:11px;color:var(--muted);font-weight:600;">Lançamento em breve</span>
+              <a class="btn" style="padding:12px 20px;font-size:11px;width:100%;" href="#contact" data-i18n="cta_waitlist">Solicitar acesso antecipado</a>
             </div>
           </div>
         </div>
@@ -1103,11 +1402,210 @@
 
       <div class="sectionDivider"></div>
 
-      <!-- INSIGHTS -->
+      <!-- ══════════════════════════════════════════════════════
+           BENCHMARK — REVITALIZADO
+           
+           MUDANÇA: "Promessa de mercado vs. Entrega FLOWIQ"
+      ══════════════════════════════════════════════════════ -->
+      <section id="benchmark">
+        <header class="sectionHeader">
+          <h2 data-i18n="bench_title">O que prometem vs. O que entregamos</h2>
+          <p data-i18n="bench_sub">Menos jargão, mais resultado. Compare abordagens.</p>
+        </header>
+
+        <div class="compareTable">
+          <div class="compareHead">
+            <div data-i18n="bench_left">Promessa comum de mercado</div>
+            <div data-i18n="bench_right">Entrega FLOWIQ</div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #94a3b8;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M7 16V12M12 16V8M17 16V11"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r1_l_t">"Dashboard executivo"</b>
+                <span data-i18n="r1_l_d">Gráficos bonitos, decisão por conta própria</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #f3b42f;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r1_r_t">Painel de decisão com recomendação</b>
+                <span data-i18n="r1_r_d">O que fazer, quanto vale, quem executa</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #94a3b8;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="10" rx="2"/>
+                  <circle cx="12" cy="6" r="4"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r2_l_t">"IA tributária"</b>
+                <span data-i18n="r2_l_d">Chatbot que responde dúvidas genéricas</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #16a34a;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                  <path d="M8 14l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r2_r_t">Motor que encontra economia</b>
+                <span data-i18n="r2_r_d">Scoring de risco, oportunidade por operação</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #94a3b8;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 6h16M4 10h16M4 14h10M4 18h6"/>
+                  <circle cx="19" cy="16" r="3"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r3_l_t">"Data lake tributário"</b>
+                <span data-i18n="r3_l_d">Dados unificados, insight por conta própria</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #f3b42f;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r3_r_t">Dados + simulação + execução</b>
+                <span data-i18n="r3_r_d">Da informação ao saving rastreado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compareRow">
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #94a3b8;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 17l6-6 4 4 8-8"/>
+                  <path d="M17 7h4v4"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r4_l_t">"Redução de custos"</b>
+                <span data-i18n="r4_l_d">Promessa genérica, difícil de medir</span>
+              </div>
+            </div>
+            <div class="compareCell">
+              <div class="cellIcon" style="color: #16a34a;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="cellContent">
+                <b data-i18n="r4_r_t">ROI em 60 dias, evidência por operação</b>
+                <span data-i18n="r4_r_d">Cada real economizado com trilha para auditoria</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           COMPANY — REVITALIZADO: AUTORIDADE
+           
+           MUDANÇA: 20+ anos de experiência, não startup
+      ══════════════════════════════════════════════════════ -->
+      <section id="company">
+        <header class="sectionHeader">
+          <h2 data-i18n="company_title">Experiência, não experimento</h2>
+          <p data-i18n="company_sub">20+ anos em tecnologia, consultoria tributária e operações de comércio exterior. Construímos a plataforma que gostaríamos de ter usado quando estávamos do outro lado.</p>
+        </header>
+
+        <!-- Credenciais numéricas -->
+        <div class="credenciais" style="margin-bottom:32px;">
+          <div class="credItem">
+            <div class="credNum" data-i18n="cred1_num">+20</div>
+            <div class="credLabel" data-i18n="cred1_label">anos de experiência acumulada</div>
+          </div>
+          <div class="credItem">
+            <div class="credNum" data-i18n="cred2_num">+ R$ 1.3 bi</div>
+            <div class="credLabel" data-i18n="cred2_label">em operações já analisadas</div>
+          </div>
+          <div class="credItem">
+            <div class="credNum" data-i18n="cred3_num">+2</div>
+            <div class="credLabel" data-i18n="cred3_label">estratégias integradas na operação direta e na cadeia de abastecimento</div>
+          </div>
+          <div class="credItem">
+            <div class="credNum" data-i18n="cred4_num">100%</div>
+            <div class="credLabel" data-i18n="cred4_label">foco em resultado mensurável</div>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 20V6a2 2 0 0 1 2-2h6v16H4Z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M12 20V9h6a2 2 0 0 1 2 2v9h-8Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h4 data-i18n="company_c1">Experiência prática</h4>
+            <p data-i18n="company_c1p">Quem construiu a plataforma já operou, auditou e tomou decisões em empresas reais. Conhecemos as dores de quem executa.</p>
+          </div>
+
+          <div class="card">
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-4.4 7-10V6l-7-3-7 3v5c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M9.5 12l1.8 1.8 3.9-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4 data-i18n="company_c2">Método, não opinião</h4>
+            <p data-i18n="company_c2p">Cada recomendação vem com fundamentação. Trilha de evidências pronta para defender diante de auditoria interna ou externa.</p>
+          </div>
+
+          <div class="card">
+            <div class="cardIcon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 7h14M5 12h14M5 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h4 data-i18n="company_c3">Foco em resultado</h4>
+            <p data-i18n="company_c3p">Não vendemos projeto. Entregamos economia mensurável. Se não gerar valor, não faz sentido continuar.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           INSIGHTS — Mantido, copy lapidado
+      ══════════════════════════════════════════════════════ -->
       <section id="insights">
         <header class="sectionHeader">
           <h2 data-i18n="insights_title">Insight do dia</h2>
-          <p data-i18n="insights_sub">Um sinal por vez — dicas para decisão e execução. Atualiza a cada refresh.</p>
+          <p data-i18n="insights_sub">Provocações práticas sobre decisão tributária e operacional.</p>
         </header>
 
         <div class="insightCard">
@@ -1118,183 +1616,24 @@
             </svg>
           </div>
           <div class="insightContent">
-            <div class="insightLabel" data-i18n="insights_card">Insight</div>
+            <div class="insightLabel" data-i18n="insights_card">Provocação</div>
             <p id="insightText"></p>
-            <a class="btn" id="insightLink" href="#products" style="padding:10px 16px;font-size:11px" data-i18n="insights_link">Ver como os IQs ajudam</a>
+            <a class="btn" id="insightLink" href="#contact" style="padding:10px 16px;font-size:11px" data-i18n="insights_link">Falar sobre isso</a>
           </div>
         </div>
       </section>
 
       <div class="sectionDivider"></div>
 
-      <!-- BENCHMARK -->
-      <section id="benchmark">
-        <header class="sectionHeader">
-          <h2 data-i18n="bench_title">Benchmark do mercado vs. nossa abordagem</h2>
-          <p data-i18n="bench_sub">Traduzimos automação, data lake e digital twin em plataforma + produtos para decisão e execução.</p>
-        </header>
-
-        <div class="compareTable">
-          <div class="compareHead">
-            <div data-i18n="bench_left">Referências de mercado</div>
-            <div>FLOWIQ (plataforma + IQs)</div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">⚙️</div>
-              <div class="cellContent">
-                <b data-i18n="r1_l_t">Hyperautomation fiscal</b>
-                <span data-i18n="r1_l_d">Automatizar rotinas e regras</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">⚙️</div>
-              <div class="cellContent">
-                <b data-i18n="r1_r_t">Ingestão + Tax Engine</b>
-                <span data-i18n="r1_r_d">Plataforma + TaxIQ executando estratégia</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">🗄️</div>
-              <div class="cellContent">
-                <b data-i18n="r2_l_t">Unificação de dados</b>
-                <span data-i18n="r2_l_d">Data lake tributário</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">🗄️</div>
-              <div class="cellContent">
-                <b data-i18n="r2_r_t">Ingestão + normalização</b>
-                <span data-i18n="r2_r_d">SPED/COMEX comparáveis</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">👁️</div>
-              <div class="cellContent">
-                <b data-i18n="r3_l_t">Simulação real-time</b>
-                <span data-i18n="r3_l_d">"Digital Twin"</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">🧠</div>
-              <div class="cellContent">
-                <b data-i18n="r3_r_t">Tax Twin completo</b>
-                <span data-i18n="r3_r_d">Cenários + trade-offs + execução</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">🤖</div>
-              <div class="cellContent">
-                <b data-i18n="r4_l_t">IA tributária</b>
-                <span data-i18n="r4_l_d">Assistência e recomendações</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">🛡️</div>
-              <div class="cellContent">
-                <b data-i18n="r4_r_t">Classificação, risco, oportunidade</b>
-                <span data-i18n="r4_r_d">Scoring por NCM/fornecedor</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">📊</div>
-              <div class="cellContent">
-                <b data-i18n="r5_l_t">Analytics executivo</b>
-                <span data-i18n="r5_l_d">Dashboards e KPIs</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">📈</div>
-              <div class="cellContent">
-                <b data-i18n="r5_r_t">Dashboard de decisão</b>
-                <span data-i18n="r5_r_d">CEO/CFO: caixa, risco, plano</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="compareRow">
-            <div class="compareCell">
-              <div class="cellIcon">💰</div>
-              <div class="cellContent">
-                <b data-i18n="r6_l_t">Redução de custo</b>
-                <span data-i18n="r6_l_d">Savings e compliance by design</span>
-              </div>
-            </div>
-            <div class="compareCell">
-              <div class="cellIcon">💰</div>
-              <div class="cellContent">
-                <b data-i18n="r6_r_t">RECOF, Drawback, RT</b>
-                <span data-i18n="r6_r_d">Economia rastreável com governança</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="sectionDivider"></div>
-
-      <!-- COMPANY -->
-      <section id="company">
-        <header class="sectionHeader">
-          <h2 data-i18n="company_title">Empresa</h2>
-          <p data-i18n="company_sub">Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.</p>
-        </header>
-
-        <div class="grid3">
-          <div class="card">
-            <div class="cardIcon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 20V6a2 2 0 0 1 2-2h6v16H4Z" stroke="currentColor" stroke-width="1.7"/>
-                <path d="M12 20V9h6a2 2 0 0 1 2 2v9h-8Z" stroke="currentColor" stroke-width="1.7"/>
-              </svg>
-            </div>
-            <h4 data-i18n="company_c1">Tecnologia</h4>
-            <p data-i18n="company_c1p">Plataforma de dados, conectores e IA aplicada em pontos estratégicos: ingestão, classificação e recomendações.</p>
-          </div>
-
-          <div class="card">
-            <div class="cardIcon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 21s7-4.4 7-10V6l-7-3-7 3v5c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="1.7"/>
-                <path d="M9.5 12l1.8 1.8 3.9-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4 data-i18n="company_c2">Método</h4>
-            <p data-i18n="company_c2p">Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.</p>
-          </div>
-
-          <div class="card">
-            <div class="cardIcon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 7h14M5 12h14M5 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4 data-i18n="company_c3">Conteúdo</h4>
-            <p data-i18n="company_c3p">Conteúdo nichado por empresa e rede, curadoria via parceiros — menos ruído, mais sinal.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="sectionDivider"></div>
-
-      <!-- CONTACT -->
+      <!-- ══════════════════════════════════════════════════════
+           CONTACT — REVITALIZADO
+           
+           MUDANÇA: Foco em diagnóstico de economia
+      ══════════════════════════════════════════════════════ -->
       <section id="contact">
         <header class="sectionHeader">
-          <h2 data-i18n="contact_title">Solicite um diagnóstico</h2>
-          <p data-i18n="contact_sub">Conte seu contexto. Respondemos com as perguntas certas, uma leitura inicial e próximos passos.</p>
+          <h2 data-i18n="contact_title">Calcule seu potencial de economia</h2>
+          <p data-i18n="contact_sub">Diagnóstico inicial gratuito. Identificamos oportunidades antes de qualquer compromisso.</p>
         </header>
 
         <div class="contactCard">
@@ -1302,21 +1641,31 @@
             <div class="formGrid">
               <div class="formField">
                 <label data-i18n="f_name">Nome</label>
-                <input type="text" required/>
+                <input type="text" required placeholder="Seu nome"/>
               </div>
               <div class="formField">
-                <label>Email</label>
-                <input type="email" required/>
+                <label data-i18n="f_email">Email corporativo</label>
+                <input type="email" required placeholder="nome@empresa.com"/>
+              </div>
+            </div>
+            <div class="formGrid">
+              <div class="formField">
+                <label data-i18n="f_company">Empresa</label>
+                <input type="text" placeholder="Nome da empresa"/>
+              </div>
+              <div class="formField">
+                <label data-i18n="f_role">Cargo</label>
+                <input type="text" placeholder="Ex: CFO, Head de Tax..."/>
               </div>
             </div>
             <div class="formField">
-              <label data-i18n="f_msg">O que você quer destravar?</label>
-              <textarea rows="4" required></textarea>
+              <label data-i18n="f_msg">Qual sua principal dor hoje?</label>
+              <textarea rows="3" placeholder="Ex: Não consigo simular impacto da Reforma, processo de Drawback é manual, não sei se estou deixando dinheiro na mesa..."></textarea>
             </div>
             <div class="formActions">
-              <button class="btn btnPrimary" type="submit" data-i18n="f_send">Enviar</button>
-              <span class="formNote" data-i18n="f_note">Integrações e produtos podem variar por setor/cliente.</span>
+              <button class="btn btnPrimary" type="submit" style="padding:16px 32px;" data-i18n="f_send">Solicitar diagnóstico gratuito</button>
             </div>
+            <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:16px;" data-i18n="f_note">Resposta em até 24h úteis. Sem spam, sem vendedor insistente.</p>
           </form>
         </div>
       </section>
@@ -1324,17 +1673,19 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════ -->
   <footer>
     <div class="container">
       <div class="footerInner">
         <div class="footerBrand">
           <b>© <span id="year"></span> FLOWIQ.</b>
-          <span data-i18n="foot_note"> Conteúdo e integrações podem variar por setor.</span>
+          <span data-i18n="foot_note"> Plataforma de decisão para tributário e comércio exterior.</span>
         </div>
         <nav class="footerNav">
           <a href="#platform" data-i18n="nav_platform">Plataforma</a>
-          <a href="#how" data-i18n="nav_how">Como funciona</a>
+          <a href="#how" data-i18n="nav_how">Metodologia</a>
           <a href="#products" data-i18n="nav_products">Produtos</a>
           <a href="#contact" data-i18n="nav_contact">Contato</a>
         </nav>
@@ -1342,370 +1693,336 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- ════════════════════════════════════════════════════════════
+       SCRIPTS — Atualizado com novo dicionário i18n
+  ════════════════════════════════════════════════════════════ -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Year
+    (function() {
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // i18n dictionary
       var dict = {
-      pt: {
-        tagline: "Technical Intelligence Quotient",
-        nav_platform: "Plataforma",
-        nav_how: "Como funciona",
-        nav_products: "Produtos",
-        nav_benchmark: "Benchmark",
-        nav_company: "Empresa",
-        nav_contact: "Contato",
-        cta_talk: "Diagnóstico gratuito",
-        cta_soon: "Em breve",
-        hero_title: "A <span class=\"accent\">camada de decisão</span><br>acima da operação.",
-        hero_lead: "Conectamos SPED, COMEX e dados internos para gerar trade-offs explícitos, governança e execução rastreável. Como um gestor de portfólio — mas para tributário e comércio exterior.",
-        hero_btn_primary: "Ver como funciona",
-        hero_btn_secondary: "Conhecer os IQs",
-        k_cash: "Caixa",
-        k_cash_desc: "Timing e fluxo de pagamento/recuperação",
-        k_risk: "Risco",
-        k_risk_desc: "Governança, trilhas e consistência",
-        k_decision: "Decisão",
-        k_decision_desc: "Cenários e trade-offs explícitos",
-        k_execution: "Execução",
-        k_execution_desc: "Plano com owners e medição",
-        platform_title: "Onde os dados chegam e viram decisão",
-        platform_sub: "Plataforma central de dados, tecnologia e serviços. Os produtos (IQs) consomem informações para gerar estratégia, execução e conteúdo para sua rede.",
-        platform_card1: "Ingestão + normalização",
-        platform_card1_p: "Conectamos SPED, COMEX e dados internos. Organizamos, cruzamos e criamos base comparável mês a mês.",
-        platform_card2: "Motor de decisão",
-        platform_card2_p: "Simulamos cenários, explicitamos trade-offs e conectamos impacto em caixa, risco e performance. IA aplicada em pontos estratégicos.",
-        platform_card3: "Serviços como "gestor"",
-        platform_card3_p: "Consultoria orientada por dados: leitura, provocações e estratégia contínua. Integrações e parceiros entram sem atrito.",
-        how_title: "Como funciona na prática",
-        how_sub: "Um loop simples, repetível e mensurável. Clareza mês a mês — transformada em plano e execução com governança.",
-        s1_t: "Conecte os dados",
-        s1_d: "SPED + COMEX + base interna. Entram como estão — nós normalizamos.",
-        s2_t: "Leia o que aconteceu",
-        s2_d: "Variações, exceções, tendências por cliente/fornecedor/operação.",
-        s3_t: "Provoque trade-offs",
-        s3_d: "Cenários comparáveis: caixa, risco, margem, execução. Sem achismo.",
-        s4_t: "Transforme em trilha",
-        s4_d: "Plano tático com owners, marcos e medição de valor.",
-        how_right_title: "O diferencial "sem atrito"",
-        how_right_p: "A FLOWIQ não cria guerra de território. Time interno, consultorias e fornecedores entram como peças complementares — com dados, trilhas e accountability.",
-        how_li1: "Marketplace de serviços com parceiros",
-        how_li2: "Decisão antes da execução",
-        how_li3: "Conteúdo por segmento e rede",
-        products_title: "Produtos que consomem a FLOWIQ",
-        products_sub: "A plataforma é o hub. Os IQs são produtos com foco: decisão tributária, conteúdo contextual e execução de comércio exterior.",
-        tax_p: "Decisões tributárias e de regimes: classificação, risco, oportunidades e estratégia (RECOF, Drawback, RT).",
-        tax_li1: "Tax Engine + simulações (Tax Twin)",
-        tax_li2: "Scoring por NCM/fornecedor/operação",
-        tax_li3: "Trilha de execução e savings",
-        tax_btn: "Acessar TaxIQ",
-        content_p: "Conteúdo como produto: curadoria focada na sua empresa e rede (clientes/fornecedores), por setor e casos de uso.",
-        content_li1: "Leitura setorial aplicada",
-        content_li2: "Sinais e alertas para sua cadeia",
-        content_li3: "Fonte via parceiros",
-        comex_p: "Execução no comércio exterior: processos leves, rastreáveis e ágeis — conectando operação, parceiros e compliance.",
-        comex_li1: "Governança e evidências",
-        comex_li2: "Integrações com prestadores",
-        comex_li3: "Menos atrito, mais velocidade",
-        insights_title: "Insight do dia",
-        insights_sub: "Um sinal por vez — dicas para decisão e execução. Atualiza a cada refresh.",
-        insights_card: "Insight",
-        insights_link: "Ver como os IQs ajudam",
-        bench_title: "Benchmark do mercado vs. nossa abordagem",
-        bench_sub: "Traduzimos automação, data lake e digital twin em plataforma + produtos para decisão e execução.",
-        bench_left: "Referências de mercado",
-        r1_l_t: "Hyperautomation fiscal",
-        r1_l_d: "Automatizar rotinas e regras",
-        r1_r_t: "Ingestão + Tax Engine",
-        r1_r_d: "Plataforma + TaxIQ executando estratégia",
-        r2_l_t: "Unificação de dados",
-        r2_l_d: "Data lake tributário",
-        r2_r_t: "Ingestão + normalização",
-        r2_r_d: "SPED/COMEX comparáveis",
-        r3_l_t: "Simulação real-time",
-        r3_l_d: ""Digital Twin"",
-        r3_r_t: "Tax Twin completo",
-        r3_r_d: "Cenários + trade-offs + execução",
-        r4_l_t: "IA tributária",
-        r4_l_d: "Assistência e recomendações",
-        r4_r_t: "Classificação, risco, oportunidade",
-        r4_r_d: "Scoring por NCM/fornecedor",
-        r5_l_t: "Analytics executivo",
-        r5_l_d: "Dashboards e KPIs",
-        r5_r_t: "Dashboard de decisão",
-        r5_r_d: "CEO/CFO: caixa, risco, plano",
-        r6_l_t: "Redução de custo",
-        r6_l_d: "Savings e compliance by design",
-        r6_r_t: "RECOF, Drawback, RT",
-        r6_r_d: "Economia rastreável com governança",
-        company_title: "Empresa",
-        company_sub: "Tecnologia para serviços: conectamos dados, aplicamos método e entregamos decisão estratégica — com execução e conteúdo por setor.",
-        company_c1: "Tecnologia",
-        company_c1p: "Plataforma de dados, conectores e IA aplicada em pontos estratégicos: ingestão, classificação e recomendações.",
-        company_c2: "Método",
-        company_c2p: "Governança, trilhas e consistência: decisão vira execução com evidências, audit trail e compliance by design.",
-        company_c3: "Conteúdo",
-        company_c3p: "Conteúdo nichado por empresa e rede, curadoria via parceiros — menos ruído, mais sinal.",
-        contact_title: "Solicite um diagnóstico",
-        contact_sub: "Conte seu contexto. Respondemos com as perguntas certas, uma leitura inicial e próximos passos.",
-        f_name: "Nome",
-        f_msg: "O que você quer destravar?",
-        f_send: "Enviar",
-        f_note: "Integrações e produtos podem variar por setor/cliente.",
-        foot_note: " Conteúdo e integrações podem variar por setor."
-      },
-      en: {
-        tagline: "Technical Intelligence Quotient",
-        nav_platform: "Platform",
-        nav_how: "How it works",
-        nav_products: "Products",
-        nav_benchmark: "Benchmark",
-        nav_company: "Company",
-        nav_contact: "Contact",
-        cta_talk: "Free diagnosis",
-        cta_soon: "Coming soon",
-        hero_title: "The <span class=\"accent\">decision layer</span><br>above operations.",
-        hero_lead: "We connect SPED, COMEX and internal data to generate explicit trade-offs, governance and traceable execution. Like a portfolio manager — but for tax and foreign trade.",
-        hero_btn_primary: "See how it works",
-        hero_btn_secondary: "Meet the IQs",
-        k_cash: "Cash",
-        k_cash_desc: "Payment/recovery timing and flow",
-        k_risk: "Risk",
-        k_risk_desc: "Governance, tracks and consistency",
-        k_decision: "Decision",
-        k_decision_desc: "Scenarios and explicit trade-offs",
-        k_execution: "Execution",
-        k_execution_desc: "Plan with owners and metrics",
-        platform_title: "Where data becomes decision",
-        platform_sub: "Central data platform, technology and services. Products (IQs) consume data to generate strategy, execution and content for your network.",
-        platform_card1: "Ingestion + normalization",
-        platform_card1_p: "We connect SPED, COMEX and internal data. Organize, cross-reference and create a comparable base month by month.",
-        platform_card2: "Decision engine",
-        platform_card2_p: "We simulate scenarios, make trade-offs explicit, and connect impact to cash, risk and performance. AI applied at strategic points.",
-        platform_card3: "Services as \"manager\"",
-        platform_card3_p: "Data-driven consulting: reading, provocation and continuous strategy. Integrations and partners come in without friction.",
-        how_title: "How it works in practice",
-        how_sub: "A simple, repeatable and measurable loop. Clarity month by month — transformed into plan and execution with governance.",
-        s1_t: "Connect the data",
-        s1_d: "SPED + COMEX + internal base. They come in as-is — we normalize.",
-        s2_t: "Read what happened",
-        s2_d: "Variations, exceptions, trends by customer/supplier/operation.",
-        s3_t: "Provoke trade-offs",
-        s3_d: "Comparable scenarios: cash, risk, margin, execution. No guessing.",
-        s4_t: "Transform into track",
-        s4_d: "Tactical plan with owners, milestones and value measurement.",
-        how_right_title: "The \"frictionless\" edge",
-        how_right_p: "FLOWIQ doesn't create turf wars. Internal team, consultants and suppliers join as complementary pieces — with data, tracks and accountability.",
-        how_li1: "Service marketplace with partners",
-        how_li2: "Decision before execution",
-        how_li3: "Content by segment and network",
-        products_title: "Products that consume FLOWIQ",
-        products_sub: "The platform is the hub. IQs are focused products: tax decisions, contextual content and foreign trade execution.",
-        tax_p: "Tax and regime decisions: classification, risk, opportunities and strategy (RECOF, Drawback, RT).",
-        tax_li1: "Tax Engine + simulations (Tax Twin)",
-        tax_li2: "Scoring by NCM/supplier/operation",
-        tax_li3: "Execution track and savings",
-        tax_btn: "Access TaxIQ",
-        content_p: "Content as product: curation focused on your company and network (customers/suppliers), by sector and use case.",
-        content_li1: "Applied sector reading",
-        content_li2: "Signals and alerts for your chain",
-        content_li3: "Source via partners",
-        comex_p: "Foreign trade execution: light, traceable and agile processes — connecting operations, partners and compliance.",
-        comex_li1: "Governance and evidence",
-        comex_li2: "Integrations with providers",
-        comex_li3: "Less friction, more speed",
-        insights_title: "Insight of the day",
-        insights_sub: "One signal at a time — tips for decision and execution. Updates on each refresh.",
-        insights_card: "Insight",
-        insights_link: "See how IQs help",
-        bench_title: "Market benchmark vs. our approach",
-        bench_sub: "We translate automation, data lake and digital twin into a platform + products for decision and execution.",
-        bench_left: "Market references",
-        r1_l_t: "Fiscal hyperautomation",
-        r1_l_d: "Automate routines and rules",
-        r1_r_t: "Ingestion + Tax Engine",
-        r1_r_d: "Platform + TaxIQ executing strategy",
-        r2_l_t: "Data unification",
-        r2_l_d: "Tax data lake",
-        r2_r_t: "Ingestion + normalization",
-        r2_r_d: "Comparable SPED/COMEX",
-        r3_l_t: "Real-time simulation",
-        r3_l_d: "\"Digital Twin\"",
-        r3_r_t: "Full Tax Twin",
-        r3_r_d: "Scenarios + trade-offs + execution",
-        r4_l_t: "Tax AI",
-        r4_l_d: "Assistance and recommendations",
-        r4_r_t: "Classification, risk, opportunity",
-        r4_r_d: "Scoring by NCM/supplier",
-        r5_l_t: "Executive analytics",
-        r5_l_d: "Dashboards and KPIs",
-        r5_r_t: "Decision dashboard",
-        r5_r_d: "CEO/CFO: cash, risk, plan",
-        r6_l_t: "Cost reduction",
-        r6_l_d: "Savings and compliance by design",
-        r6_r_t: "RECOF, Drawback, RT",
-        r6_r_d: "Traceable savings with governance",
-        company_title: "Company",
-        company_sub: "Technology for services: we connect data, apply method and deliver strategic decisions — with execution and sector-specific content.",
-        company_c1: "Technology",
-        company_c1p: "Data platform, connectors and AI applied at strategic points: ingestion, classification and recommendations.",
-        company_c2: "Method",
-        company_c2p: "Governance, tracks and consistency: decisions become execution with evidence, audit trail and compliance by design.",
-        company_c3: "Content",
-        company_c3p: "Niche content by company and network, curated via partners — less noise, more signal.",
-        contact_title: "Request a conversation",
-        contact_sub: "Share your context. We respond with the right questions, an initial read and next steps.",
-        f_name: "Name",
-        f_msg: "What are you trying to unlock?",
-        f_send: "Send",
-        f_note: "Integrations and products may vary by sector/client.",
-        foot_note: " Content and integrations may vary by sector."
-      }
-    };
+        pt: {
+          tagline: "Decision Intelligence Platform",
+          nav_platform: "Plataforma",
+          nav_how: "Metodologia",
+          nav_products: "Produtos",
+          nav_benchmark: "Diferenciais",
+          nav_company: "Quem somos",
+          nav_contact: "Contato",
+          cta_talk: "Falar com especialista",
+          cta_waitlist: "Solicitar acesso antecipado",
+          hero_badge: "A camada de decisão acima da operação",
+          hero_title: 'A operação executa. <span class="accent">A FLOWIQ decide.</span>',
+          hero_lead: "Mês a mês, organizamos contexto, explicitamos trade-offs e garantimos a execução dos seus objetivos de caixa, redução de custos, governança e performance — em compras, vendas, operações e cadeia de fornecimento. <strong>ROI em até 60 dias</strong> após configuração.",
+          hero_btn_primary: "Calcular potencial de economia",
+          hero_btn_secondary: "Ver metodologia",
+          k_num1: "60 dias",
+          k_cash: "ROI comprovado",
+          k_cash_desc: "Decisões priorizadas por impacto econômico real",
+          k_num2: "100%",
+          k_risk: "rastreável",
+          k_risk_desc: "Cada decisão com trilha e prontidão para auditoria",
+          k_num3: "1+",
+          k_decision: "estratégia ativada",
+          k_decision_desc: "Na operação direta e/ou cadeia de abastecimento",
+          k_num4: "48h",
+          k_execution: "dados prontos",
+          k_execution_desc: "SPED, COMEX e ERP consolidados para ação",
+          platform_title: "Decisão não é evento. É processo.",
+          platform_sub: "A FLOWIQ não substitui pessoas. Ela organiza contexto, conecta dados e sustenta a decisão com método — mês a mês, operação a operação.",
+          platform_card1: "Contexto organizado",
+          platform_card1_p: "SPED, COMEX, ERP e base interna conectados. Você vê o que importa para decidir — não relatórios para arquivar.",
+          platform_card2: "Trade-offs explícitos",
+          platform_card2_p: "Cada decisão com impacto em caixa, risco e esforço. Você escolhe sabendo o que ganha e o que perde.",
+          platform_card3: "Execução garantida",
+          platform_card3_p: "Decisão vira plano. Plano vira trilha com dono, prazo e evidência. Resultado rastreado até a auditoria.",
+          how_title: "Metodologia: da análise ao ROI mensurável",
+          how_sub: "Processo estruturado com entregas claras. Sem surpresas, sem dependência infinita.",
+          s1_t: "Conectar dados",
+          s1_d: "SPED + COMEX + ERP. Entrega: base consolidada em até 5 dias úteis.",
+          s2_t: "Diagnosticar oportunidades",
+          s2_d: "Mapeamento de gaps, riscos e economia potencial por regime e operação.",
+          s3_t: "Simular e priorizar",
+          s3_d: "Cenários comparados: caixa, risco, esforço. Decisão fundamentada, não opinião.",
+          s4_t: "Executar e medir",
+          s4_d: "Plano com responsáveis e prazos. Savings rastreados. Evidências para auditoria.",
+          how_right_title: "Integração sem conflito",
+          how_right_p: "A FLOWIQ trabalha com seu time interno, sua consultoria e seus fornecedores. O insight é visível. A execução, governança e captura de valor são nativas da plataforma.",
+          how_li1: "Parceiros e consultorias com acesso controlado",
+          how_li2: "Audit trail completo para cada decisão",
+          how_li3: "Valor recorrente via execução sistematizada",
+          products_title: "Onde a decisão acontece",
+          products_sub: "TaxIQ, ContentIQ e ComexIQ aplicam a inteligência da FLOWIQ em cada frente. Produtos, não promessas.",
+          tax_p: "Acompanhamento mês a mês: objetivos de redução de custos, estratégias de caixa, compras, vendas, governança, riscos e classificações fiscais.",
+          tax_li1: "RECOF, Drawback, Ex-tarifário, Similaridade, REINTEGRA",
+          tax_li2: "Comparativo de regimes como portfólio de decisão",
+          tax_li3: "Scoring de risco por NCM, fornecedor e operação",
+          tax_btn: "Acessar TaxIQ",
+          content_p: "Organiza e conecta legislações, classificações fiscais, operações diretas, insumos e cadeia de fornecimento. Conhecimento estruturado, não arquivo morto.",
+          content_li1: "Legislação conectada à sua operação real",
+          content_li2: "Classificações fiscais com contexto de uso",
+          content_li3: "Alertas que importam, não ruído",
+          comex_p: "Em desenvolvimento. Rastreabilidade da cadeia de comércio exterior — do insumo à exportação.",
+          comex_li1: "Cadeia completa: insumo → produção → venda → exportação",
+          comex_li2: "Governança integrada ao fluxo operacional",
+          comex_li3: "Escopo em definição",
+          bench_title: "O que prometem vs. O que entregamos",
+          bench_sub: "Menos jargão, mais resultado. Compare abordagens.",
+          bench_left: "Promessa comum de mercado",
+          bench_right: "Entrega FLOWIQ",
+          r1_l_t: '"Dashboard executivo"',
+          r1_l_d: "Gráficos bonitos, decisão por conta própria",
+          r1_r_t: "Painel de decisão com recomendação",
+          r1_r_d: "O que fazer, quanto vale, quem executa",
+          r2_l_t: '"IA tributária"',
+          r2_l_d: "Chatbot que responde dúvidas genéricas",
+          r2_r_t: "Motor que encontra economia",
+          r2_r_d: "Scoring de risco, oportunidade por operação",
+          r3_l_t: '"Data lake tributário"',
+          r3_l_d: "Dados unificados, insight por conta própria",
+          r3_r_t: "Dados + simulação + execução",
+          r3_r_d: "Da informação ao saving rastreado",
+          r4_l_t: '"Redução de custos"',
+          r4_l_d: "Promessa genérica, difícil de medir",
+          r4_r_t: "ROI em 60 dias, evidência por operação",
+          r4_r_d: "Cada real economizado com trilha para auditoria",
+          company_title: "Experiência, não experimento",
+          company_sub: "20+ anos em tecnologia, consultoria tributária e operações de comércio exterior. Construímos a plataforma que gostaríamos de ter usado quando estávamos do outro lado.",
+          cred1_num: "+20",
+          cred1_label: "anos de experiência acumulada",
+          cred2_num: "+ R$ 1.3 bi",
+          cred2_label: "em operações já analisadas",
+          cred3_num: "+2",
+          cred3_label: "estratégias integradas na operação direta e na cadeia de abastecimento",
+          cred4_num: "100%",
+          cred4_label: "foco em resultado mensurável",
+          company_c1: "Experiência prática",
+          company_c1p: "Quem construiu a plataforma já operou, auditou e tomou decisões em empresas reais. Conhecemos as dores de quem executa.",
+          company_c2: "Método, não opinião",
+          company_c2p: "Cada recomendação vem com fundamentação. Trilha de evidências pronta para defender diante de auditoria interna ou externa.",
+          company_c3: "Foco em resultado",
+          company_c3p: "Não vendemos projeto. Entregamos economia mensurável. Se não gerar valor, não faz sentido continuar.",
+          insights_title: "Insight do dia",
+          insights_sub: "Provocações práticas sobre decisão tributária e operacional.",
+          insights_card: "Provocação",
+          insights_link: "Falar sobre isso",
+          contact_title: "Calcule seu potencial de economia",
+          contact_sub: "Diagnóstico inicial gratuito. Identificamos oportunidades antes de qualquer compromisso.",
+          f_name: "Nome",
+          f_email: "Email corporativo",
+          f_company: "Empresa",
+          f_role: "Cargo",
+          f_msg: "Qual sua principal dor hoje?",
+          f_send: "Solicitar diagnóstico gratuito",
+          f_note: "Resposta em até 24h úteis. Sem spam, sem vendedor insistente.",
+          foot_note: " Plataforma de decisão para tributário e comércio exterior."
+        },
+        en: {
+          tagline: "Decision Intelligence Platform",
+          nav_platform: "Platform",
+          nav_how: "Methodology",
+          nav_products: "Products",
+          nav_benchmark: "Differentiators",
+          nav_company: "About us",
+          nav_contact: "Contact",
+          cta_talk: "Talk to a specialist",
+          cta_waitlist: "Request early access",
+          hero_badge: "The decision layer above operations",
+          hero_title: 'Operations execute. <span class="accent">FLOWIQ decides.</span>',
+          hero_lead: "Month after month, we organize context, make trade-offs explicit and ensure the execution of your cash, cost reduction, governance and performance objectives — across procurement, sales, operations and supply chain. <strong>ROI within 60 days</strong> after setup.",
+          hero_btn_primary: "Calculate savings potential",
+          hero_btn_secondary: "See methodology",
+          k_num1: "60 days",
+          k_cash: "Proven ROI",
+          k_cash_desc: "Decisions prioritized by real economic impact",
+          k_num2: "100%",
+          k_risk: "traceable",
+          k_risk_desc: "Every decision with trail and audit readiness",
+          k_num3: "1+",
+          k_decision: "strategy activated",
+          k_decision_desc: "In direct operations and/or supply chain",
+          k_num4: "48h",
+          k_execution: "data ready",
+          k_execution_desc: "SPED, COMEX and ERP consolidated for action",
+          platform_title: "Decision is not an event. It's a process.",
+          platform_sub: "FLOWIQ does not replace people. It organizes context, connects data and sustains decisions with method — month after month, operation by operation.",
+          platform_card1: "Organized context",
+          platform_card1_p: "SPED, COMEX, ERP and internal data connected. You see what matters for deciding — not reports to archive.",
+          platform_card2: "Explicit trade-offs",
+          platform_card2_p: "Every decision with cash, risk and effort impact. You choose knowing what you gain and what you lose.",
+          platform_card3: "Guaranteed execution",
+          platform_card3_p: "Decision becomes plan. Plan becomes trail with owner, deadline and evidence. Results tracked to audit.",
+          how_title: "Methodology: from analysis to measurable ROI",
+          how_sub: "Structured process with clear deliverables. No surprises, no infinite dependency.",
+          s1_t: "Connect data",
+          s1_d: "SPED + COMEX + ERP. Deliverable: consolidated base within 5 business days.",
+          s2_t: "Diagnose opportunities",
+          s2_d: "Mapping of gaps, risks and potential savings by regime and operation.",
+          s3_t: "Simulate and prioritize",
+          s3_d: "Compared scenarios: cash, risk, effort. Grounded decision, not opinion.",
+          s4_t: "Execute and measure",
+          s4_d: "Plan with owners and deadlines. Tracked savings. Evidence for audit.",
+          how_right_title: "Integration without conflict",
+          how_right_p: "FLOWIQ works with your internal team, your consultants and your suppliers. Insight is visible. Execution, governance and value capture are native to the platform.",
+          how_li1: "Partners and consultants with controlled access",
+          how_li2: "Complete audit trail for every decision",
+          how_li3: "Recurring value through systematized execution",
+          products_title: "Where decision happens",
+          products_sub: "TaxIQ, ContentIQ and ComexIQ apply FLOWIQ intelligence on each front. Products, not promises.",
+          tax_p: "Month-by-month tracking: cost reduction objectives, cash strategies, procurement, sales, governance, risks and tax classifications.",
+          tax_li1: "RECOF, Drawback, Ex-tariff, Similarity, REINTEGRA",
+          tax_li2: "Regime comparison as a decision portfolio",
+          tax_li3: "Risk scoring by NCM, supplier and operation",
+          tax_btn: "Access TaxIQ",
+          content_p: "Organizes and connects legislation, tax classifications, direct operations, inputs and supply chain. Structured knowledge, not dead archive.",
+          content_li1: "Legislation connected to your actual operation",
+          content_li2: "Tax classifications with usage context",
+          content_li3: "Alerts that matter, not noise",
+          comex_p: "Under development. Foreign trade chain traceability — from input to export.",
+          comex_li1: "Complete chain: input → production → sale → export",
+          comex_li2: "Governance integrated into operational flow",
+          comex_li3: "Scope under definition",
+          bench_title: "What they promise vs. What we deliver",
+          bench_sub: "Less jargon, more results. Compare approaches.",
+          bench_left: "Common market promise",
+          bench_right: "FLOWIQ delivery",
+          r1_l_t: '"Executive dashboard"',
+          r1_l_d: "Nice charts, decision on your own",
+          r1_r_t: "Decision panel with recommendation",
+          r1_r_d: "What to do, how much it is worth, who executes",
+          r2_l_t: '"Tax AI"',
+          r2_l_d: "Chatbot answering generic questions",
+          r2_r_t: "Engine that finds savings",
+          r2_r_d: "Risk scoring, opportunity by operation",
+          r3_l_t: '"Tax data lake"',
+          r3_l_d: "Unified data, insight on your own",
+          r3_r_t: "Data + simulation + execution",
+          r3_r_d: "From information to tracked saving",
+          r4_l_t: '"Cost reduction"',
+          r4_l_d: "Generic promise, hard to measure",
+          r4_r_t: "ROI in 60 days, evidence by operation",
+          r4_r_d: "Every dollar saved with audit trail",
+          company_title: "Experience, not experiment",
+          company_sub: "20+ years in technology, tax consulting and foreign trade operations. We built the platform we wish we had when we were on the other side.",
+          cred1_num: "+20",
+          cred1_label: "years of accumulated experience",
+          cred2_num: "+ R$ 1.3 bn",
+          cred2_label: "in operations already analyzed",
+          cred3_num: "+2",
+          cred3_label: "strategies integrated into direct operations and supply chain",
+          cred4_num: "100%",
+          cred4_label: "focus on measurable results",
+          company_c1: "Practical experience",
+          company_c1p: "Those who built the platform have operated, audited and made decisions in real companies. We know the pains of those who execute.",
+          company_c2: "Method, not opinion",
+          company_c2p: "Every recommendation comes with rationale. Evidence trail ready to defend before internal or external audit.",
+          company_c3: "Focus on results",
+          company_c3p: "We do not sell projects. We deliver measurable savings. If it does not generate value, it does not make sense to continue.",
+          insights_title: "Insight of the day",
+          insights_sub: "Practical provocations on tax and operational decisions.",
+          insights_card: "Provocation",
+          insights_link: "Talk about this",
+          contact_title: "Calculate your savings potential",
+          contact_sub: "Free initial diagnosis. We identify opportunities before any commitment.",
+          f_name: "Name",
+          f_email: "Corporate email",
+          f_company: "Company",
+          f_role: "Role",
+          f_msg: "What is your main pain today?",
+          f_send: "Request free diagnosis",
+          f_note: "Response within 24 business hours. No spam, no pushy salesperson.",
+          foot_note: " Decision platform for tax and foreign trade."
+        }
+      };
 
-    // Insights
-    var insights = {
-      pt: [
-        { t: "Drawback e RECOF: revise o timing do crédito", d: "Muitos ganhos estão no quando você recupera/compensa — não só no quanto.", href: "#products" },
-        { t: "Compliance by design", d: "Governança + trilhas + evidências reduzem risco e retrabalho em fiscalizações.", href: "#company" },
-        { t: "Classificação fiscal: trate como ativo", d: "NCM é decisão: impacta tributo, risco e elegibilidade de regimes.", href: "#products" },
-        { t: "SPED como fonte de verdade", d: "Variações mês a mês revelam sinais por fornecedor/cliente e por operação.", href: "#platform" },
-        { t: "IA aplicada onde dói", d: "Use IA para triagem de exceções, scoring de risco e recomendações — não para enfeite.", href: "#platform" },
-        { t: "Trade-offs explícitos", d: "Compare cenários lado a lado: caixa x risco x execução.", href: "#how" },
-        { t: "Rede importa", d: "Otimização isolada perde valor. Traga sua cadeia para a mesma leitura.", href: "#platform" },
-        { t: "Tempo é caixa", d: "Atraso em apuração, retificação e recuperação de créditos tem custo real.", href: "#how" },
-        { t: "Exceções primeiro", d: "O 80/20 está nas exceções: identifique desvios e foque onde há impacto.", href: "#how" },
-        { t: "Risco não é opinião", d: "Com scoring por operação e evidências, risco vira número — e decisão fica defensável.", href: "#products" }
-      ],
-      en: [
-        { t: "Drawback & RECOF: revisit credit timing", d: "Many gains come from when you recover/offset — not only how much.", href: "#products" },
-        { t: "Compliance by design", d: "Governance + tracks + evidence reduce risk and rework during audits.", href: "#company" },
-        { t: "Tariff classification is an asset", d: "Classification drives taxes, risk and special-regime eligibility.", href: "#products" },
-        { t: "SPED as a source of truth", d: "Month-over-month variance reveals signals by supplier/customer and operation.", href: "#platform" },
-        { t: "AI where it matters", d: "Use AI for exception triage, risk scoring and recommendations — not decoration.", href: "#platform" },
-        { t: "Make trade-offs explicit", d: "Compare cash vs risk vs execution side by side.", href: "#how" },
-        { t: "Your network matters", d: "Isolated optimization loses value. Bring suppliers and customers into the same lens.", href: "#platform" },
-        { t: "Time is cash", d: "Delays in assessment, rectification and credit recovery have real cost.", href: "#how" },
-        { t: "Start with exceptions", d: "The 80/20 often lives in exceptions. Find deviations and focus on impact.", href: "#how" },
-        { t: "Risk is not opinion", d: "Scoring by operation + evidence makes risk measurable and defensible.", href: "#products" }
-      ]
-    };
+      var insights = {
+        pt: [
+          { t: "Reforma Tributária: você já simulou o impacto?", d: "Quem esperar para entender vai reagir. Quem simular agora vai decidir.", href: "#contact" },
+          { t: "Drawback não é benefício automático", d: "É decisão. Timing errado custa caixa. Documentação errada custa multa.", href: "#products" },
+          { t: "Seu ERP não foi feito para encontrar economia", d: "Foi feito para registrar. Oportunidade vem de cruzamento que ele não faz.", href: "#platform" },
+          { t: "Crédito tributário é ativo ou passivo?", d: "Depende de como você gerencia. Sem trilha, vira risco. Com trilha, vira caixa.", href: "#how" },
+          { t: "Quanto custa não saber?", d: "O custo de oportunidade de operar sem visibilidade é real. Só não aparece no balanço.", href: "#contact" }
+        ],
+        en: [
+          { t: "Tax Reform: have you simulated the impact?", d: "Those who wait to understand will react. Those who simulate now will decide.", href: "#contact" },
+          { t: "Drawback is not an automatic benefit", d: "It is a decision. Wrong timing costs cash. Wrong documentation costs fines.", href: "#products" },
+          { t: "Your ERP was not made to find savings", d: "It was made to record. Opportunity comes from cross-referencing it does not do.", href: "#platform" },
+          { t: "Is tax credit an asset or liability?", d: "Depends on how you manage it. Without trail, it becomes risk. With trail, it becomes cash.", href: "#how" },
+          { t: "How much does not knowing cost?", d: "The opportunity cost of operating without visibility is real. It just does not show on the balance sheet.", href: "#contact" }
+        ]
+      };
 
-    // Current language
-    var currentLang = 'pt';
+      var currentLang = 'pt';
 
-    // Set insight
-    function setInsight(lang) {
-      var list = insights[lang] || insights.pt;
-      var pick = list[Math.floor(Math.random() * list.length)];
-      var el = document.getElementById("insightText");
-      var link = document.getElementById("insightLink");
-      if (!el || !link || !pick) return;
-      el.innerHTML = '<b>' + pick.t + '</b><br>' + pick.d;
-      link.setAttribute("href", pick.href || "#products");
-    }
-
-    // Apply language
-    function applyLang(lang) {
-      currentLang = lang;
-      document.documentElement.lang = (lang === "en") ? "en" : "pt-BR";
-      
-      var taglineEl = document.getElementById('tagline');
-      if (taglineEl) {
-        taglineEl.textContent = dict[lang].tagline;
+      function setInsight(lang) {
+        var list = insights[lang] || insights.pt;
+        var pick = list[Math.floor(Math.random() * list.length)];
+        var el = document.getElementById("insightText");
+        var link = document.getElementById("insightLink");
+        if (el && pick) {
+          el.innerHTML = '<b>' + pick.t + '</b><br>' + pick.d;
+        }
+        if (link && pick) {
+          link.href = pick.href || "#contact";
+        }
       }
 
-      var elements = document.querySelectorAll("[data-i18n]");
-      for (var i = 0; i < elements.length; i++) {
-        var el = elements[i];
-        var key = el.getAttribute("data-i18n");
-        if (dict[lang][key]) {
-          if (key === 'hero_title') {
-            el.innerHTML = dict[lang][key];
-          } else {
-            el.textContent = dict[lang][key];
+      function applyLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = (lang === "en") ? "en" : "pt-BR";
+        
+        var elements = document.querySelectorAll("[data-i18n]");
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          var key = el.getAttribute("data-i18n");
+          if (dict[lang] && dict[lang][key]) {
+            if (key === 'hero_title' || key === 'hero_lead') {
+              el.innerHTML = dict[lang][key];
+            } else {
+              el.textContent = dict[lang][key];
+            }
+          }
+        }
+
+        setInsight(lang);
+        
+        var langPT = document.getElementById("langPT");
+        var langEN = document.getElementById("langEN");
+        if (langPT) langPT.className = (lang === "pt") ? "active" : "";
+        if (langEN) langEN.className = (lang === "en") ? "active" : "";
+      }
+
+      function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        try { localStorage.setItem("flowiq_theme", theme); } catch(e) {}
+
+        var isDark = (theme === "dark");
+        var imgs = document.querySelectorAll('[data-light][data-dark]');
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          var src = isDark ? img.getAttribute('data-dark') : img.getAttribute('data-light');
+          if (src && img.tagName === 'IMG') {
+            img.src = src;
           }
         }
       }
 
-      setInsight(lang);
-      
-      var langPT = document.getElementById("langPT");
-      var langEN = document.getElementById("langEN");
-      if (langPT) {
-        if (lang === "pt") {
-          langPT.classList.add("active");
-        } else {
-          langPT.classList.remove("active");
-        }
-      }
-      if (langEN) {
-        if (lang === "en") {
-          langEN.classList.add("active");
-        } else {
-          langEN.classList.remove("active");
-        }
-      }
-    }
+      document.getElementById("langPT").onclick = function() { applyLang("pt"); };
+      document.getElementById("langEN").onclick = function() { applyLang("en"); };
+      document.getElementById("themeToggle").onclick = function() {
+        var cur = document.documentElement.getAttribute("data-theme") || "light";
+        setTheme(cur === "light" ? "dark" : "light");
+      };
+      document.getElementById("contactForm").onsubmit = function(e) {
+        e.preventDefault();
+        alert(currentLang === 'en' ? 'Thanks! We will respond within 24 business hours.' : 'Obrigado! Responderemos em até 24h úteis.');
+      };
 
-    // Set theme
-    function setTheme(theme) {
-      document.documentElement.setAttribute("data-theme", theme);
-      
-      try {
-        localStorage.setItem("flowiq_theme", theme);
-      } catch(e) {}
-
-      var isDark = theme === "dark";
-      var swapElements = document.querySelectorAll('[data-light][data-dark]');
-      for (var i = 0; i < swapElements.length; i++) {
-        var el = swapElements[i];
-        var next = isDark ? el.getAttribute('data-dark') : el.getAttribute('data-light');
-        if (!next) continue;
-        if (el.tagName === 'IMG') {
-          if (el.getAttribute('src') !== next) {
-            el.setAttribute('src', next);
-          }
-        }
-      }
-    }
-
-    // Event listeners for language buttons
-    document.getElementById("langPT").addEventListener("click", function(e) {
-      e.preventDefault();
+      var savedTheme = "light";
+      try { savedTheme = localStorage.getItem("flowiq_theme") || "light"; } catch(e) {}
+      setTheme(savedTheme);
       applyLang("pt");
-    });
-    
-    document.getElementById("langEN").addEventListener("click", function(e) {
-      e.preventDefault();
-      applyLang("en");
-    });
-
-    // Event listener for theme toggle
-    document.getElementById("themeToggle").addEventListener("click", function(e) {
-      e.preventDefault();
-      var cur = document.documentElement.getAttribute("data-theme") || "light";
-      setTheme(cur === "light" ? "dark" : "light");
-    });
-
-    // Form submit
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert(currentLang === 'en' ? 'Thanks! We will get back to you.' : 'Obrigado! Vamos retornar em breve.');
-    });
-
-    // Initialize
-    var savedTheme = "light";
-    try {
-      savedTheme = localStorage.getItem("flowiq_theme") || "light";
-    } catch(e) {}
-    
-    setTheme(savedTheme);
-    applyLang("pt");
-    });
+    })();
   </script>
 </body>
 </html>
