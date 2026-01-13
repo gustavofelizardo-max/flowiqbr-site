@@ -1289,6 +1289,402 @@
       <div class="sectionDivider"></div>
 
       <!-- ══════════════════════════════════════════════════════
+           SINAIS DO FISCO DIGITAL — SEÇÃO ADICIONAL ISOLADA
+           
+           Carrossel editorial premium para contextualização
+           institucional e validação de posicionamento.
+           
+           CSS isolado com prefixo .fisco-* para não impactar legado
+      ══════════════════════════════════════════════════════ -->
+      <style>
+        /* CSS ISOLADO — Sinais do Fisco Digital */
+        .fisco-section {
+          padding: 60px 0;
+          position: relative;
+        }
+        
+        .fisco-header {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+        
+        .fisco-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin-bottom: 16px;
+        }
+        
+        .fisco-label::before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          background: #dc2626;
+          border-radius: 50%;
+          animation: fiscoPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes fiscoPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(0.8); }
+        }
+        
+        .fisco-title {
+          font-size: 28px;
+          font-weight: 800;
+          color: var(--ink);
+          margin: 0 0 12px;
+          letter-spacing: -.02em;
+        }
+        
+        .fisco-subtitle {
+          font-size: 15px;
+          color: var(--muted);
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+        
+        .fisco-carousel-wrapper {
+          position: relative;
+          overflow: hidden;
+          margin: 0 -20px;
+          padding: 0 20px;
+        }
+        
+        .fisco-carousel {
+          display: flex;
+          gap: 20px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          padding: 10px 0 20px;
+        }
+        
+        .fisco-carousel::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .fisco-card {
+          flex: 0 0 340px;
+          scroll-snap-align: start;
+          background: var(--glass);
+          border: 1px solid var(--line);
+          border-radius: 16px;
+          padding: 28px;
+          position: relative;
+          transition: all .3s ease;
+        }
+        
+        .fisco-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 50px rgba(0,0,0,.08);
+        }
+        
+        html[data-theme="dark"] .fisco-card:hover {
+          box-shadow: 0 20px 50px rgba(0,0,0,.3);
+        }
+        
+        .fisco-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #dc2626, rgba(220,38,38,.3));
+          border-radius: 16px 16px 0 0;
+        }
+        
+        .fisco-source {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 16px;
+        }
+        
+        .fisco-source-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background: rgba(220,38,38,.1);
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+        }
+        
+        .fisco-source-icon svg {
+          width: 16px;
+          height: 16px;
+          color: #dc2626;
+        }
+        
+        .fisco-source-text {
+          font-size: 11px;
+          color: var(--muted);
+          font-weight: 600;
+          letter-spacing: .02em;
+        }
+        
+        .fisco-source-text span {
+          display: block;
+          font-weight: 700;
+          color: var(--ink);
+          font-size: 12px;
+        }
+        
+        .fisco-headline {
+          font-size: 17px;
+          font-weight: 700;
+          color: var(--ink);
+          line-height: 1.4;
+          margin: 0 0 14px;
+        }
+        
+        .fisco-insight {
+          font-size: 14px;
+          color: var(--muted);
+          line-height: 1.65;
+          margin: 0 0 18px;
+        }
+        
+        .fisco-connection {
+          font-size: 12px;
+          color: var(--accent);
+          font-weight: 600;
+          padding-top: 14px;
+          border-top: 1px solid var(--line);
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        
+        .fisco-connection::before {
+          content: "→";
+          font-weight: 400;
+        }
+        
+        .fisco-nav {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 24px;
+        }
+        
+        .fisco-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--line);
+          border: none;
+          cursor: pointer;
+          transition: all .2s ease;
+          padding: 0;
+        }
+        
+        .fisco-dot.active {
+          background: var(--accent);
+          width: 24px;
+          border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+          .fisco-card {
+            flex: 0 0 300px;
+          }
+          .fisco-title {
+            font-size: 24px;
+          }
+        }
+      </style>
+      
+      <section class="fisco-section" id="fisco-signals">
+        <div class="container">
+          <header class="fisco-header">
+            <div class="fisco-label" data-i18n="fisco_label">Monitoramento ativo</div>
+            <h2 class="fisco-title" data-i18n="fisco_title">Sinais do Fisco Digital</h2>
+            <p class="fisco-subtitle" data-i18n="fisco_subtitle">Movimentos estruturais que estão redefinindo a gestão tributária no Brasil. Contexto para quem decide.</p>
+          </header>
+          
+          <div class="fisco-carousel-wrapper">
+            <div class="fisco-carousel" id="fiscoCarousel">
+              
+              <!-- Card 1 - Exame Jan 2026 (MAIS RECENTE) -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src1">Exame</span>
+                    <span data-i18n="fisco_date1">Jan 2026</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h1">A soberania da Inteligência Artificial fiscal federal</h3>
+                <p class="fisco-insight" data-i18n="fisco_i1">A Receita Federal opera com IA que processa 100% das declarações em tempo real. Não há mais amostragem: cada operação é analisada, cruzada e classificada por risco automaticamente. A fiscalização deixou de ser artesanal e passou a ser ecossistema tecnológico de larga escala.</p>
+                <div class="fisco-connection" data-i18n="fisco_c1">Quem não tem visibilidade dos próprios dados está exposto sem saber</div>
+              </article>
+              
+              <!-- Card 2 - Serpro Out 2025 -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <path d="M3 9h18M9 21V9"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src2">Serpro</span>
+                    <span data-i18n="fisco_date2">Out 2025</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h2">Mais de 40 projetos de IA ativos na administração tributária</h3>
+                <p class="fisco-insight" data-i18n="fisco_i2">Da fiscalização ao atendimento ao cidadão, a Receita realiza cruzamentos massivos de dados e seleção preditiva. R$ 12,5 bilhões já foram recuperados com liberação aduaneira mais ágil e julgamentos mais rápidos.</p>
+                <div class="fisco-connection" data-i18n="fisco_c2">Dado sem confiança é ruído. Tecnologia sem propósito é barulho.</div>
+              </article>
+              
+              <!-- Card 3 - Contábeis Set 2025 -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 6v6l4 2"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src3">Portal Contábeis</span>
+                    <span data-i18n="fisco_date3">Set 2025</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h3">Receita Federal flagra R$ 11 bilhões em sonegação usando IA</h3>
+                <p class="fisco-insight" data-i18n="fisco_i3">A tecnologia permite identificar irregularidades antes que se tornem fraudes consolidadas. O sistema analisa padrões de transações digitais, mapeia redes complexas de empresas e antecipa desvios em tempo real.</p>
+                <div class="fisco-connection" data-i18n="fisco_c3">A IA não serve apenas para punir — estimula conformidade e evita litígios</div>
+              </article>
+              
+              <!-- Card 4 - Lei Complementar 214/2025 Jan 2025 -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src4">Lei Complementar 214/2025</span>
+                    <span data-i18n="fisco_date4">Jan 2025</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h4">Split payment exigirá decisão tributária em tempo real</h3>
+                <p class="fisco-insight" data-i18n="fisco_i4">Com a Reforma Tributária, o recolhimento de IBS e CBS será automático no momento da transação. Erros de classificação ou regime não terão janela de correção. A decisão precisa estar tomada antes da operação.</p>
+                <div class="fisco-connection" data-i18n="fisco_c4">Simulação prévia de cenários se torna operacionalmente crítica</div>
+              </article>
+              
+              <!-- Card 5 - Gazeta do Povo Nov 2024 -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                      <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src5">Gazeta do Povo</span>
+                    <span data-i18n="fisco_date5">Nov 2024</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h5">500 mil cartas enviadas a contribuintes com inconsistências detectadas</h3>
+                <p class="fisco-insight" data-i18n="fisco_i5">A Receita Federal não espera mais a fiscalização presencial. Ao verificar irregularidades via cruzamento automático, o Fisco informa diretamente o contribuinte para correção voluntária. Quem não se regularizar, enfrenta multas de 75% a 150%.</p>
+                <div class="fisco-connection" data-i18n="fisco_c5">Regularização preventiva é o novo padrão — reação virou passivo</div>
+              </article>
+              
+              <!-- Card 6 - Ministério da Fazenda Set 2024 -->
+              <article class="fisco-card">
+                <div class="fisco-source">
+                  <div class="fisco-source-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                      <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                  </div>
+                  <div class="fisco-source-text">
+                    <span data-i18n="fisco_src6">Ministério da Fazenda</span>
+                    <span data-i18n="fisco_date6">Set 2024</span>
+                  </div>
+                </div>
+                <h3 class="fisco-headline" data-i18n="fisco_h6">Projeto Analytics detecta R$ 1 bilhão em fraudes com IA</h3>
+                <p class="fisco-insight" data-i18n="fisco_i6">A nova plataforma da Receita Federal usa algoritmos de machine learning para cruzar SPED, COMEX e obrigações acessórias. Empresas de fachada, notas frias e criptoativos suspeitos são identificados antes da fiscalização presencial.</p>
+                <div class="fisco-connection" data-i18n="fisco_c6">Governança e rastreabilidade deixaram de ser diferenciais competitivos</div>
+              </article>
+              
+            </div>
+          </div>
+          
+          <div class="fisco-nav" id="fiscoNav">
+            <button class="fisco-dot active" data-index="0"></button>
+            <button class="fisco-dot" data-index="1"></button>
+            <button class="fisco-dot" data-index="2"></button>
+            <button class="fisco-dot" data-index="3"></button>
+            <button class="fisco-dot" data-index="4"></button>
+            <button class="fisco-dot" data-index="5"></button>
+          </div>
+        </div>
+      </section>
+      
+      <script>
+        // Script isolado para o carrossel Fisco
+        (function() {
+          var carousel = document.getElementById('fiscoCarousel');
+          var dots = document.querySelectorAll('.fisco-dot');
+          
+          if (!carousel || !dots.length) return;
+          
+          // Scroll para card específico
+          function scrollToCard(index) {
+            var cards = carousel.querySelectorAll('.fisco-card');
+            if (cards[index]) {
+              cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            }
+            dots.forEach(function(dot, i) {
+              dot.classList.toggle('active', i === index);
+            });
+          }
+          
+          // Click nos dots
+          dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+              var index = parseInt(this.getAttribute('data-index'));
+              scrollToCard(index);
+            });
+          });
+          
+          // Atualizar dots no scroll
+          carousel.addEventListener('scroll', function() {
+            var scrollLeft = carousel.scrollLeft;
+            var cardWidth = 360;
+            var activeIndex = Math.round(scrollLeft / cardWidth);
+            dots.forEach(function(dot, i) {
+              dot.classList.toggle('active', i === activeIndex);
+            });
+          });
+        })();
+      </script>
+
+      <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
            PLATFORM — REVITALIZADO
            
            MUDANÇA: Menos técnico, mais resultado
@@ -1891,6 +2287,39 @@
           insights_sub: "Provocações práticas sobre decisão tributária e operacional.",
           insights_card: "Provocação",
           insights_link: "Falar sobre isso",
+          fisco_label: "Monitoramento ativo",
+          fisco_title: "Sinais do Fisco Digital",
+          fisco_subtitle: "Movimentos estruturais que estão redefinindo a gestão tributária no Brasil. Contexto para quem decide.",
+          fisco_src1: "Exame",
+          fisco_date1: "Jan 2026",
+          fisco_h1: "A soberania da Inteligência Artificial fiscal federal",
+          fisco_i1: "A Receita Federal opera com IA que processa 100% das declarações em tempo real. Não há mais amostragem: cada operação é analisada, cruzada e classificada por risco automaticamente. A fiscalização deixou de ser artesanal e passou a ser ecossistema tecnológico de larga escala.",
+          fisco_c1: "Quem não tem visibilidade dos próprios dados está exposto sem saber",
+          fisco_src2: "Serpro",
+          fisco_date2: "Out 2025",
+          fisco_h2: "Mais de 40 projetos de IA ativos na administração tributária",
+          fisco_i2: "Da fiscalização ao atendimento ao cidadão, a Receita realiza cruzamentos massivos de dados e seleção preditiva. R$ 12,5 bilhões já foram recuperados com liberação aduaneira mais ágil e julgamentos mais rápidos.",
+          fisco_c2: "Dado sem confiança é ruído. Tecnologia sem propósito é barulho.",
+          fisco_src3: "Portal Contábeis",
+          fisco_date3: "Set 2025",
+          fisco_h3: "Receita Federal flagra R$ 11 bilhões em sonegação usando IA",
+          fisco_i3: "A tecnologia permite identificar irregularidades antes que se tornem fraudes consolidadas. O sistema analisa padrões de transações digitais, mapeia redes complexas de empresas e antecipa desvios em tempo real.",
+          fisco_c3: "A IA não serve apenas para punir — estimula conformidade e evita litígios",
+          fisco_src4: "Lei Complementar 214/2025",
+          fisco_date4: "Jan 2025",
+          fisco_h4: "Split payment exigirá decisão tributária em tempo real",
+          fisco_i4: "Com a Reforma Tributária, o recolhimento de IBS e CBS será automático no momento da transação. Erros de classificação ou regime não terão janela de correção. A decisão precisa estar tomada antes da operação.",
+          fisco_c4: "Simulação prévia de cenários se torna operacionalmente crítica",
+          fisco_src5: "Gazeta do Povo",
+          fisco_date5: "Nov 2024",
+          fisco_h5: "500 mil cartas enviadas a contribuintes com inconsistências detectadas",
+          fisco_i5: "A Receita Federal não espera mais a fiscalização presencial. Ao verificar irregularidades via cruzamento automático, o Fisco informa diretamente o contribuinte para correção voluntária. Quem não se regularizar, enfrenta multas de 75% a 150%.",
+          fisco_c5: "Regularização preventiva é o novo padrão — reação virou passivo",
+          fisco_src6: "Ministério da Fazenda",
+          fisco_date6: "Set 2024",
+          fisco_h6: "Projeto Analytics detecta R$ 1 bilhão em fraudes com IA",
+          fisco_i6: "A nova plataforma da Receita Federal usa algoritmos de machine learning para cruzar SPED, COMEX e obrigações acessórias. Empresas de fachada, notas frias e criptoativos suspeitos são identificados antes da fiscalização presencial.",
+          fisco_c6: "Governança e rastreabilidade deixaram de ser diferenciais competitivos",
           contact_title: "Calcule seu potencial de economia",
           contact_sub: "Diagnóstico inicial gratuito. Identificamos oportunidades antes de qualquer compromisso.",
           f_name: "Nome",
@@ -2007,6 +2436,39 @@
           insights_sub: "Practical provocations on tax and operational decisions.",
           insights_card: "Provocation",
           insights_link: "Talk about this",
+          fisco_label: "Active monitoring",
+          fisco_title: "Signals from the Digital Tax System",
+          fisco_subtitle: "Structural movements redefining tax management in Brazil. Context for decision makers.",
+          fisco_src1: "Exame",
+          fisco_date1: "Jan 2026",
+          fisco_h1: "The sovereignty of federal tax Artificial Intelligence",
+          fisco_i1: "Brazil's Federal Revenue Service operates with AI that processes 100% of declarations in real time. There is no more sampling: every operation is analyzed, cross-referenced and risk-classified automatically. Enforcement has shifted from artisanal to large-scale technological ecosystem.",
+          fisco_c1: "Those without visibility of their own data are exposed without knowing",
+          fisco_src2: "Serpro",
+          fisco_date2: "Oct 2025",
+          fisco_h2: "Over 40 active AI projects in tax administration",
+          fisco_i2: "From enforcement to citizen services, the Revenue Service performs massive data cross-referencing and predictive selection. R$ 12.5 billion already recovered with faster customs clearance and quicker judgments.",
+          fisco_c2: "Data without trust is noise. Technology without purpose is just sound.",
+          fisco_src3: "Portal Contábeis",
+          fisco_date3: "Sep 2025",
+          fisco_h3: "Federal Revenue flags R$ 11 billion in tax evasion using AI",
+          fisco_i3: "Technology enables identifying irregularities before they become consolidated fraud. The system analyzes digital transaction patterns, maps complex company networks and anticipates deviations in real time.",
+          fisco_c3: "AI is not just for punishment — it encourages compliance and avoids litigation",
+          fisco_src4: "Complementary Law 214/2025",
+          fisco_date4: "Jan 2025",
+          fisco_h4: "Split payment will require real-time tax decisions",
+          fisco_i4: "With Tax Reform, IBS and CBS collection will be automatic at transaction time. Classification or regime errors will have no correction window. The decision must be made before the operation.",
+          fisco_c4: "Pre-simulation of scenarios becomes operationally critical",
+          fisco_src5: "Gazeta do Povo",
+          fisco_date5: "Nov 2024",
+          fisco_h5: "500,000 letters sent to taxpayers with detected inconsistencies",
+          fisco_i5: "The Federal Revenue no longer waits for on-site inspection. Upon detecting irregularities via automatic cross-referencing, the Tax Authority directly informs taxpayers for voluntary correction. Those who don't regularize face fines of 75% to 150%.",
+          fisco_c5: "Preventive regularization is the new standard — reaction became liability",
+          fisco_src6: "Ministry of Finance",
+          fisco_date6: "Sep 2024",
+          fisco_h6: "Project Analytics detects R$ 1 billion in fraud with AI",
+          fisco_i6: "The new Federal Revenue platform uses machine learning algorithms to cross-reference SPED, COMEX and ancillary obligations. Shell companies, fake invoices and suspicious crypto assets are identified before on-site inspection.",
+          fisco_c6: "Governance and traceability are no longer competitive differentiators",
           contact_title: "Calculate your savings potential",
           contact_sub: "Free initial diagnosis. We identify opportunities before any commitment.",
           f_name: "Name",
