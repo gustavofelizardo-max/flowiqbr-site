@@ -4,9 +4,50 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <!-- 
+    ═══════════════════════════════════════════════════════════════════════════
+    FLOWIQ — INDEX REVITALIZADO
+    ═══════════════════════════════════════════════════════════════════════════
+    
+    MUDANÇAS ESTRATÉGICAS APLICADAS:
+    
+    1. HERO: Foco em REDUÇÃO DE CUSTOS + ROI EM 60 DIAS + REFORMA TRIBUTÁRIA
+       - Headline direto: "Reduza custos tributários e operacionais"
+       - ROI em até 60 dias explícito
+       - Menção à Reforma Tributária como contexto de urgência
+    
+    2. VALUE STRIP: Transformado em MÉTRICAS DE IMPACTO ECONÔMICO
+       - Números concretos em vez de conceitos abstratos
+       - Foco: custo, tempo, risco, execução
+    
+    3. AUTORIDADE: Seção "Credenciais" adicionada
+       - 20+ anos de experiência em tecnologia e consultoria
+       - Não parecer startup
+    
+    4. PRODUCTS: Regimes de aperfeiçoamento explícitos
+       - RECOF, Drawback, Ex-tarifário, Similaridade, REINTEGRA
+       - Cadeia completa: insumos → produção → venda → exportação
+    
+    5. BENCHMARK: Reformulado para "Promessa vs. Entrega"
+       - Menos jargão, mais resultado mensurável
+    
+    6. CTAs: Orientados a ROI/Diagnóstico de economia
+       - "Calcular potencial de economia"
+       - "Simular cenários da Reforma"
+    
+    7. COPY: Frases curtas, impacto econômico, linguagem executiva
+       - Pouco adjetivo, muito número
+       - Decisão → Custo → Risco → ROI
+    
+    ═══════════════════════════════════════════════════════════════════════════
+  -->
   <title>FLOWIQ — Reduza custos tributários e operacionais com ROI em 60 dias</title>
   <meta name="description" content="FLOWIQ: plataforma de decisão para redução de custos tributários, operacionais e de comércio exterior. ROI em até 60 dias. RECOF, Drawback, Ex-tarifário. 20+ anos de experiência."/>
+  
   <style>
+    /* ══════════════════════════════════════════════════════════════
+       DESIGN TOKENS — Mantidos conforme original
+    ══════════════════════════════════════════════════════════════ */
     :root {
       --bg: #f6f4ef;
       --bg2: #f3efe7;
@@ -23,12 +64,13 @@
       --accent2Ink: #ffffff;
       --glass: rgba(255,255,255,.60);
       --glass2: rgba(255,255,255,.40);
-      --heroGrad:
+      --heroGrad: 
         radial-gradient(ellipse 1100px 550px at 15% 0%, rgba(243,180,47,.18), transparent 60%),
         radial-gradient(ellipse 900px 500px at 85% 15%, rgba(10,92,255,.14), transparent 55%),
         radial-gradient(ellipse 800px 400px at 50% 100%, rgba(0,140,100,.08), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
+    
     html[data-theme="dark"] {
       --bg: #071a16;
       --bg2: #071f1a;
@@ -40,13 +82,18 @@
       --shadow: 0 24px 70px rgba(0,0,0,.35);
       --glass: rgba(11,38,32,.65);
       --glass2: rgba(11,38,32,.45);
-      --heroGrad:
+      --heroGrad: 
         radial-gradient(ellipse 1100px 550px at 15% 0%, rgba(243,180,47,.15), transparent 60%),
         radial-gradient(ellipse 900px 500px at 85% 15%, rgba(10,92,255,.18), transparent 55%),
         radial-gradient(ellipse 800px 400px at 50% 100%, rgba(0,140,100,.12), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       BASE & RESET
+    ══════════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; }
+    
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -56,12 +103,18 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
+    
     a { color: inherit; text-decoration: none; }
+    
     .container {
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 24px;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       TOPBAR
+    ══════════════════════════════════════════════════════════════ */
     .topbar {
       position: sticky;
       top: 0;
@@ -71,9 +124,11 @@
       background: linear-gradient(180deg, rgba(246,244,239,.92), rgba(246,244,239,.75));
       border-bottom: 1px solid var(--line);
     }
+    
     html[data-theme="dark"] .topbar {
       background: linear-gradient(180deg, rgba(7,26,22,.94), rgba(7,26,22,.80));
     }
+    
     .nav {
       display: flex;
       align-items: center;
@@ -81,6 +136,7 @@
       padding: 12px 0;
       gap: 16px;
     }
+    
     .brand {
       display: flex;
       align-items: center;
@@ -92,21 +148,26 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.05);
       flex-shrink: 0;
     }
+    
     html[data-theme="dark"] .brand {
       background: linear-gradient(180deg, rgba(11,38,32,.75), rgba(11,38,32,.55));
       border-color: rgba(233,244,240,.12);
       box-shadow: 0 8px 24px rgba(0,0,0,.25);
     }
+    
     .brand.hasLockup .logo,
     .brand.hasLockup .brandText { display: none; }
     .brand.hasLockup .brandLockupWrap { display: inline-flex; align-items: center; }
+    
     .brandLockupWrap { display: none; }
+    
     .brandLockup {
       display: block;
       height: 44px;
       width: auto;
       object-fit: contain;
     }
+    
     .logo {
       width: 40px;
       height: 40px;
@@ -118,10 +179,13 @@
       box-shadow: 0 8px 20px rgba(243,180,47,.25);
       flex-shrink: 0;
     }
+    
     .logo svg { width: 20px; height: 20px; opacity: .9; }
+    
     .brandText { display: flex; flex-direction: column; line-height: 1.1; }
     .brandName { font-weight: 800; letter-spacing: .20em; font-size: 17px; }
     .tagline { margin-top: 4px; color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: .02em; }
+
     .menu {
       display: flex;
       align-items: center;
@@ -130,6 +194,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+    
     .menu a {
       font-weight: 800;
       color: var(--muted);
@@ -141,10 +206,12 @@
       transition: all .2s ease;
       white-space: nowrap;
     }
+    
     .menu a:hover {
       color: var(--ink);
       background: var(--glass2);
     }
+
     .actions {
       display: flex;
       flex-direction: column;
@@ -152,6 +219,7 @@
       gap: 8px;
       flex-shrink: 0;
     }
+    
     .ctaTop {
       display: inline-flex;
       align-items: center;
@@ -169,12 +237,15 @@
       border: none;
       cursor: pointer;
     }
+    
     .ctaTop:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(243,180,47,.32); }
+    
     .controls {
       display: flex;
       align-items: center;
       gap: 8px;
     }
+    
     .pill {
       display: inline-flex;
       align-items: center;
@@ -184,6 +255,7 @@
       border: 1px solid var(--line);
       background: var(--glass);
     }
+    
     .pill button {
       border: 0;
       background: transparent;
@@ -195,13 +267,17 @@
       border-radius: 6px;
       transition: all .15s ease;
     }
+    
     .pill button.active { color: var(--ink); background: var(--glass2); }
     .pill button:hover { color: var(--ink); }
+    
+    /* Language Switch com bandeiras */
     .langSwitch {
       display: flex;
       align-items: center;
       gap: 6px;
     }
+    
     .langSwitch button {
       border: 0;
       background: transparent;
@@ -213,16 +289,20 @@
       display: flex;
       align-items: center;
     }
+    
     .langSwitch button:hover { opacity: 0.8; }
-    .langSwitch button.active {
-      opacity: 1;
+    .langSwitch button.active { 
+      opacity: 1; 
       box-shadow: 0 0 0 2px var(--accent);
       border-radius: 4px;
     }
+    
     .langSwitch svg {
       border-radius: 2px;
       display: block;
     }
+    
+    /* Theme Toggle Button */
     .themeBtn {
       width: 40px;
       height: 40px;
@@ -235,23 +315,31 @@
       transition: all .15s ease;
       color: var(--ink);
     }
-    .themeBtn:hover {
-      transform: translateY(-1px);
+    
+    .themeBtn:hover { 
+      transform: translateY(-1px); 
       background: var(--glass2);
     }
-    .themeBtn svg {
-      width: 20px;
-      height: 20px;
+    
+    .themeBtn svg { 
+      width: 20px; 
+      height: 20px; 
     }
+    
+    /* Light mode: mostra sol, esconde lua */
     html[data-theme="light"] .themeBtn .sunIcon { display: block; }
     html[data-theme="light"] .themeBtn .moonIcon { display: none; }
+    
+    /* Dark mode: mostra lua, esconde sol */
     html[data-theme="dark"] .themeBtn .sunIcon { display: none; }
     html[data-theme="dark"] .themeBtn .moonIcon { display: block; }
+    
     html[data-theme="dark"] .themeBtn {
       background: rgba(255,255,255,.08);
       border-color: rgba(233,244,240,.15);
       color: var(--ink);
     }
+    
     .iconBtn {
       width: 36px;
       height: 36px;
@@ -263,20 +351,30 @@
       cursor: pointer;
       transition: all .15s ease;
     }
+    
     .iconBtn:hover { transform: translateY(-1px); }
     .iconBtn svg { width: 16px; height: 16px; opacity: .85; }
+    
     html[data-theme="dark"] .iconBtn {
       background: rgba(255,255,255,.06);
       border-color: rgba(233,244,240,.15);
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       HERO — REVITALIZADO
+       Mudança: Foco em redução de custos + ROI em 60 dias
+    ══════════════════════════════════════════════════════════════ */
     .hero {
       padding: 64px 0 56px;
       text-align: center;
     }
+    
     .heroInner {
       max-width: 820px;
       margin: 0 auto;
     }
+    
+    /* NOVO: Badge de contexto (Reforma Tributária) */
     .heroBadge {
       display: inline-flex;
       align-items: center;
@@ -291,10 +389,12 @@
       margin-bottom: 24px;
       letter-spacing: .02em;
     }
+    
     html[data-theme="dark"] .heroBadge {
       background: rgba(10,92,255,.15);
       border-color: rgba(10,92,255,.25);
     }
+    
     .heroHeadline {
       font-size: clamp(32px, 4.5vw, 52px);
       line-height: 1.12;
@@ -302,12 +402,14 @@
       margin: 0 0 24px;
       font-weight: 800;
     }
+    
     .heroHeadline .accent {
       background: linear-gradient(135deg, var(--accent), #e8a415);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    
     .heroSub {
       font-size: 17px;
       color: var(--muted);
@@ -315,10 +417,12 @@
       margin: 0 auto 32px;
       max-width: 640px;
     }
+    
     .heroSub strong {
       color: var(--ink);
       font-weight: 700;
     }
+    
     .heroBtns {
       display: flex;
       gap: 12px;
@@ -326,6 +430,7 @@
       justify-content: center;
       margin-bottom: 48px;
     }
+    
     .btn {
       display: inline-flex;
       align-items: center;
@@ -342,14 +447,22 @@
       color: var(--ink);
       transition: all .2s ease;
     }
+    
     .btn:hover { transform: translateY(-1px); }
+    
     .btnPrimary {
       border: none;
       background: linear-gradient(180deg, #0a5cff, #0550e0);
       color: #fff;
       box-shadow: 0 12px 32px rgba(10,92,255,.22);
     }
+    
     .btnPrimary:hover { box-shadow: 0 16px 40px rgba(10,92,255,.28); }
+
+    /* ══════════════════════════════════════════════════════════════
+       VALUE STRIP — REVITALIZADO
+       Mudança: Métricas de impacto concreto em vez de conceitos
+    ══════════════════════════════════════════════════════════════ */
     .valueStrip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -360,12 +473,15 @@
       box-shadow: var(--shadow);
       background: var(--cardSolid);
     }
+    
     .valueItem {
       padding: 24px 16px;
       text-align: center;
       border-right: 1px solid var(--line);
     }
+    
     .valueItem:last-child { border-right: none; }
+    
     .valueNum {
       display: block;
       font-size: 28px;
@@ -374,6 +490,7 @@
       line-height: 1;
       margin-bottom: 6px;
     }
+    
     .valueItem strong {
       display: block;
       font-size: 12px;
@@ -382,24 +499,32 @@
       margin-bottom: 4px;
       color: var(--ink);
     }
+    
     .valueItem span {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.4;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTIONS
+    ══════════════════════════════════════════════════════════════ */
     section {
       padding: 56px 0;
     }
+    
     .sectionHeader {
       margin-bottom: 36px;
       text-align: center;
     }
+    
     .sectionHeader h2 {
       font-size: clamp(24px, 3vw, 32px);
       letter-spacing: -.02em;
       margin: 0 0 16px;
       line-height: 1.2;
     }
+    
     .sectionHeader p {
       font-size: 16px;
       color: var(--muted);
@@ -407,16 +532,22 @@
       max-width: 580px;
       line-height: 1.6;
     }
+    
     .sectionDivider {
       height: 1px;
       background: var(--line);
       margin: 0;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       CARDS GRID
+    ══════════════════════════════════════════════════════════════ */
     .grid3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
+    
     .card {
       border: 1px solid var(--line);
       background: var(--glass);
@@ -430,16 +561,20 @@
       text-align: center;
       transition: all .3s ease;
     }
+    
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 50px rgba(0,0,0,.1);
     }
+    
     html[data-theme="dark"] .card {
       box-shadow: 0 16px 50px rgba(0,0,0,.25);
     }
+    
     html[data-theme="dark"] .card:hover {
       box-shadow: 0 24px 60px rgba(0,0,0,.35);
     }
+    
     .cardIcon {
       width: 52px;
       height: 52px;
@@ -452,15 +587,20 @@
       flex-shrink: 0;
       box-shadow: 0 8px 24px rgba(243,180,47,.3);
     }
-    .cardIcon svg {
+    
+    .cardIcon svg { 
       color: var(--accentInk);
     }
-    html[data-theme="dark"] .cardIcon {
+    
+    html[data-theme="dark"] .cardIcon { 
       background: linear-gradient(135deg, var(--accent), #e9a820);
       box-shadow: 0 8px 24px rgba(243,180,47,.2);
     }
+    
     .cardIcon svg { width: 24px; height: 24px; }
     .cardIcon img { width: 26px; height: 26px; object-fit: contain; }
+    
+    /* Logo de produtos - tamanho livre */
     .productLogo {
       width: auto !important;
       height: auto !important;
@@ -473,17 +613,20 @@
       width: auto !important;
       height: auto !important;
     }
+    
     .card h4 {
       font-size: 18px;
       margin: 0 0 12px;
       letter-spacing: -.01em;
     }
+    
     .card p {
       font-size: 14px;
       color: var(--muted);
       margin: 0;
       line-height: 1.6;
     }
+    
     .card ul {
       margin: 16px 0 0;
       padding: 0;
@@ -493,11 +636,13 @@
       line-height: 1.6;
       text-align: left;
     }
+    
     .card li {
       margin-bottom: 8px;
       position: relative;
       padding-left: 20px;
     }
+    
     .card li::before {
       content: "✓";
       position: absolute;
@@ -506,6 +651,7 @@
       font-weight: bold;
       font-size: 12px;
     }
+    
     .cardActions {
       margin-top: auto;
       padding-top: 24px;
@@ -514,6 +660,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+    
     .card[data-wm]::after {
       content: "";
       position: absolute;
@@ -528,16 +675,22 @@
       opacity: .06;
       pointer-events: none;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       HOW IT WORKS
+    ══════════════════════════════════════════════════════════════ */
     .howGrid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       align-items: start;
     }
+    
     .steps {
       display: grid;
       gap: 12px;
     }
+    
     .step {
       display: flex;
       gap: 14px;
@@ -549,6 +702,7 @@
       position: relative;
       text-align: left;
     }
+    
     .step::before {
       content: "";
       position: absolute;
@@ -559,6 +713,7 @@
       background: linear-gradient(180deg, var(--accent), transparent);
       border-radius: 3px 0 0 3px;
     }
+    
     .stepNum {
       width: 36px;
       height: 36px;
@@ -571,17 +726,21 @@
       font-size: 15px;
       flex-shrink: 0;
     }
+    
     html[data-theme="dark"] .stepNum { background: rgba(10,92,255,.18); }
+    
     .stepContent b {
       display: block;
       font-size: 15px;
       margin-bottom: 4px;
     }
+    
     .stepContent span {
       font-size: 14px;
       color: var(--muted);
       line-height: 1.5;
     }
+    
     .howCard {
       text-align: left;
       background: linear-gradient(135deg, var(--glass), rgba(243,180,47,.06));
@@ -589,6 +748,7 @@
       position: relative;
       overflow: hidden;
     }
+    
     .howCard::before {
       content: "";
       position: absolute;
@@ -598,32 +758,38 @@
       height: 3px;
       background: linear-gradient(90deg, var(--accent), rgba(243,180,47,.3));
     }
+    
     .howCard .cardIcon {
       margin: 0 0 20px;
       background: linear-gradient(135deg, var(--accent), #e9a820);
       border: none;
       box-shadow: 0 8px 24px rgba(243,180,47,.25);
     }
+    
     .howCard .cardIcon svg {
       color: var(--accentInk);
     }
+    
     .howCard h4 {
       font-size: 20px;
       margin-bottom: 12px;
       color: var(--ink);
     }
+    
     .howCard > p {
       margin-bottom: 20px;
       line-height: 1.6;
       color: var(--muted);
       font-size: 15px;
     }
+    
     .howCard ul {
       margin: 0;
       padding: 0;
       display: grid;
       gap: 0;
     }
+    
     .howCard ul li {
       font-size: 14px;
       font-weight: 600;
@@ -632,6 +798,7 @@
       position: relative;
       color: var(--ink);
     }
+    
     .howCard ul li::before {
       content: "✓";
       position: absolute;
@@ -648,21 +815,29 @@
       font-weight: 700;
       color: #16a34a;
     }
+    
     .howCard ul li:last-child {
       padding-bottom: 0;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       CREDENCIAIS — NOVA SEÇÃO
+       Adicionado para estabelecer autoridade (20+ anos)
+    ══════════════════════════════════════════════════════════════ */
     .credenciais {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       text-align: center;
     }
+    
     .credItem {
       padding: 24px 16px;
       border: 1px solid var(--line);
       background: var(--glass);
       border-radius: 14px;
     }
+    
     .credNum {
       font-size: 32px;
       font-weight: 800;
@@ -670,24 +845,33 @@
       line-height: 1;
       margin-bottom: 8px;
     }
+    
     .credLabel {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.4;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       BENCHMARK TABLE — REVITALIZADO
+       Mudança: "O que prometem vs. O que entregamos"
+    ══════════════════════════════════════════════════════════════ */
     .compareTable {
       border: 1px solid var(--line);
       background: var(--glass);
       border-radius: var(--radius);
       overflow: hidden;
     }
+    
     .compareHead {
       display: grid;
       grid-template-columns: 1fr 1fr;
       background: var(--cardSolid);
       border-bottom: 1px solid var(--line);
     }
+    
     html[data-theme="dark"] .compareHead { background: rgba(0,0,0,.15); }
+    
     .compareHead > div {
       padding: 18px 24px;
       font-weight: 800;
@@ -696,23 +880,29 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+    
     .compareHead > div:last-child {
       border-left: 1px solid var(--line);
       color: var(--ink);
     }
+    
     .compareRow {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--line);
     }
+    
     .compareRow:last-child { border-bottom: 0; }
+    
     .compareCell {
       padding: 20px 24px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
     }
+    
     .compareCell:last-child { border-left: 1px solid var(--line); }
+    
     .cellIcon {
       font-size: 24px;
       flex-shrink: 0;
@@ -720,16 +910,22 @@
       width: 32px;
       text-align: center;
     }
+    
     .cellContent b {
       display: block;
       font-size: 15px;
       margin-bottom: 4px;
     }
+    
     .cellContent span {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.4;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       INSIGHT CARD
+    ══════════════════════════════════════════════════════════════ */
     .insightCard {
       border: 1px solid rgba(243,180,47,.2);
       background: linear-gradient(135deg, var(--glass), rgba(243,180,47,.08));
@@ -744,6 +940,7 @@
       overflow: hidden;
       box-shadow: 0 16px 50px rgba(243,180,47,.1);
     }
+    
     .insightCard::before {
       content: "";
       position: absolute;
@@ -753,6 +950,7 @@
       height: 3px;
       background: linear-gradient(90deg, var(--accent), rgba(243,180,47,.3));
     }
+    
     .insightIcon {
       width: 56px;
       height: 56px;
@@ -764,12 +962,15 @@
       flex-shrink: 0;
       box-shadow: 0 8px 24px rgba(243,180,47,.3);
     }
-    .insightIcon svg {
-      width: 26px;
-      height: 26px;
+    
+    .insightIcon svg { 
+      width: 26px; 
+      height: 26px; 
       color: var(--accentInk);
     }
+    
     .insightContent { flex: 1; }
+    
     .insightLabel {
       font-size: 11px;
       letter-spacing: .12em;
@@ -778,6 +979,7 @@
       margin-bottom: 10px;
       font-weight: 800;
     }
+    
     #insightText {
       font-size: 16px;
       color: var(--ink);
@@ -785,10 +987,15 @@
       margin: 0 0 20px;
       font-weight: 500;
     }
-    #insightText b {
-      color: var(--ink);
+    
+    #insightText b { 
+      color: var(--ink); 
       font-weight: 700;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       CONTACT FORM
+    ══════════════════════════════════════════════════════════════ */
     .contactCard {
       border: 1px solid var(--line);
       background: var(--glass);
@@ -797,18 +1004,21 @@
       max-width: 640px;
       margin: 0 auto;
     }
+    
     .formGrid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-bottom: 16px;
     }
+    
     .formField label {
       display: block;
       font-weight: 700;
       font-size: 13px;
       margin-bottom: 8px;
     }
+    
     .formField input,
     .formField select,
     .formField textarea {
@@ -822,12 +1032,14 @@
       font-family: inherit;
       transition: border-color .15s ease;
     }
+    
     .formField input:focus,
     .formField select:focus,
     .formField textarea:focus {
       outline: none;
       border-color: var(--accent);
     }
+    
     .formActions {
       display: flex;
       gap: 16px;
@@ -836,15 +1048,21 @@
       margin-top: 24px;
       justify-content: center;
     }
+    
     .formNote {
       font-size: 12px;
       color: var(--muted);
       line-height: 1.45;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
     footer {
       padding: 32px 0 48px;
       border-top: 1px solid var(--line);
     }
+    
     .footerInner {
       display: flex;
       justify-content: space-between;
@@ -852,23 +1070,32 @@
       gap: 24px;
       flex-wrap: wrap;
     }
+    
     .footerBrand {
       font-size: 13px;
       color: var(--muted);
     }
+    
     .footerBrand b { color: var(--ink); }
+    
     .footerNav {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
     }
+    
     .footerNav a {
       font-size: 13px;
       font-weight: 700;
       color: var(--muted);
       transition: color .15s ease;
     }
+    
     .footerNav a:hover { color: var(--ink); }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .valueStrip { grid-template-columns: repeat(2, 1fr); }
       .valueItem { border-bottom: 1px solid var(--line); }
@@ -877,28 +1104,37 @@
       .howGrid { grid-template-columns: 1fr; }
       .credenciais { grid-template-columns: repeat(2, 1fr); }
     }
+    
     @media (max-width: 768px) {
       .nav { flex-wrap: wrap; }
       .menu { order: 3; width: 100%; justify-content: flex-start; margin-top: 8px; }
       .actions { gap: 8px; }
       .ctaTop { padding: 10px 16px; font-size: 10px; }
+      
       .hero { padding: 48px 0 40px; }
       .heroHeadline { font-size: 28px; }
       .heroSub { font-size: 15px; }
+      
       .valueStrip { grid-template-columns: 1fr; }
       .valueItem { border-right: none; border-bottom: 1px solid var(--line); }
       .valueItem:last-child { border-bottom: none; }
+      
       .grid3 { grid-template-columns: 1fr; }
       .credenciais { grid-template-columns: 1fr 1fr; }
+      
       .compareHead,
       .compareRow { grid-template-columns: 1fr; }
       .compareCell:last-child { border-left: 0; border-top: 1px solid var(--line); }
+      
       .formGrid { grid-template-columns: 1fr; }
+      
       .insightCard { flex-direction: column; text-align: center; }
       .insightIcon { margin: 0 auto; }
+      
       .footerInner { flex-direction: column; text-align: center; }
       .footerNav { justify-content: center; }
     }
+    
     @media (max-width: 480px) {
       .brand { padding: 8px 12px; }
       .brandLockup { height: 36px; }
@@ -909,15 +1145,18 @@
   </style>
 </head>
 <body>
+  <!-- ════════════════════════════════════════════════════════════
+       TOPBAR — Estrutura mantida
+  ════════════════════════════════════════════════════════════ -->
   <header class="topbar">
     <div class="container">
       <nav class="nav">
         <a class="brand hasLockup" href="#top" aria-label="FLOWIQ">
           <span class="brandLockupWrap">
-            <img class="brandLockup" id="brandLockup"
-                 src="assets/logo-light.svg"
-                 data-light="assets/logo-light.svg"
-                 data-dark="assets/logo-dark.svg"
+            <img class="brandLockup" id="brandLockup" 
+                 src="assets/logo-light.svg" 
+                 data-light="assets/logo-light.svg" 
+                 data-dark="assets/logo-dark.svg" 
                  alt="FLOWIQ"/>
           </span>
           <div class="logo" aria-hidden="true">
@@ -931,6 +1170,7 @@
             <span class="tagline" id="tagline">Decision Intelligence Platform</span>
           </div>
         </a>
+
         <div class="menu">
           <a href="#platform" data-i18n="nav_platform">Plataforma</a>
           <a href="#how" data-i18n="nav_how">Como funciona</a>
@@ -939,9 +1179,12 @@
           <a href="#company" data-i18n="nav_company">Quem somos</a>
           <a href="#contact" data-i18n="nav_contact">Contato</a>
         </div>
+
         <div class="actions">
+          <!-- CTA Principal -->
           <a class="ctaTop" href="#contact" data-i18n="cta_talk">Falar com especialista</a>
           <div class="controls">
+            <!-- Bandeiras de idioma -->
             <div class="langSwitch">
               <button type="button" id="langPT" class="active" title="Português">
                 <svg width="22" height="16" viewBox="0 0 22 16">
@@ -966,6 +1209,7 @@
                 </svg>
               </button>
             </div>
+            <!-- Toggle dark/light -->
             <button type="button" class="themeBtn" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">
               <svg class="sunIcon" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
@@ -980,24 +1224,44 @@
       </nav>
     </div>
   </header>
+
+  <!-- ════════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════════════ -->
   <main id="top">
     <div class="container">
+
+      <!-- ══════════════════════════════════════════════════════
+           HERO — REVITALIZADO
+           
+           MUDANÇAS:
+           1. Badge de Reforma Tributária (urgência/contexto)
+           2. Headline direto: redução de custos
+           3. Subheadline: ROI 60 dias + escopo claro
+           4. CTAs orientados a resultado
+      ══════════════════════════════════════════════════════ -->
       <section class="hero">
         <div class="heroInner">
+          <!-- Badge de contexto -->
           <div class="heroBadge" data-i18n="hero_badge">
             A camada de decisão acima da operação
           </div>
+          
           <h1 class="heroHeadline" data-i18n="hero_title">
             A operação executa. <span class="accent">A FLOWIQ decide.</span>
           </h1>
+          
           <p class="heroSub" data-i18n="hero_lead">
             Mês a mês, organizamos contexto, explicitamos trade-offs e garantimos a execução dos seus objetivos de caixa, redução de custos, governança e performance — em compras, vendas, operações e cadeia de fornecimento. <strong>ROI em até 60 dias</strong> após configuração.
           </p>
+          
           <div class="heroBtns">
             <a class="btn btnPrimary" href="#contact" data-i18n="hero_btn_primary">Calcular potencial de economia</a>
             <a class="btn" href="#how" data-i18n="hero_btn_secondary">Ver metodologia</a>
           </div>
         </div>
+
+        <!-- VALUE STRIP — STORYTELLING EXECUTIVO -->
         <div class="valueStrip">
           <div class="valueItem">
             <span class="valueNum" data-i18n="k_num1">60 dias</span>
@@ -1021,16 +1285,29 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           SINAIS DO FISCO DIGITAL — SEÇÃO ADICIONAL ISOLADA
+           
+           Carrossel editorial premium para contextualização
+           institucional e validação de posicionamento.
+           
+           CSS isolado com prefixo .fisco-* para não impactar legado
+      ══════════════════════════════════════════════════════ -->
       <style>
+        /* CSS ISOLADO — Sinais do Fisco Digital */
         .fisco-section {
           padding: 60px 0;
           position: relative;
         }
+        
         .fisco-header {
           text-align: center;
           margin-bottom: 40px;
         }
+        
         .fisco-label {
           display: inline-flex;
           align-items: center;
@@ -1042,6 +1319,7 @@
           color: var(--muted);
           margin-bottom: 16px;
         }
+        
         .fisco-label::before {
           content: "";
           width: 8px;
@@ -1050,10 +1328,12 @@
           border-radius: 50%;
           animation: fiscoPulse 2s ease-in-out infinite;
         }
+        
         @keyframes fiscoPulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.8); }
         }
+        
         .fisco-title {
           font-size: 28px;
           font-weight: 800;
@@ -1061,6 +1341,7 @@
           margin: 0 0 12px;
           letter-spacing: -.02em;
         }
+        
         .fisco-subtitle {
           font-size: 15px;
           color: var(--muted);
@@ -1068,12 +1349,14 @@
           margin: 0 auto;
           line-height: 1.6;
         }
+        
         .fisco-carousel-wrapper {
           position: relative;
           overflow: hidden;
           margin: 0 -20px;
           padding: 0 20px;
         }
+        
         .fisco-carousel {
           display: flex;
           gap: 20px;
@@ -1083,9 +1366,11 @@
           -ms-overflow-style: none;
           padding: 10px 0 20px;
         }
+        
         .fisco-carousel::-webkit-scrollbar {
           display: none;
         }
+        
         .fisco-card {
           flex: 0 0 340px;
           scroll-snap-align: start;
@@ -1096,13 +1381,16 @@
           position: relative;
           transition: all .3s ease;
         }
+        
         .fisco-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 20px 50px rgba(0,0,0,.08);
         }
+        
         html[data-theme="dark"] .fisco-card:hover {
           box-shadow: 0 20px 50px rgba(0,0,0,.3);
         }
+        
         .fisco-card::before {
           content: "";
           position: absolute;
@@ -1113,12 +1401,14 @@
           background: linear-gradient(90deg, #dc2626, rgba(220,38,38,.3));
           border-radius: 16px 16px 0 0;
         }
+        
         .fisco-source {
           display: flex;
           align-items: center;
           gap: 8px;
           margin-bottom: 16px;
         }
+        
         .fisco-source-icon {
           width: 32px;
           height: 32px;
@@ -1128,23 +1418,27 @@
           place-items: center;
           flex-shrink: 0;
         }
+        
         .fisco-source-icon svg {
           width: 16px;
           height: 16px;
           color: #dc2626;
         }
+        
         .fisco-source-text {
           font-size: 11px;
           color: var(--muted);
           font-weight: 600;
           letter-spacing: .02em;
         }
+        
         .fisco-source-text span {
           display: block;
           font-weight: 700;
           color: var(--ink);
           font-size: 12px;
         }
+        
         .fisco-headline {
           font-size: 17px;
           font-weight: 700;
@@ -1152,12 +1446,14 @@
           line-height: 1.4;
           margin: 0 0 14px;
         }
+        
         .fisco-insight {
           font-size: 14px;
           color: var(--muted);
           line-height: 1.65;
           margin: 0 0 18px;
         }
+        
         .fisco-connection {
           font-size: 12px;
           color: var(--accent);
@@ -1168,16 +1464,19 @@
           align-items: center;
           gap: 6px;
         }
+        
         .fisco-connection::before {
           content: "→";
           font-weight: 400;
         }
+        
         .fisco-nav {
           display: flex;
           justify-content: center;
           gap: 8px;
           margin-top: 24px;
         }
+        
         .fisco-dot {
           width: 8px;
           height: 8px;
@@ -1188,11 +1487,13 @@
           transition: all .2s ease;
           padding: 0;
         }
+        
         .fisco-dot.active {
           background: var(--accent);
           width: 24px;
           border-radius: 4px;
         }
+        
         @media (max-width: 768px) {
           .fisco-card {
             flex: 0 0 300px;
@@ -1202,6 +1503,7 @@
           }
         }
       </style>
+      
       <section class="fisco-section" id="fisco-signals">
         <div class="container">
           <header class="fisco-header">
@@ -1209,8 +1511,11 @@
             <h2 class="fisco-title" data-i18n="fisco_title">Sinais do Fisco Digital</h2>
             <p class="fisco-subtitle" data-i18n="fisco_subtitle">Movimentos estruturais que estão redefinindo a gestão tributária no Brasil. Contexto para quem decide.</p>
           </header>
+          
           <div class="fisco-carousel-wrapper">
             <div class="fisco-carousel" id="fiscoCarousel">
+              
+              <!-- Card 1 - Exame Jan 2026 (MAIS RECENTE) -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1228,6 +1533,8 @@
                 <p class="fisco-insight" data-i18n="fisco_i1">A Receita Federal opera com IA que processa 100% das declarações em tempo real. Não há mais amostragem: cada operação é analisada, cruzada e classificada por risco automaticamente. A fiscalização deixou de ser artesanal e passou a ser ecossistema tecnológico de larga escala.</p>
                 <div class="fisco-connection" data-i18n="fisco_c1">Quem não tem visibilidade dos próprios dados está exposto sem saber</div>
               </article>
+              
+              <!-- Card 2 - Serpro Out 2025 -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1245,6 +1552,8 @@
                 <p class="fisco-insight" data-i18n="fisco_i2">Da fiscalização ao atendimento ao cidadão, a Receita realiza cruzamentos massivos de dados e seleção preditiva. R$ 12,5 bilhões já foram recuperados com liberação aduaneira mais ágil e julgamentos mais rápidos.</p>
                 <div class="fisco-connection" data-i18n="fisco_c2">Dado sem confiança é ruído. Tecnologia sem propósito é barulho.</div>
               </article>
+              
+              <!-- Card 3 - Contábeis Set 2025 -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1262,6 +1571,8 @@
                 <p class="fisco-insight" data-i18n="fisco_i3">A tecnologia permite identificar irregularidades antes que se tornem fraudes consolidadas. O sistema analisa padrões de transações digitais, mapeia redes complexas de empresas e antecipa desvios em tempo real.</p>
                 <div class="fisco-connection" data-i18n="fisco_c3">A IA não serve apenas para punir — estimula conformidade e evita litígios</div>
               </article>
+              
+              <!-- Card 4 - Lei Complementar 214/2025 Jan 2025 -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1279,6 +1590,8 @@
                 <p class="fisco-insight" data-i18n="fisco_i4">Com a Reforma Tributária, o recolhimento de IBS e CBS será automático no momento da transação. Erros de classificação ou regime não terão janela de correção. A decisão precisa estar tomada antes da operação.</p>
                 <div class="fisco-connection" data-i18n="fisco_c4">Simulação prévia de cenários se torna operacionalmente crítica</div>
               </article>
+              
+              <!-- Card 5 - Gazeta do Povo Nov 2024 -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1296,6 +1609,8 @@
                 <p class="fisco-insight" data-i18n="fisco_i5">A Receita Federal não espera mais a fiscalização presencial. Ao verificar irregularidades via cruzamento automático, o Fisco informa diretamente o contribuinte para correção voluntária. Quem não se regularizar, enfrenta multas de 75% a 150%.</p>
                 <div class="fisco-connection" data-i18n="fisco_c5">Regularização preventiva é o novo padrão — reação virou passivo</div>
               </article>
+              
+              <!-- Card 6 - Ministério da Fazenda Set 2024 -->
               <article class="fisco-card">
                 <div class="fisco-source">
                   <div class="fisco-source-icon">
@@ -1313,8 +1628,10 @@
                 <p class="fisco-insight" data-i18n="fisco_i6">A nova plataforma da Receita Federal usa algoritmos de machine learning para cruzar SPED, COMEX e obrigações acessórias. Empresas de fachada, notas frias e criptoativos suspeitos são identificados antes da fiscalização presencial.</p>
                 <div class="fisco-connection" data-i18n="fisco_c6">Governança e rastreabilidade deixaram de ser diferenciais competitivos</div>
               </article>
+              
             </div>
           </div>
+          
           <div class="fisco-nav" id="fiscoNav">
             <button class="fisco-dot active" data-index="0"></button>
             <button class="fisco-dot" data-index="1"></button>
@@ -1325,12 +1642,15 @@
           </div>
         </div>
       </section>
+      
       <script>
         // Script isolado para o carrossel Fisco
         (function() {
           var carousel = document.getElementById('fiscoCarousel');
           var dots = document.querySelectorAll('.fisco-dot');
+          
           if (!carousel || !dots.length) return;
+          
           // Scroll para card específico
           function scrollToCard(index) {
             var cards = carousel.querySelectorAll('.fisco-card');
@@ -1341,6 +1661,7 @@
               dot.classList.toggle('active', i === index);
             });
           }
+          
           // Click nos dots
           dots.forEach(function(dot) {
             dot.addEventListener('click', function() {
@@ -1348,6 +1669,7 @@
               scrollToCard(index);
             });
           });
+          
           // Atualizar dots no scroll
           carousel.addEventListener('scroll', function() {
             var scrollLeft = carousel.scrollLeft;
@@ -1359,12 +1681,20 @@
           });
         })();
       </script>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           PLATFORM — REVITALIZADO
+           
+           MUDANÇA: Menos técnico, mais resultado
+      ══════════════════════════════════════════════════════ -->
       <section id="platform">
         <header class="sectionHeader">
           <h2 data-i18n="platform_title">Decisão não é evento. É processo.</h2>
           <p data-i18n="platform_sub">A FLOWIQ não substitui pessoas. Ela organiza contexto, conecta dados e sustenta a decisão com método — mês a mês, operação a operação.</p>
         </header>
+
         <div class="grid3">
           <div class="card">
             <div class="cardIcon">
@@ -1375,6 +1705,7 @@
             <h4 data-i18n="platform_card1">Contexto organizado</h4>
             <p data-i18n="platform_card1_p">SPED, COMEX, ERP e base interna conectados. Você vê o que importa para decidir — não relatórios para arquivar.</p>
           </div>
+
           <div class="card">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -1384,6 +1715,7 @@
             <h4 data-i18n="platform_card2">Trade-offs explícitos</h4>
             <p data-i18n="platform_card2_p">Cada decisão com impacto em caixa, risco e esforço. Você escolhe sabendo o que ganha e o que perde.</p>
           </div>
+
           <div class="card">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -1396,12 +1728,20 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           HOW IT WORKS — REVITALIZADO
+           
+           MUDANÇA: Cada passo conectado com resultado
+      ══════════════════════════════════════════════════════ -->
       <section id="how">
         <header class="sectionHeader">
           <h2 data-i18n="how_title">Metodologia: da análise ao ROI mensurável</h2>
           <p data-i18n="how_sub">Processo estruturado com entregas claras. Sem surpresas, sem dependência infinita.</p>
         </header>
+
         <div class="howGrid">
           <div class="steps">
             <div class="step">
@@ -1433,6 +1773,7 @@
               </div>
             </div>
           </div>
+
           <div class="card howCard">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -1451,12 +1792,23 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           PRODUCTS — REVITALIZADO
+           
+           MUDANÇAS:
+           1. Regimes explícitos (RECOF, Drawback, Ex-tarifário...)
+           2. Cadeia completa mencionada
+           3. Waitlist mais estratégico
+      ══════════════════════════════════════════════════════ -->
       <section id="products">
         <header class="sectionHeader">
           <h2 data-i18n="products_title">Onde a decisão acontece</h2>
           <p data-i18n="products_sub">TaxIQ, ContentIQ e ComexIQ aplicam a inteligência da FLOWIQ em cada frente. Produtos, não promessas.</p>
         </header>
+
         <div class="grid3">
           <div class="card">
             <div class="cardIcon productLogo">
@@ -1479,6 +1831,7 @@
               <a class="btn btnPrimary" style="padding:12px 20px;font-size:11px" href="https://taxmind-481315.web.app/login" target="_blank" rel="noopener" data-i18n="tax_btn">Acessar TaxIQ</a>
             </div>
           </div>
+
           <div class="card">
             <div class="cardIcon productLogo">
               <svg width="170" height="48" viewBox="0 0 170 48" fill="none">
@@ -1501,6 +1854,7 @@
               <a class="btn" style="padding:12px 20px;font-size:11px;width:100%;" href="#contact" data-i18n="cta_waitlist">Solicitar acesso antecipado</a>
             </div>
           </div>
+
           <div class="card">
             <div class="cardIcon productLogo">
               <svg width="150" height="48" viewBox="0 0 150 48" fill="none">
@@ -1525,17 +1879,26 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           BENCHMARK — REVITALIZADO
+           
+           MUDANÇA: "Promessa de mercado vs. Entrega FLOWIQ"
+      ══════════════════════════════════════════════════════ -->
       <section id="benchmark">
         <header class="sectionHeader">
           <h2 data-i18n="bench_title">O que prometem vs. O que entregamos</h2>
           <p data-i18n="bench_sub">Menos jargão, mais resultado. Compare abordagens.</p>
         </header>
+
         <div class="compareTable">
           <div class="compareHead">
             <div data-i18n="bench_left">Promessa comum de mercado</div>
             <div data-i18n="bench_right">Entrega FLOWIQ</div>
           </div>
+
           <div class="compareRow">
             <div class="compareCell">
               <div class="cellIcon" style="color: #94a3b8;">
@@ -1563,6 +1926,7 @@
               </div>
             </div>
           </div>
+
           <div class="compareRow">
             <div class="compareCell">
               <div class="cellIcon" style="color: #94a3b8;">
@@ -1590,6 +1954,7 @@
               </div>
             </div>
           </div>
+
           <div class="compareRow">
             <div class="compareCell">
               <div class="cellIcon" style="color: #94a3b8;">
@@ -1615,6 +1980,7 @@
               </div>
             </div>
           </div>
+
           <div class="compareRow">
             <div class="compareCell">
               <div class="cellIcon" style="color: #94a3b8;">
@@ -1642,12 +2008,21 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           COMPANY — REVITALIZADO: AUTORIDADE
+           
+           MUDANÇA: 20+ anos de experiência, não startup
+      ══════════════════════════════════════════════════════ -->
       <section id="company">
         <header class="sectionHeader">
           <h2 data-i18n="company_title">Experiência, não experimento</h2>
           <p data-i18n="company_sub">20+ anos em tecnologia, consultoria tributária e operações de comércio exterior. Construímos a plataforma que gostaríamos de ter usado quando estávamos do outro lado.</p>
         </header>
+
+        <!-- Credenciais numéricas -->
         <div class="credenciais" style="margin-bottom:32px;">
           <div class="credItem">
             <div class="credNum" data-i18n="cred1_num">+20</div>
@@ -1666,6 +2041,7 @@
             <div class="credLabel" data-i18n="cred4_label">foco em resultado mensurável</div>
           </div>
         </div>
+
         <div class="grid3">
           <div class="card">
             <div class="cardIcon">
@@ -1677,6 +2053,7 @@
             <h4 data-i18n="company_c1">Experiência prática</h4>
             <p data-i18n="company_c1p">Quem construiu a plataforma já operou, auditou e tomou decisões em empresas reais. Conhecemos as dores de quem executa.</p>
           </div>
+
           <div class="card">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -1687,6 +2064,7 @@
             <h4 data-i18n="company_c2">Método, não opinião</h4>
             <p data-i18n="company_c2p">Cada recomendação vem com fundamentação. Trilha de evidências pronta para defender diante de auditoria interna ou externa.</p>
           </div>
+
           <div class="card">
             <div class="cardIcon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -1698,368 +2076,46 @@
           </div>
         </div>
       </section>
+
       <div class="sectionDivider"></div>
-      <style>
-        .clippings-section {
-          padding: 60px 0;
-        }
-        .clippings-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-        .clippings-label {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: .12em;
-          text-transform: uppercase;
-          color: var(--muted);
-          margin-bottom: 16px;
-        }
-        .clippings-label::before {
-          content: "";
-          width: 8px;
-          height: 8px;
-          background: var(--accent);
-          border-radius: 50%;
-          animation: clippingsPulse 2s ease-in-out infinite;
-        }
-        @keyframes clippingsPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-        .clippings-title {
-          font-size: 28px;
-          font-weight: 800;
-          color: var(--ink);
-          margin: 0 0 12px;
-          letter-spacing: -.02em;
-        }
-        .clippings-subtitle {
-          font-size: 15px;
-          color: var(--muted);
-          max-width: 600px;
-          margin: 0 auto;
-          line-height: 1.6;
-        }
-        .clippings-carousel-wrapper {
-          position: relative;
-          overflow: hidden;
-          margin: 0 -20px;
-          padding: 0 20px;
-        }
-        .clippings-carousel {
-          display: flex;
-          gap: 20px;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          padding: 10px 0 20px;
-        }
-        .clippings-carousel::-webkit-scrollbar {
-          display: none;
-        }
-        .clipping-card {
-          flex: 0 0 320px;
-          scroll-snap-align: start;
-          background: var(--glass);
-          border: 1px solid var(--line);
-          border-radius: 16px;
-          padding: 24px;
-          position: relative;
-          transition: all .3s ease;
-          display: flex;
-          flex-direction: column;
-        }
-        .clipping-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 20px 50px rgba(0,0,0,.08);
-        }
-        html[data-theme="dark"] .clipping-card:hover {
-          box-shadow: 0 20px 50px rgba(0,0,0,.3);
-        }
-        .clipping-card::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, var(--accent), rgba(243,180,47,.3));
-          border-radius: 16px 16px 0 0;
-        }
-        .clipping-meta {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 14px;
-        }
-        .clipping-source {
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--accent);
-          text-transform: uppercase;
-          letter-spacing: .05em;
-        }
-        .clipping-date {
-          font-size: 11px;
-          color: var(--muted);
-        }
-        .clipping-title {
-          font-size: 16px;
-          font-weight: 700;
-          color: var(--ink);
-          line-height: 1.4;
-          margin: 0 0 12px;
-          flex-grow: 1;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .clipping-excerpt {
-          font-size: 13px;
-          color: var(--muted);
-          line-height: 1.5;
-          margin: 0 0 16px;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .clipping-link {
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--accent);
-          text-decoration: none;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          margin-top: auto;
-        }
-        .clipping-link:hover {
-          text-decoration: underline;
-        }
-        .clipping-link::after {
-          content: "→";
-        }
-        .clippings-nav {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-top: 24px;
-        }
-        .clippings-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: var(--line);
-          border: none;
-          cursor: pointer;
-          transition: all .2s ease;
-          padding: 0;
-        }
-        .clippings-dot.active {
-          background: var(--accent);
-          width: 24px;
-          border-radius: 4px;
-        }
-        .clippings-loading {
-          text-align: center;
-          padding: 40px;
-          color: var(--muted);
-          font-size: 14px;
-        }
-        @media (max-width: 768px) {
-          .clipping-card {
-            flex: 0 0 280px;
-          }
-          .clippings-title {
-            font-size: 24px;
-          }
-        }
-      </style>
-      <section class="clippings-section" id="clippings-tax">
-        <div class="container">
-          <header class="clippings-header">
-            <div class="clippings-label" data-i18n="clippings_label">Monitoramento TAX</div>
-            <h2 class="clippings-title" data-i18n="clippings_title">Na mídia</h2>
-            <p class="clippings-subtitle" data-i18n="clippings_subtitle">Acompanhamento em tempo real das principais notícias sobre tributação, reforma fiscal e inteligência tributária.</p>
-          </header>
-          <div class="clippings-carousel-wrapper">
-            <div class="clippings-carousel" id="clippingsCarousel">
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">Valor Econômico</span>
-                  <span class="clipping-date">15 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">Receita Federal amplia uso de IA para cruzamento de dados fiscais em 2026</h3>
-                <p class="clipping-excerpt">Novo sistema permite identificar inconsistências em tempo real, reduzindo prazo de auditoria de meses para dias.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">Estadão</span>
-                  <span class="clipping-date">14 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">Empresas correm para se adaptar ao split payment antes do prazo</h3>
-                <p class="clipping-excerpt">Reforma tributária exige mudanças em sistemas de faturamento e gestão de caixa que poucas companhias iniciaram.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">Folha de S.Paulo</span>
-                  <span class="clipping-date">13 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">Drawback: empresas deixam de recuperar R$ 2 bi por ano por falta de controle</h3>
-                <p class="clipping-excerpt">Estudo aponta que gestão manual de regimes especiais impede aproveitamento integral de benefícios fiscais.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">Exame</span>
-                  <span class="clipping-date">12 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">CFOs priorizam tecnologia tributária em orçamento de 2026</h3>
-                <p class="clipping-excerpt">Pesquisa revela que 67% dos executivos financeiros planejam investir em plataformas de gestão fiscal este ano.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">InfoMoney</span>
-                  <span class="clipping-date">11 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">Transição IBS/CBS: simuladores se tornam ferramenta essencial</h3>
-                <p class="clipping-excerpt">Com janela de transição até 2033, empresas buscam plataformas para comparar cenários e antecipar impactos.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-              <article class="clipping-card">
-                <div class="clipping-meta">
-                  <span class="clipping-source">Poder360</span>
-                  <span class="clipping-date">10 Jan 2026</span>
-                </div>
-                <h3 class="clipping-title">Governo estima recuperar R$ 15 bi com fiscalização digital em 2026</h3>
-                <p class="clipping-excerpt">Projeção considera expansão do Projeto Analytics e integração de bases de dados federais, estaduais e municipais.</p>
-                <a href="#" class="clipping-link" target="_blank">Ler matéria</a>
-              </article>
-            </div>
+
+      <!-- ══════════════════════════════════════════════════════
+           INSIGHTS — Mantido, copy lapidado
+      ══════════════════════════════════════════════════════ -->
+      <section id="insights">
+        <header class="sectionHeader">
+          <h2 data-i18n="insights_title">Insight do dia</h2>
+          <p data-i18n="insights_sub">Provocações práticas sobre decisão tributária e operacional.</p>
+        </header>
+
+        <div class="insightCard">
+          <div class="insightIcon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2a7 7 0 0 0-4 12.7V19a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4.3A7 7 0 0 0 12 2Z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
           </div>
-          <div class="clippings-nav" id="clippingsNav">
-            <button class="clippings-dot active" data-index="0"></button>
-            <button class="clippings-dot" data-index="1"></button>
-            <button class="clippings-dot" data-index="2"></button>
-            <button class="clippings-dot" data-index="3"></button>
-            <button class="clippings-dot" data-index="4"></button>
-            <button class="clippings-dot" data-index="5"></button>
+          <div class="insightContent">
+            <div class="insightLabel" data-i18n="insights_card">Provocação</div>
+            <p id="insightText"></p>
+            <a class="btn" id="insightLink" href="#contact" style="padding:10px 16px;font-size:11px" data-i18n="insights_link">Falar sobre isso</a>
           </div>
         </div>
       </section>
-      <script>
-        (function() {
-          var carousel = document.getElementById('clippingsCarousel');
-          var dotsContainer = document.getElementById('clippingsNav');
-          var dots = document.querySelectorAll('.clippings-dot');
-          var TAX_KEYWORDS = /tribut|fiscal|imposto|reforma|receita federal|tax|IBS|CBS|ICMS|ISS|PIS|COFINS|drawback|recof|sped|comex|aduaneir|alfandeg|exporta|importa|soneg|arrecada|fazenda|fisco/i;
-          function formatDate(dateStr) {
-            if (!dateStr) return '';
-            var d = new Date(dateStr);
-            var months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-            return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
-          }
-          function renderClippings(clippings) {
-            if (!carousel || !clippings || !clippings.length) return;
-            carousel.innerHTML = '';
-            var maxCards = Math.min(clippings.length, 10);
-            for (var i = 0; i < maxCards; i++) {
-              var c = clippings[i];
-              var card = document.createElement('article');
-              card.className = 'clipping-card';
-              card.innerHTML =
-                '<div class="clipping-meta">' +
-                  '<span class="clipping-source">' + (c.Veiculo || 'Fonte') + '</span>' +
-                  '<span class="clipping-date">' + formatDate(c.DataVeiculacao) + '</span>' +
-                '</div>' +
-                '<h3 class="clipping-title">' + (c.Titulo || '') + '</h3>' +
-                '<p class="clipping-excerpt">' + (c.Conteudo ? c.Conteudo.substring(0, 150) + '...' : '') + '</p>' +
-                '<a href="' + (c.UrlOriginal || c.UrlVisualizacao || '#') + '" class="clipping-link" target="_blank">Ler matéria</a>';
-              carousel.appendChild(card);
-            }
-            if (dotsContainer) {
-              dotsContainer.innerHTML = '';
-              for (var j = 0; j < maxCards; j++) {
-                var dot = document.createElement('button');
-                dot.className = 'clippings-dot' + (j === 0 ? ' active' : '');
-                dot.setAttribute('data-index', j);
-                dot.onclick = (function(idx) {
-                  return function() { scrollToCard(idx); };
-                })(j);
-                dotsContainer.appendChild(dot);
-              }
-            }
-          }
-          function scrollToCard(index) {
-            var cards = carousel.querySelectorAll('.clipping-card');
-            if (cards[index]) {
-              cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-            }
-            var allDots = document.querySelectorAll('.clippings-dot');
-            allDots.forEach(function(dot, i) {
-              dot.classList.toggle('active', i === index);
-            });
-          }
-          if (carousel) {
-            carousel.addEventListener('scroll', function() {
-              var scrollLeft = carousel.scrollLeft;
-              var cardWidth = 340;
-              var activeIndex = Math.round(scrollLeft / cardWidth);
-              var allDots = document.querySelectorAll('.clippings-dot');
-              allDots.forEach(function(dot, i) {
-                dot.classList.toggle('active', i === activeIndex);
-              });
-            });
-          }
-          dots.forEach(function(dot) {
-            dot.addEventListener('click', function() {
-              var index = parseInt(this.getAttribute('data-index'));
-              scrollToCard(index);
-            });
-          });
-          fetch('https://cloud.boxnet.com.br/api/Clippings', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              integrationid: 'b16d2177-b808-493b-88df-d2e415bc98cb',
-              password: '180CD71DBD6322F85618C0B8FEA7669D9D1DD63C'
-            })
-          })
-          .then(function(res) { return res.json(); })
-          .then(function(clippings) {
-            if (Array.isArray(clippings)) {
-              var taxClippings = clippings.filter(function(c) {
-                return c.Titulo && TAX_KEYWORDS.test(c.Titulo);
-              });
-              taxClippings.sort(function(a, b) {
-                return new Date(b.DataVeiculacao) - new Date(a.DataVeiculacao);
-              });
-              if (taxClippings.length > 0) {
-                renderClippings(taxClippings);
-              }
-            }
-          })
-          .catch(function(err) {
-            console.log('Boxnet API: usando dados estáticos');
-          });
-        })();
-      </script>
+
       <div class="sectionDivider"></div>
+
+      <!-- ══════════════════════════════════════════════════════
+           CONTACT — REVITALIZADO
+           
+           MUDANÇA: Foco em diagnóstico de economia
+      ══════════════════════════════════════════════════════ -->
       <section id="contact">
         <header class="sectionHeader">
           <h2 data-i18n="contact_title">Calcule seu potencial de economia</h2>
           <p data-i18n="contact_sub">Diagnóstico inicial gratuito. Identificamos oportunidades antes de qualquer compromisso.</p>
         </header>
+
         <div class="contactCard">
           <form id="contactForm">
             <div class="formGrid">
@@ -2094,8 +2150,13 @@
           </form>
         </div>
       </section>
+
     </div>
   </main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════ -->
   <footer>
     <div class="container">
       <div class="footerInner">
@@ -2112,9 +2173,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SCRIPTS — Atualizado com novo dicionário i18n
+  ════════════════════════════════════════════════════════════ -->
   <script>
     (function() {
       document.getElementById('year').textContent = new Date().getFullYear();
+
       var dict = {
         pt: {
           tagline: "Decision Intelligence Platform",
@@ -2217,10 +2283,11 @@
           company_c2p: "Cada recomendação vem com fundamentação. Trilha de evidências pronta para defender diante de auditoria interna ou externa.",
           company_c3: "Foco em resultado",
           company_c3p: "Não vendemos projeto. Entregamos economia mensurável. Se não gerar valor, não faz sentido continuar.",
-          clippings_label: "Monitoramento TAX",
-          clippings_title: "Na mídia",
-          clippings_subtitle: "Acompanhamento em tempo real das principais notícias sobre tributação, reforma fiscal e inteligência tributária.",
-          contact_title: "Calcule seu potencial de economia",
+          insights_title: "Insight do dia",
+          insights_sub: "Provocações práticas sobre decisão tributária e operacional.",
+          insights_card: "Provocação",
+          insights_link: "Falar sobre isso",
+          fisco_label: "Monitoramento ativo",
           fisco_title: "Sinais do Fisco Digital",
           fisco_subtitle: "Movimentos estruturais que estão redefinindo a gestão tributária no Brasil. Contexto para quem decide.",
           fisco_src1: "Exame",
@@ -2365,9 +2432,10 @@
           company_c2p: "Every recommendation comes with rationale. Evidence trail ready to defend before internal or external audit.",
           company_c3: "Focus on results",
           company_c3p: "We do not sell projects. We deliver measurable savings. If it does not generate value, it does not make sense to continue.",
-          clippings_label: "TAX Monitoring",
-          clippings_title: "In the media",
-          clippings_subtitle: "Real-time tracking of major news on taxation, tax reform and tax intelligence.",
+          insights_title: "Insight of the day",
+          insights_sub: "Practical provocations on tax and operational decisions.",
+          insights_card: "Provocation",
+          insights_link: "Talk about this",
           fisco_label: "Active monitoring",
           fisco_title: "Signals from the Digital Tax System",
           fisco_subtitle: "Structural movements redefining tax management in Brazil. Context for decision makers.",
@@ -2413,6 +2481,7 @@
           foot_note: " Decision platform for tax and foreign trade."
         }
       };
+
       var insights = {
         pt: [
           { t: "Reforma Tributária: você já simulou o impacto?", d: "Quem esperar para entender vai reagir. Quem simular agora vai decidir.", href: "#contact" },
@@ -2429,10 +2498,26 @@
           { t: "How much does not knowing cost?", d: "The opportunity cost of operating without visibility is real. It just does not show on the balance sheet.", href: "#contact" }
         ]
       };
+
       var currentLang = 'pt';
+
+      function setInsight(lang) {
+        var list = insights[lang] || insights.pt;
+        var pick = list[Math.floor(Math.random() * list.length)];
+        var el = document.getElementById("insightText");
+        var link = document.getElementById("insightLink");
+        if (el && pick) {
+          el.innerHTML = '<b>' + pick.t + '</b><br>' + pick.d;
+        }
+        if (link && pick) {
+          link.href = pick.href || "#contact";
+        }
+      }
+
       function applyLang(lang) {
         currentLang = lang;
         document.documentElement.lang = (lang === "en") ? "en" : "pt-BR";
+        
         var elements = document.querySelectorAll("[data-i18n]");
         for (var i = 0; i < elements.length; i++) {
           var el = elements[i];
@@ -2445,14 +2530,19 @@
             }
           }
         }
+
+        setInsight(lang);
+        
         var langPT = document.getElementById("langPT");
         var langEN = document.getElementById("langEN");
         if (langPT) langPT.className = (lang === "pt") ? "active" : "";
         if (langEN) langEN.className = (lang === "en") ? "active" : "";
       }
+
       function setTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
         try { localStorage.setItem("flowiq_theme", theme); } catch(e) {}
+
         var isDark = (theme === "dark");
         var imgs = document.querySelectorAll('[data-light][data-dark]');
         for (var i = 0; i < imgs.length; i++) {
@@ -2463,24 +2553,29 @@
           }
         }
       }
+
       document.getElementById("langPT").onclick = function() { applyLang("pt"); };
       document.getElementById("langEN").onclick = function() { applyLang("en"); };
       document.getElementById("themeToggle").onclick = function() {
         var cur = document.documentElement.getAttribute("data-theme") || "light";
         setTheme(cur === "light" ? "dark" : "light");
       };
+      
       // Formulário de contato - envio via Formspree
       document.getElementById("contactForm").onsubmit = function(e) {
         e.preventDefault();
+        
         var form = this;
         var submitBtn = document.getElementById("formSubmit");
         var statusEl = document.getElementById("formStatus");
+        
         // Coletar dados
         var name = document.getElementById("formName").value.trim();
         var email = document.getElementById("formEmail").value.trim();
         var company = document.getElementById("formCompany").value.trim();
         var role = document.getElementById("formRole").value.trim();
         var message = document.getElementById("formMessage").value.trim();
+        
         // Validação básica
         if (!name || !email) {
           statusEl.style.display = "block";
@@ -2488,10 +2583,12 @@
           statusEl.textContent = currentLang === 'en' ? 'Please fill in all required fields.' : 'Por favor, preencha todos os campos obrigatórios.';
           return;
         }
+        
         // Desabilitar botão durante envio
         submitBtn.disabled = true;
         submitBtn.style.opacity = "0.7";
         submitBtn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
+        
         // Preparar dados para envio
         var formData = new FormData();
         formData.append("name", name);
@@ -2501,6 +2598,7 @@
         formData.append("message", message || "Não informado");
         formData.append("_subject", "[FLOWIQ] Solicitação de Diagnóstico - " + (company || name));
         formData.append("_replyto", email);
+        
         // Enviar via Formspree
         // IMPORTANTE: Substitua YOUR_FORM_ID pelo ID do seu formulário Formspree
         fetch("https://formspree.io/f/xykkyjqd", {
@@ -2516,9 +2614,10 @@
             statusEl.style.display = "block";
             statusEl.style.color = "#16a34a";
             statusEl.style.fontWeight = "600";
-            statusEl.textContent = currentLang === 'en'
-              ? '✓ Message sent successfully! We will respond within 24 business hours.'
+            statusEl.textContent = currentLang === 'en' 
+              ? '✓ Message sent successfully! We will respond within 24 business hours.' 
               : '✓ Mensagem enviada com sucesso! Responderemos em até 24h úteis.';
+            
             // Limpar formulário
             form.reset();
           } else {
@@ -2529,8 +2628,8 @@
           // Erro - fallback para mailto
           statusEl.style.display = "block";
           statusEl.style.color = "#f59e0b";
-          statusEl.innerHTML = currentLang === 'en'
-            ? 'Connection issue. <a href="mailto:contato@flowiqbr.com.br?subject=[FLOWIQ] Diagnóstico&body=Nome: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AEmpresa: ' + encodeURIComponent(company) + '%0ACargo: ' + encodeURIComponent(role) + '%0AMensagem: ' + encodeURIComponent(message) + '" style="color:#2563eb;text-decoration:underline;">Click here to send by email</a>'
+          statusEl.innerHTML = currentLang === 'en' 
+            ? 'Connection issue. <a href="mailto:contato@flowiqbr.com.br?subject=[FLOWIQ] Diagnóstico&body=Nome: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AEmpresa: ' + encodeURIComponent(company) + '%0ACargo: ' + encodeURIComponent(role) + '%0AMensagem: ' + encodeURIComponent(message) + '" style="color:#2563eb;text-decoration:underline;">Click here to send by email</a>' 
             : 'Problema de conexão. <a href="mailto:contato@flowiqbr.com.br?subject=[FLOWIQ] Diagnóstico&body=Nome: ' + encodeURIComponent(name) + '%0AEmail: ' + encodeURIComponent(email) + '%0AEmpresa: ' + encodeURIComponent(company) + '%0ACargo: ' + encodeURIComponent(role) + '%0AMensagem: ' + encodeURIComponent(message) + '" style="color:#2563eb;text-decoration:underline;">Clique aqui para enviar por email</a>';
         })
         .finally(function() {
@@ -2538,12 +2637,14 @@
           submitBtn.disabled = false;
           submitBtn.style.opacity = "1";
           submitBtn.textContent = currentLang === 'en' ? 'Request free diagnosis' : 'Solicitar diagnóstico gratuito';
+          
           // Esconder mensagem após 10 segundos
           setTimeout(function() {
             statusEl.style.display = "none";
           }, 10000);
         });
       };
+
       var savedTheme = "light";
       try { savedTheme = localStorage.getItem("flowiq_theme") || "light"; } catch(e) {}
       setTheme(savedTheme);
